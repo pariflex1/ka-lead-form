@@ -1,0 +1,2830 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Krishna Anandam Property Inquiry</title>
+
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #f4f6f8;
+    color: #222;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================================
+   MAIN WRAPPER
+========================================================= */
+
+.form-wrapper {
+    width: 100%;
+    max-width: 560px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+.form-card {
+    width: 100%;
+    padding: 24px 18px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.form-title {
+    margin: 0 0 8px;
+    text-align: center;
+    font-size: 28px;
+    line-height: 1.25;
+    font-weight: 400;
+    color: #111;
+}
+
+.form-subtitle {
+    margin: 0 0 28px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.55;
+    font-weight: 400;
+    color: #666;
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.progress {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.progress-step {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+
+    border-radius: 50%;
+
+    background: #e5e7eb;
+    color: #777;
+
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.progress-step.active {
+    background: #222;
+    color: #fff;
+}
+
+.progress-step.completed {
+    background: #16a34a;
+    color: #fff;
+}
+
+.progress-line {
+    flex: 1;
+    height: 3px;
+    background: #e5e7eb;
+}
+
+.progress-line.active {
+    background: #16a34a;
+}
+
+
+/* =========================================================
+   STEPS
+========================================================= */
+
+.step {
+    display: none;
+}
+
+.step.active {
+    display: block;
+}
+
+.step-title {
+    margin-bottom: 8px;
+    font-size: 24px;
+    line-height: 1.3;
+    font-weight: 400;
+    color: #111;
+}
+
+.step-description {
+    margin-bottom: 22px;
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 400;
+    color: #666;
+}
+
+
+/* =========================================================
+   PROPERTY OPTIONS
+========================================================= */
+
+.property-options {
+    display: grid;
+    gap: 15px;
+}
+
+.property-option {
+    position: relative;
+
+    display: block;
+
+    padding: 21px;
+
+    border: 2px solid #e1e4e8;
+    border-radius: 16px;
+
+    background: #fff;
+
+    cursor: pointer;
+
+    transition:
+        border-color .2s,
+        background .2s;
+}
+
+.property-option:hover {
+    border-color: #999;
+}
+
+.property-option.selected {
+    border-color: #222;
+    background: #f8f9fa;
+}
+
+.property-option input {
+    position: absolute;
+    opacity: 0;
+}
+
+.property-name {
+    margin-bottom: 8px;
+
+    font-size: 21px;
+    line-height: 1.35;
+
+    font-weight: 400;
+
+    color: #111;
+}
+
+.property-price-small {
+    font-size: 16px;
+    line-height: 1.5;
+
+    font-weight: 400;
+
+    color: #666;
+}
+
+
+/* =========================================================
+   PRICE CARD
+========================================================= */
+
+.price-confirmation {
+    margin-bottom: 20px;
+    padding: 25px 18px;
+
+    border-radius: 18px;
+
+    background: #222;
+    color: #fff;
+
+    text-align: center;
+}
+
+.price-label {
+    margin-bottom: 9px;
+
+    font-size: 14px;
+    line-height: 1.4;
+
+    letter-spacing: .5px;
+    text-transform: uppercase;
+
+    font-weight: 400;
+
+    opacity: .75;
+}
+
+.price-property {
+    margin-bottom: 10px;
+
+    font-size: 21px;
+    line-height: 1.4;
+
+    font-weight: 400;
+}
+
+.price-big {
+    font-size: 38px;
+    line-height: 1.2;
+
+    font-weight: 400;
+}
+
+.price-note {
+    margin-top: 8px;
+
+    font-size: 14px;
+    line-height: 1.4;
+
+    font-weight: 400;
+
+    opacity: .75;
+}
+
+
+/* =========================================================
+   PROPERTY DETAILS
+========================================================= */
+
+.property-detail {
+    margin-top: 20px;
+    padding-top: 16px;
+
+    border-top: 1px solid rgba(255,255,255,.22);
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 8px 0;
+
+    font-size: 17px;
+    line-height: 1.5;
+
+    font-weight: 400;
+}
+
+.detail-item span {
+    opacity: .78;
+}
+
+.detail-item strong {
+    font-size: 18px;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   CHECKBOX
+========================================================= */
+
+.checkbox-row {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 12px;
+
+    padding: 17px;
+
+    border: 1px solid #d6d9dd;
+    border-radius: 14px;
+
+    background: #fff;
+
+    cursor: pointer;
+}
+
+.checkbox-row input {
+    width: 21px;
+    height: 21px;
+    min-width: 21px;
+
+    margin: 2px 0 0;
+}
+
+.checkbox-text {
+    font-size: 16px;
+    line-height: 1.55;
+
+    font-weight: 400;
+
+    color: #444;
+}
+
+.checkbox-text strong {
+    font-weight: 400;
+    color: #111;
+}
+
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+.location-card {
+    overflow: hidden;
+
+    margin-bottom: 19px;
+
+    border: 2px solid #222;
+    border-radius: 18px;
+}
+
+.location-header {
+    padding: 15px 18px;
+
+    background: #222;
+    color: #fff;
+
+    font-size: 16px;
+    line-height: 1.4;
+
+    font-weight: 400;
+
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+
+.location-body {
+    padding: 22px 18px;
+
+    background: #fff;
+}
+
+.location-icon {
+    margin-bottom: 8px;
+
+    font-size: 32px;
+}
+
+.location-address {
+    font-size: 23px;
+    line-height: 1.48;
+
+    font-weight: 400;
+
+    color: #111;
+}
+
+.location-note {
+    margin-top: 13px;
+
+    font-size: 15px;
+    line-height: 1.55;
+
+    font-weight: 400;
+
+    color: #666;
+}
+
+.map-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 56px;
+
+    margin-top: 19px;
+
+    border-radius: 13px;
+
+    background: #2563eb;
+    color: #fff;
+
+    text-decoration: none;
+
+    font-size: 17px;
+    line-height: 1.4;
+
+    font-weight: 400;
+}
+
+
+/* =========================================================
+   LANDMARKS
+========================================================= */
+
+.landmarks-section {
+    margin-top: 22px;
+}
+
+.landmarks-title {
+    margin-bottom: 6px;
+
+    font-size: 21px;
+    line-height: 1.4;
+
+    font-weight: 400;
+
+    color: #111;
+}
+
+.landmarks-subtitle {
+    margin-bottom: 15px;
+
+    font-size: 14px;
+    line-height: 1.5;
+
+    font-weight: 400;
+
+    color: #777;
+}
+
+.landmark-list {
+    display: grid;
+    gap: 10px;
+}
+
+.landmark-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    padding: 13px 14px;
+
+    border: 1px solid #e2e5e8;
+    border-radius: 13px;
+
+    background: #fafafa;
+}
+
+.landmark-info {
+    min-width: 0;
+}
+
+.landmark-name {
+    font-size: 15px;
+    line-height: 1.4;
+
+    font-weight: 400;
+
+    color: #222;
+}
+
+.landmark-distance {
+    margin-top: 3px;
+
+    font-size: 18px;
+    line-height: 1.3;
+
+    font-weight: 400;
+
+    color: #111;
+}
+
+.landmark-map {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    min-height: 38px;
+
+    padding: 0 12px;
+
+    border-radius: 9px;
+
+    background: #eef4ff;
+    color: #2563eb;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    line-height: 1.3;
+
+    font-weight: 400;
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.input-group {
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 16px;
+    line-height: 1.4;
+
+    font-weight: 400;
+
+    color: #333;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 17px;
+    line-height: 1.5;
+
+    font-weight: 400;
+
+    color: #222;
+}
+
+.input-group input {
+    height: 56px;
+}
+
+.input-group textarea {
+    min-height: 105px;
+
+    resize: vertical;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    border-color: #222;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.buttons {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 24px;
+}
+
+button {
+    min-height: 54px;
+
+    border: 0;
+    border-radius: 13px;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    font-size: 17px;
+    line-height: 1.4;
+
+    font-weight: 400;
+}
+
+.btn-back {
+    width: 34%;
+
+    background: #e5e7eb;
+    color: #333;
+}
+
+.btn-next,
+.btn-submit {
+    flex: 1;
+
+    background: #222;
+    color: #fff;
+}
+
+.btn-next:disabled,
+.btn-submit:disabled {
+    background: #d1d5db;
+    color: #777;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.loading {
+    display: none;
+
+    margin-top: 15px;
+
+    text-align: center;
+
+    font-size: 15px;
+    line-height: 1.5;
+
+    font-weight: 400;
+
+    color: #666;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.error {
+    display: none;
+
+    margin-top: 14px;
+
+    padding: 13px;
+
+    border-radius: 10px;
+
+    background: #fee2e2;
+    color: #991b1b;
+
+    font-size: 14px;
+    line-height: 1.5;
+
+    font-weight: 400;
+}
+
+
+/* =========================================================
+   SUCCESS
+========================================================= */
+
+.success {
+    display: none;
+
+    padding: 10px 2px;
+
+    text-align: center;
+}
+
+.success-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 76px;
+    height: 76px;
+
+    margin: 0 auto 20px;
+
+    border-radius: 50%;
+
+    background: #dcfce7;
+    color: #16a34a;
+
+    font-size: 39px;
+
+    font-weight: 400;
+}
+
+.success h2 {
+    margin: 0 0 10px;
+
+    font-size: 28px;
+    line-height: 1.3;
+
+    font-weight: 400;
+}
+
+.success p {
+    margin: 0;
+
+    color: #666;
+
+    font-size: 16px;
+    line-height: 1.6;
+
+    font-weight: 400;
+}
+
+
+/* =========================================================
+   SUCCESS CONTACT
+========================================================= */
+
+.success-contact {
+    margin-top: 24px;
+}
+
+.success-contact-label {
+    margin-bottom: 10px;
+
+    font-size: 15px;
+    line-height: 1.5;
+
+    font-weight: 400;
+
+    color: #666;
+}
+
+.call-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 62px;
+
+    padding: 12px 18px;
+
+    border-radius: 14px;
+
+    background: #16a34a;
+    color: #fff;
+
+    text-decoration: none;
+
+    font-size: 20px;
+    line-height: 1.4;
+
+    font-weight: 400;
+}
+
+
+/* =========================================================
+   HOME BUTTON
+========================================================= */
+
+.home-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 56px;
+
+    margin-top: 14px;
+
+    padding: 12px 18px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 14px;
+
+    background: #fff;
+    color: #222;
+
+    text-decoration: none;
+
+    font-size: 17px;
+    line-height: 1.4;
+
+    font-weight: 400;
+
+    transition:
+        background .2s,
+        border-color .2s;
+}
+
+.home-button:hover {
+    background: #f5f5f5;
+
+    border-color: #999;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .landmark-item {
+        align-items: flex-start;
+    }
+
+    .landmark-map {
+        padding: 0 9px;
+        font-size: 12px;
+    }
+
+    .landmark-name {
+        font-size: 14px;
+    }
+
+    .landmark-distance {
+        font-size: 17px;
+    }
+
+}
+
+
+@media (max-width: 380px) {
+
+    .form-card {
+        padding: 20px 15px;
+    }
+
+    .form-title {
+        font-size: 24px;
+    }
+
+    .step-title {
+        font-size: 22px;
+    }
+
+    .price-big {
+        font-size: 34px;
+    }
+
+    .location-address {
+        font-size: 21px;
+    }
+
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width: 600px) {
+
+    .form-wrapper {
+        padding: 40px 20px;
+    }
+
+    .form-card {
+        padding: 32px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="form-wrapper">
+
+<div class="form-card">
+
+
+<div id="formContent">
+
+
+<!-- =====================================================
+     FORM HEADER
+===================================================== -->
+
+<h1 class="form-title">
+    Confirm Your Interest
+</h1>
+
+<div class="form-subtitle">
+
+    Please confirm the property, price and
+    site location before submitting your inquiry.
+
+</div>
+
+
+<!-- =====================================================
+     PROGRESS
+===================================================== -->
+
+<div class="progress">
+
+    <div
+        class="progress-step active"
+        id="progress1">
+        1
+    </div>
+
+    <div
+        class="progress-line"
+        id="line1">
+    </div>
+
+    <div
+        class="progress-step"
+        id="progress2">
+        2
+    </div>
+
+    <div
+        class="progress-line"
+        id="line2">
+    </div>
+
+    <div
+        class="progress-step"
+        id="progress3">
+        3
+    </div>
+
+    <div
+        class="progress-line"
+        id="line3">
+    </div>
+
+    <div
+        class="progress-step"
+        id="progress4">
+        4
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     STEP 1
+===================================================== -->
+
+<div
+    class="step active"
+    id="step1">
+
+    <div class="step-title">
+        What are you interested in?
+    </div>
+
+    <div class="step-description">
+        Please select the property type you
+        are interested in.
+    </div>
+
+
+    <div class="property-options">
+
+
+        <!-- VILLA -->
+
+        <label
+            class="property-option"
+            id="villaOption">
+
+            <input
+                type="radio"
+                name="Property Type"
+                value="Villa">
+
+            <div class="property-name">
+                🏡 3 Bedrooms Villas
+            </div>
+
+            <div class="property-price-small">
+                Basic Price Starts From ₹48.86 Lakhs
+            </div>
+
+        </label>
+
+
+        <!-- PLOT -->
+
+        <label
+            class="property-option"
+            id="plotOption">
+
+            <input
+                type="radio"
+                name="Property Type"
+                value="Plot">
+
+            <div class="property-name">
+                📐 Residential Plots
+            </div>
+
+            <div class="property-price-small">
+                Basic Price Starts From ₹23.18 Lakhs
+            </div>
+
+        </label>
+
+
+    </div>
+
+
+    <div class="buttons">
+
+        <button
+            type="button"
+            class="btn-next"
+            id="next1"
+            disabled
+            onclick="nextStep(2)">
+
+            Continue
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     STEP 2
+===================================================== -->
+
+<div
+    class="step"
+    id="step2">
+
+
+    <div class="step-title">
+        Confirm Basic Price
+    </div>
+
+
+    <div class="step-description">
+        Please carefully review the price and
+        property details before continuing.
+    </div>
+
+
+    <div class="price-confirmation">
+
+
+        <div class="price-label">
+            Selected Property
+        </div>
+
+
+        <div
+            class="price-property"
+            id="selectedProperty">
+        </div>
+
+
+        <div
+            class="price-big"
+            id="selectedPrice">
+        </div>
+
+
+        <div class="price-note">
+            Basic Price Starts From
+        </div>
+
+
+        <!-- VILLA DETAILS -->
+
+        <div
+            class="property-detail"
+            id="villaDetails"
+            style="display:none;">
+
+
+            <div class="detail-item">
+
+                <span>
+                    🏠 Constructed Area
+                </span>
+
+                <strong>
+                    1,600 sq.ft.
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>
+                    📐 Plot Size
+                </span>
+
+                <strong>
+                    21 × 46 ft.
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>
+                    📏 Plot Area
+                </span>
+
+                <strong>
+                    966 sq.ft.
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- PLOT DETAILS -->
+
+        <div
+            class="property-detail"
+            id="plotDetails"
+            style="display:none;">
+
+
+            <div class="detail-item">
+
+                <span>
+                    📐 Plot Size
+                </span>
+
+                <strong>
+                    21 × 46 ft.
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>
+                    📏 Plot Area
+                </span>
+
+                <strong>
+                    966 sq.ft.
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <label class="checkbox-row">
+
+        <input
+            type="checkbox"
+            id="priceConfirm"
+            onchange="checkPrice()">
+
+        <div class="checkbox-text">
+
+            I have read and understood the
+            above price and property details and
+            <strong>confirm</strong> that I am aware
+            of the basic starting price.
+
+        </div>
+
+    </label>
+
+
+    <div class="buttons">
+
+
+        <button
+            type="button"
+            class="btn-back"
+            onclick="nextStep(1)">
+
+            Back
+
+        </button>
+
+
+        <button
+            type="button"
+            class="btn-next"
+            id="next2"
+            disabled
+            onclick="nextStep(3)">
+
+            Continue
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     STEP 3
+===================================================== -->
+
+<div
+    class="step"
+    id="step3">
+
+
+    <div class="step-title">
+        Confirm Site Location
+    </div>
+
+
+    <div class="step-description">
+        Please verify the exact project location
+        and nearby landmarks before continuing.
+    </div>
+
+
+    <!-- SITE LOCATION -->
+
+    <div class="location-card">
+
+
+        <div class="location-header">
+            📍 Project Site Location
+        </div>
+
+
+        <div class="location-body">
+
+
+            <div class="location-icon">
+                📍
+            </div>
+
+
+            <div class="location-address">
+
+                Near Diamond Cement,<br>
+                Jhansi-Kanpur Road,<br>
+                Gram Baratha,<br>
+                Jhansi (UP)
+
+            </div>
+
+
+            <div class="location-note">
+
+                Please open Google Maps and verify
+                the location before confirming.
+
+            </div>
+
+
+            <a
+                href="https://maps.app.goo.gl/couHFcQhgE5giSu27"
+                target="_blank"
+                rel="noopener"
+                class="map-button"
+                onclick="mapOpened()">
+
+                Open Site Location in Google Maps
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         LANDMARKS
+    ================================================= -->
+
+    <div class="landmarks-section">
+
+
+        <div class="landmarks-title">
+            Nearby Landmarks
+        </div>
+
+
+        <div class="landmarks-subtitle">
+            Approximate distance from the project site
+        </div>
+
+
+        <div class="landmark-list">
+
+
+            <!-- 1 -->
+
+            <div class="landmark-item">
+
+                <div class="landmark-info">
+
+                    <div class="landmark-name">
+                        Kanpur-Gwalior Bypass
+                    </div>
+
+                    <div class="landmark-distance">
+                        11 km
+                    </div>
+
+                </div>
+
+
+                <a
+                    class="landmark-map"
+                    target="_blank"
+                    rel="noopener"
+                    href="https://www.google.com/maps/dir/?api=1&origin=Near+Diamond+Cement,+Jhansi-Kanpur+Road,+Gram+Baratha,+Jhansi,+Uttar+Pradesh&destination=Kanpur-Gwalior+Bypass,+Jhansi,+Uttar+Pradesh">
+
+                    Maps
+
+                </a>
+
+            </div>
+
+
+            <!-- 2 -->
+
+            <div class="landmark-item">
+
+                <div class="landmark-info">
+
+                    <div class="landmark-name">
+                        Medical College
+                    </div>
+
+                    <div class="landmark-distance">
+                        12 km
+                    </div>
+
+                </div>
+
+
+                <a
+                    class="landmark-map"
+                    target="_blank"
+                    rel="noopener"
+                    href="https://www.google.com/maps/dir/?api=1&origin=Near+Diamond+Cement,+Jhansi-Kanpur+Road,+Gram+Baratha,+Jhansi,+Uttar+Pradesh&destination=Medical+College,+Jhansi,+Uttar+Pradesh">
+
+                    Maps
+
+                </a>
+
+            </div>
+
+
+            <!-- 3 -->
+
+            <div class="landmark-item">
+
+                <div class="landmark-info">
+
+                    <div class="landmark-name">
+                        Jhansi Bus Stand
+                    </div>
+
+                    <div class="landmark-distance">
+                        16 km
+                    </div>
+
+                </div>
+
+
+                <a
+                    class="landmark-map"
+                    target="_blank"
+                    rel="noopener"
+                    href="https://www.google.com/maps/dir/?api=1&origin=Near+Diamond+Cement,+Jhansi-Kanpur+Road,+Gram+Baratha,+Jhansi,+Uttar+Pradesh&destination=Jhansi+Bus+Stand,+Jhansi,+Uttar+Pradesh">
+
+                    Maps
+
+                </a>
+
+            </div>
+
+
+            <!-- 4 -->
+
+            <div class="landmark-item">
+
+                <div class="landmark-info">
+
+                    <div class="landmark-name">
+                        Elite Crossing
+                    </div>
+
+                    <div class="landmark-distance">
+                        17 km
+                    </div>
+
+                </div>
+
+
+                <a
+                    class="landmark-map"
+                    target="_blank"
+                    rel="noopener"
+                    href="https://www.google.com/maps/dir/?api=1&origin=Near+Diamond+Cement,+Jhansi-Kanpur+Road,+Gram+Baratha,+Jhansi,+Uttar+Pradesh&destination=Elite+Crossing,+Jhansi,+Uttar+Pradesh">
+
+                    Maps
+
+                </a>
+
+            </div>
+
+
+            <!-- 5 -->
+
+            <div class="landmark-item">
+
+                <div class="landmark-info">
+
+                    <div class="landmark-name">
+                        Manik Chock (Sehar)
+                    </div>
+
+                    <div class="landmark-distance">
+                        18 km
+                    </div>
+
+                </div>
+
+
+                <a
+                    class="landmark-map"
+                    target="_blank"
+                    rel="noopener"
+                    href="https://www.google.com/maps/dir/?api=1&origin=Near+Diamond+Cement,+Jhansi-Kanpur+Road,+Gram+Baratha,+Jhansi,+Uttar+Pradesh&destination=Manik+Chock,+Sehar,+Jhansi,+Uttar+Pradesh">
+
+                    Maps
+
+                </a>
+
+            </div>
+
+
+            <!-- 6 -->
+
+            <div class="landmark-item">
+
+                <div class="landmark-info">
+
+                    <div class="landmark-name">
+                        Jhansi Railway Station
+                    </div>
+
+                    <div class="landmark-distance">
+                        19 km
+                    </div>
+
+                </div>
+
+
+                <a
+                    class="landmark-map"
+                    target="_blank"
+                    rel="noopener"
+                    href="https://www.google.com/maps/dir/?api=1&origin=Near+Diamond+Cement,+Jhansi-Kanpur+Road,+Gram+Baratha,+Jhansi,+Uttar+Pradesh&destination=Jhansi+Railway+Station,+Jhansi,+Uttar+Pradesh">
+
+                    Maps
+
+                </a>
+
+            </div>
+
+
+            <!-- 7 -->
+
+            <div class="landmark-item">
+
+                <div class="landmark-info">
+
+                    <div class="landmark-name">
+                        Sipri Bazar
+                    </div>
+
+                    <div class="landmark-distance">
+                        21 km
+                    </div>
+
+                </div>
+
+
+                <a
+                    class="landmark-map"
+                    target="_blank"
+                    rel="noopener"
+                    href="https://www.google.com/maps/dir/?api=1&origin=Near+Diamond+Cement,+Jhansi-Kanpur+Road,+Gram+Baratha,+Jhansi,+Uttar+Pradesh&destination=Sipri+Bazar,+Jhansi,+Uttar+Pradesh">
+
+                    Maps
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- LOCATION CONFIRMATION -->
+
+    <label
+        class="checkbox-row"
+        style="margin-top:22px;">
+
+        <input
+            type="checkbox"
+            id="locationConfirm"
+            onchange="checkLocation()">
+
+        <div class="checkbox-text">
+
+            I have checked the Google Maps
+            location and <strong>firmly confirm</strong>
+            that I am interested in this site
+            location.
+
+        </div>
+
+    </label>
+
+
+    <div class="buttons">
+
+
+        <button
+            type="button"
+            class="btn-back"
+            onclick="nextStep(2)">
+
+            Back
+
+        </button>
+
+
+        <button
+            type="button"
+            class="btn-next"
+            id="next3"
+            disabled
+            onclick="nextStep(4)">
+
+            Continue
+
+        </button>
+
+
+    </div>
+
+
+</div>
+
+
+<!-- =====================================================
+     STEP 4
+===================================================== -->
+
+<div
+    class="step"
+    id="step4">
+
+
+    <div class="step-title">
+        Your Contact Details
+    </div>
+
+
+    <div class="step-description">
+        Enter your name, mobile number and
+        any additional note.
+    </div>
+
+
+    <!-- NAME -->
+
+    <div class="input-group">
+
+        <label for="name">
+            Full Name
+        </label>
+
+        <input
+            type="text"
+            id="name"
+            name="Client Name"
+            placeholder="Enter your full name"
+            autocomplete="name">
+
+    </div>
+
+
+    <!-- MOBILE -->
+
+    <div class="input-group">
+
+        <label for="mobile">
+            Mobile Number
+        </label>
+
+        <input
+            type="tel"
+            id="mobile"
+            name="Contact"
+            placeholder="Enter 10-digit mobile number"
+            maxlength="10"
+            inputmode="numeric"
+            autocomplete="tel">
+
+    </div>
+
+
+    <!-- NOTE -->
+
+    <div class="input-group">
+
+        <label for="note">
+            Note
+        </label>
+
+        <textarea
+            id="note"
+            name="Note"
+            placeholder="Any question, requirement or preferred time to contact you?"></textarea>
+
+    </div>
+
+
+    <!-- =================================================
+         HIDDEN FIELDS
+    ================================================= -->
+
+    <input
+        type="hidden"
+        name="Lead From"
+        value="Krishna Anandam Website">
+
+
+    <input
+        type="hidden"
+        name="Site"
+        value="Krishna Anandam">
+
+
+    <input
+        type="hidden"
+        name="Agent Name"
+        value="RVMC">
+
+
+    <input
+        type="hidden"
+        name="Client Contact"
+        value="919956934058">
+
+
+    <input
+        type="hidden"
+        id="page-url"
+        name="Site Url">
+
+
+    <input
+        type="hidden"
+        id="hidden-about"
+        name="About">
+
+
+    <input
+        type="hidden"
+        id="hidden-property-type"
+        name="Property Type">
+
+
+    <input
+        type="hidden"
+        id="hidden-price"
+        name="Price">
+
+
+    <input
+        type="hidden"
+        id="hidden-price-confirmed"
+        name="Price Confirmation">
+
+
+    <input
+        type="hidden"
+        id="hidden-property-details"
+        name="Property Details">
+
+
+    <input
+        type="hidden"
+        id="hidden-plot-size"
+        name="Plot Size">
+
+
+    <input
+        type="hidden"
+        id="hidden-plot-area"
+        name="Plot Area">
+
+
+    <input
+        type="hidden"
+        id="hidden-constructed-area"
+        name="Constructed Area">
+
+
+    <input
+        type="hidden"
+        id="hidden-location"
+        name="Location">
+
+
+    <input
+        type="hidden"
+        id="hidden-location-confirmed"
+        name="Location Confirmation">
+
+
+    <input
+        type="hidden"
+        id="hidden-map-opened"
+        name="Google Map Opened">
+
+
+    <input
+        type="hidden"
+        id="hidden-map-link"
+        name="Google Map Link"
+        value="https://maps.app.goo.gl/couHFcQhgE5giSu27">
+
+
+    <!-- =================================================
+         BUTTONS
+    ================================================= -->
+
+    <div class="buttons">
+
+
+        <button
+            type="button"
+            class="btn-back"
+            onclick="nextStep(3)">
+
+            Back
+
+        </button>
+
+
+        <button
+            type="button"
+            class="btn-submit"
+            id="submitButton"
+            onclick="submitForm()">
+
+            Submit Inquiry
+
+        </button>
+
+
+    </div>
+
+
+    <div
+        class="loading"
+        id="loading">
+
+        Submitting your inquiry...
+
+    </div>
+
+
+    <div
+        class="error"
+        id="error">
+    </div>
+
+
+</div>
+
+
+</div>
+
+
+<!-- =====================================================
+     SUCCESS SCREEN
+===================================================== -->
+
+<div
+    class="success"
+    id="success">
+
+
+    <div class="success-icon">
+        ✓
+    </div>
+
+
+    <h2>
+        Thank You!
+    </h2>
+
+
+    <p>
+
+        Your inquiry has been submitted
+        successfully.
+
+        <br><br>
+
+        Our team will contact you shortly.
+
+    </p>
+
+
+    <!-- CALL NOW -->
+
+    <div class="success-contact">
+
+
+        <div class="success-contact-label">
+            Need immediate assistance?
+        </div>
+
+
+        <a
+            href="tel:9956934058"
+            class="call-button">
+
+            📞 Call Now — 9956934058
+
+        </a>
+
+
+    </div>
+
+
+    <!-- HOME -->
+
+    <a
+        href="https://krishnaanandam.com/"
+        class="home-button">
+
+        ← Go Back to Home
+
+    </a>
+
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   CONFIGURATION
+========================================================= */
+
+const GOOGLE_SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbzl2qAQSK0nCZH68HuIFxCFgccw_XH73JjCKbO9MnTAbd5JYgH-8_nifH50hVvrbT6H/exec";
+
+
+const MAKE_WEBHOOK_URL =
+"https://hook.eu2.make.com/375tbnh7cqhyrbab36s1ofrah6yaypfe";
+
+
+const GOOGLE_MAP_URL =
+"https://maps.app.goo.gl/couHFcQhgE5giSu27";
+
+
+const SITE_LOCATION =
+"Near Diamond Cement, Jhansi-Kanpur Road, Gram Baratha, Jhansi (UP)";
+
+
+/* =========================================================
+   FORM DATA
+========================================================= */
+
+let formData = {
+
+    propertyType: "",
+
+    about: "",
+
+    price: "",
+
+    propertyDetails: "",
+
+    plotSize: "",
+
+    plotArea: "",
+
+    constructedArea: "",
+
+    priceConfirmed: false,
+
+    location: SITE_LOCATION,
+
+    locationConfirmed: false,
+
+    mapOpened: false,
+
+    name: "",
+
+    mobile: "",
+
+    note: ""
+
+};
+
+
+/* =========================================================
+   PROPERTY SELECTION
+========================================================= */
+
+document
+.querySelectorAll('input[name="Property Type"]')
+.forEach(input => {
+
+
+    input.addEventListener("change", function() {
+
+
+        document
+        .querySelectorAll(".property-option")
+        .forEach(option => {
+
+            option.classList.remove("selected");
+
+        });
+
+
+        this.parentElement
+        .classList.add("selected");
+
+
+        formData.propertyType =
+            this.value;
+
+
+        if (this.value === "Villa") {
+
+
+            formData.about =
+                "Villa";
+
+
+            formData.price =
+                "₹48.86 Lakhs";
+
+
+            formData.propertyDetails =
+                "3 Bedrooms Villa | Constructed Area: 1,600 sq.ft. | Plot Size: 21 × 46 ft. | Plot Area: 966 sq.ft.";
+
+
+            formData.constructedArea =
+                "1,600 sq.ft.";
+
+
+            formData.plotSize =
+                "21 × 46 ft.";
+
+
+            formData.plotArea =
+                "966 sq.ft.";
+
+        }
+
+
+        else {
+
+
+            formData.about =
+                "Plot";
+
+
+            formData.price =
+                "₹23.18 Lakhs";
+
+
+            formData.propertyDetails =
+                "Plot Size: 21 × 46 ft. | Plot Area: 966 sq.ft.";
+
+
+            formData.constructedArea =
+                "";
+
+
+            formData.plotSize =
+                "21 × 46 ft.";
+
+
+            formData.plotArea =
+                "966 sq.ft.";
+
+        }
+
+
+        document
+        .getElementById("next1")
+        .disabled = false;
+
+
+    });
+
+});
+
+
+/* =========================================================
+   STEP NAVIGATION
+========================================================= */
+
+function nextStep(step) {
+
+
+    document
+    .querySelectorAll(".step")
+    .forEach(element => {
+
+        element.classList.remove("active");
+
+    });
+
+
+    document
+    .getElementById("step" + step)
+    .classList.add("active");
+
+
+    updateProgress(step);
+
+
+    if (step === 2) {
+
+
+        document
+        .getElementById("selectedProperty")
+        .textContent =
+            formData.propertyType;
+
+
+        document
+        .getElementById("selectedPrice")
+        .textContent =
+            formData.price;
+
+
+        document
+        .getElementById("villaDetails")
+        .style.display =
+            "none";
+
+
+        document
+        .getElementById("plotDetails")
+        .style.display =
+            "none";
+
+
+        if (
+            formData.propertyType ===
+            "Villa"
+        ) {
+
+            document
+            .getElementById("villaDetails")
+            .style.display =
+                "block";
+
+        }
+
+
+        if (
+            formData.propertyType ===
+            "Plot"
+        ) {
+
+            document
+            .getElementById("plotDetails")
+            .style.display =
+                "block";
+
+        }
+
+    }
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+function updateProgress(current) {
+
+
+    for (
+        let i = 1;
+        i <= 4;
+        i++
+    ) {
+
+
+        const step =
+            document.getElementById(
+                "progress" + i
+            );
+
+
+        if (i < current) {
+
+
+            step.classList.add(
+                "completed"
+            );
+
+
+            step.classList.remove(
+                "active"
+            );
+
+
+        }
+
+        else if (i === current) {
+
+
+            step.classList.add(
+                "active"
+            );
+
+
+            step.classList.remove(
+                "completed"
+            );
+
+
+        }
+
+        else {
+
+
+            step.classList.remove(
+                "active"
+            );
+
+
+            step.classList.remove(
+                "completed"
+            );
+
+        }
+
+    }
+
+
+    for (
+        let i = 1;
+        i <= 3;
+        i++
+    ) {
+
+
+        const line =
+            document.getElementById(
+                "line" + i
+            );
+
+
+        if (i < current) {
+
+            line.classList.add(
+                "active"
+            );
+
+        }
+
+        else {
+
+            line.classList.remove(
+                "active"
+            );
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   PRICE CONFIRMATION
+========================================================= */
+
+function checkPrice() {
+
+
+    const checked =
+        document
+        .getElementById(
+            "priceConfirm"
+        )
+        .checked;
+
+
+    formData.priceConfirmed =
+        checked;
+
+
+    document
+    .getElementById("next2")
+    .disabled =
+        !checked;
+
+}
+
+
+/* =========================================================
+   MAP OPENED
+========================================================= */
+
+function mapOpened() {
+
+    formData.mapOpened =
+        true;
+
+}
+
+
+/* =========================================================
+   LOCATION CONFIRMATION
+========================================================= */
+
+function checkLocation() {
+
+
+    const checked =
+        document
+        .getElementById(
+            "locationConfirm"
+        )
+        .checked;
+
+
+    formData.locationConfirmed =
+        checked;
+
+
+    document
+    .getElementById("next3")
+    .disabled =
+        !checked;
+
+}
+
+
+/* =========================================================
+   MOBILE INPUT
+========================================================= */
+
+document
+.getElementById("mobile")
+.addEventListener(
+    "input",
+    function() {
+
+        this.value =
+            this.value
+            .replace(/\D/g, "")
+            .slice(0, 10);
+
+    }
+);
+
+
+/* =========================================================
+   UPDATE HIDDEN FIELDS
+========================================================= */
+
+function updateHiddenFields() {
+
+
+    document
+    .getElementById("page-url")
+    .value =
+        window.location.href;
+
+
+    document
+    .getElementById("hidden-about")
+    .value =
+        formData.about;
+
+
+    document
+    .getElementById("hidden-property-type")
+    .value =
+        formData.propertyType;
+
+
+    document
+    .getElementById("hidden-price")
+    .value =
+        formData.price;
+
+
+    document
+    .getElementById("hidden-price-confirmed")
+    .value =
+        formData.priceConfirmed
+        ? "Confirmed"
+        : "Not Confirmed";
+
+
+    document
+    .getElementById("hidden-property-details")
+    .value =
+        formData.propertyDetails;
+
+
+    document
+    .getElementById("hidden-plot-size")
+    .value =
+        formData.plotSize;
+
+
+    document
+    .getElementById("hidden-plot-area")
+    .value =
+        formData.plotArea;
+
+
+    document
+    .getElementById("hidden-constructed-area")
+    .value =
+        formData.constructedArea;
+
+
+    document
+    .getElementById("hidden-location")
+    .value =
+        formData.location;
+
+
+    document
+    .getElementById("hidden-location-confirmed")
+    .value =
+        formData.locationConfirmed
+        ? "Confirmed"
+        : "Not Confirmed";
+
+
+    document
+    .getElementById("hidden-map-opened")
+    .value =
+        formData.mapOpened
+        ? "Yes"
+        : "No";
+
+}
+
+
+/* =========================================================
+   SUBMIT FORM
+========================================================= */
+
+async function submitForm() {
+
+
+    const name =
+        document
+        .getElementById("name")
+        .value
+        .trim();
+
+
+    const mobile =
+        document
+        .getElementById("mobile")
+        .value
+        .trim();
+
+
+    const note =
+        document
+        .getElementById("note")
+        .value
+        .trim();
+
+
+    const error =
+        document
+        .getElementById("error");
+
+
+    error.style.display =
+        "none";
+
+
+    /* NAME */
+
+    if (!name) {
+
+
+        error.textContent =
+            "Please enter your name.";
+
+
+        error.style.display =
+            "block";
+
+
+        document
+        .getElementById("name")
+        .focus();
+
+
+        return;
+
+    }
+
+
+    /* MOBILE */
+
+    if (
+        !/^[6-9]\d{9}$/.test(
+            mobile
+        )
+    ) {
+
+
+        error.textContent =
+            "Please enter a valid 10-digit mobile number.";
+
+
+        error.style.display =
+            "block";
+
+
+        document
+        .getElementById("mobile")
+        .focus();
+
+
+        return;
+
+    }
+
+
+    /* CONFIRMATIONS */
+
+    if (
+        !formData.propertyType ||
+        !formData.priceConfirmed ||
+        !formData.locationConfirmed
+    ) {
+
+
+        error.textContent =
+            "Please complete all confirmations before submitting.";
+
+
+        error.style.display =
+            "block";
+
+
+        return;
+
+    }
+
+
+    formData.name =
+        name;
+
+
+    formData.mobile =
+        mobile;
+
+
+    formData.note =
+        note;
+
+
+    updateHiddenFields();
+
+
+    const submitButton =
+        document.getElementById(
+            "submitButton"
+        );
+
+
+    const loading =
+        document.getElementById(
+            "loading"
+        );
+
+
+    submitButton.disabled =
+        true;
+
+
+    submitButton.textContent =
+        "Submitting...";
+
+
+    loading.style.display =
+        "block";
+
+
+    /* =====================================================
+       CREATE PAYLOAD
+    ===================================================== */
+
+    const payload =
+        new FormData();
+
+
+    payload.append(
+        "Client Name",
+        formData.name
+    );
+
+
+    payload.append(
+        "Contact",
+        formData.mobile
+    );
+
+
+    payload.append(
+        "Note",
+        formData.note
+    );
+
+
+    payload.append(
+        "About",
+        formData.about
+    );
+
+
+    payload.append(
+        "Property Type",
+        formData.propertyType
+    );
+
+
+    payload.append(
+        "Price",
+        formData.price
+    );
+
+
+    payload.append(
+        "Price Confirmation",
+        formData.priceConfirmed
+        ? "Confirmed"
+        : "Not Confirmed"
+    );
+
+
+    payload.append(
+        "Property Details",
+        formData.propertyDetails
+    );
+
+
+    payload.append(
+        "Plot Size",
+        formData.plotSize
+    );
+
+
+    payload.append(
+        "Plot Area",
+        formData.plotArea
+    );
+
+
+    payload.append(
+        "Constructed Area",
+        formData.constructedArea
+    );
+
+
+    payload.append(
+        "Location",
+        formData.location
+    );
+
+
+    payload.append(
+        "Location Confirmation",
+        formData.locationConfirmed
+        ? "Confirmed"
+        : "Not Confirmed"
+    );
+
+
+    payload.append(
+        "Google Map Opened",
+        formData.mapOpened
+        ? "Yes"
+        : "No"
+    );
+
+
+    payload.append(
+        "Google Map Link",
+        GOOGLE_MAP_URL
+    );
+
+
+    payload.append(
+        "Lead From",
+        "Krishna Anandam Website"
+    );
+
+
+    payload.append(
+        "Site",
+        "Krishna Anandam"
+    );
+
+
+    payload.append(
+        "Agent Name",
+        "RVMC"
+    );
+
+
+    payload.append(
+        "Client Contact",
+        "919956934058"
+    );
+
+
+    payload.append(
+        "Site Url",
+        window.location.href
+    );
+
+
+    payload.append(
+        "Timestamp",
+        new Date().toLocaleString(
+            "en-IN"
+        )
+    );
+
+
+    /* =====================================================
+       GOOGLE SHEETS
+    ===================================================== */
+
+    const googleRequest =
+        fetch(
+            GOOGLE_SCRIPT_URL,
+            {
+                method: "POST",
+                body: payload,
+                mode: "no-cors"
+            }
+        );
+
+
+    /* =====================================================
+       MAKE.COM WEBHOOK
+    ===================================================== */
+
+    const makeRequest =
+        fetch(
+            MAKE_WEBHOOK_URL,
+            {
+                method: "POST",
+                body: payload,
+                mode: "no-cors"
+            }
+        );
+
+
+    try {
+
+
+        await Promise.all([
+            googleRequest,
+            makeRequest
+        ]);
+
+
+        /* HIDE FORM */
+
+        document
+        .getElementById(
+            "formContent"
+        )
+        .style.display =
+            "none";
+
+
+        /* SHOW SUCCESS */
+
+        document
+        .getElementById(
+            "success"
+        )
+        .style.display =
+            "block";
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+
+    }
+
+    catch (submissionError) {
+
+
+        console.error(
+            "Submission Error:",
+            submissionError
+        );
+
+
+        error.textContent =
+            "Unable to submit the inquiry. Please try again.";
+
+
+        error.style.display =
+            "block";
+
+
+        submitButton.disabled =
+            false;
+
+
+        submitButton.textContent =
+            "Submit Inquiry";
+
+
+        loading.style.display =
+            "none";
+
+    }
+
+}
+
+</script>
+
+
+</body>
+
+</html>
+```
