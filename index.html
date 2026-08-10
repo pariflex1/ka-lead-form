@@ -1,2350 +1,1356 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover">
-
-<title>Krishna Anandam | Property Inquiry</title>
-
-<style>
-
-/* =========================================================
-   RESET
-========================================================= */
-
-* {
-    box-sizing: border-box;
-}
-
-html,
-body {
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    background: #ffffff;
-    color: #222222;
-    font-family: Arial, Helvetica, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-}
-
-button,
-a,
-input {
-    -webkit-tap-highlight-color: transparent;
-}
-
-
-/* =========================================================
-   MAIN
-========================================================= */
-
-.form-wrap {
-    width: 100%;
-    max-width: 560px;
-    min-height: 100vh;
-    margin: 0 auto;
-    padding: 14px;
-}
-
-.card {
-    width: 100%;
-    padding: 20px 2px;
-    background: #ffffff;
-    border-radius: 0;
-    box-shadow: none;
-}
-
-
-/* =========================================================
-   TYPOGRAPHY
-========================================================= */
-
-.title {
-    margin: 0 0 8px;
-
-    text-align: center;
-
-    color: #222222;
-
-    font-size: 27px;
-    line-height: 1.25;
-    font-weight: 400;
-    letter-spacing: -0.2px;
-}
-
-.subtitle {
-    margin: 0 0 25px;
-
-    text-align: center;
-
-    color: #666666;
-
-    font-size: 15px;
-    line-height: 1.55;
-    font-weight: 400;
-}
-
-.step-title {
-    margin: 0 0 7px;
-
-    color: #222222;
-
-    font-size: 23px;
-    line-height: 1.3;
-    font-weight: 400;
-}
-
-.step-desc {
-    margin: 0 0 20px;
-
-    color: #666666;
-
-    font-size: 15px;
-    line-height: 1.55;
-    font-weight: 400;
-}
-
-
-/* =========================================================
-   PROGRESS
-========================================================= */
-
-.progress {
-    display: flex;
-    align-items: center;
-
-    width: 100%;
-    margin-bottom: 28px;
-}
-
-.pstep {
-    width: 32px;
-    height: 32px;
-    min-width: 32px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: #e5e7eb;
-    color: #777777;
-
-    font-size: 14px;
-    line-height: 1;
-    font-weight: 400;
-}
-
-.pstep.active {
-    background: #222222;
-    color: #ffffff;
-}
-
-.pstep.done {
-    background: #159447;
-    color: #ffffff;
-}
-
-.pline {
-    flex: 1;
-    height: 1px;
-    background: #dfe2e5;
-}
-
-.pline.done {
-    background: #159447;
-}
-
-
-/* =========================================================
-   STEPS
-========================================================= */
-
-.step {
-    display: none;
-}
-
-.step.active {
-    display: block;
-}
-
-
-/* =========================================================
-   PROPERTY OPTIONS
-========================================================= */
-
-.property-list {
-    display: grid;
-    gap: 12px;
-}
-
-.property {
-    position: relative;
-    display: block;
-
-    width: 100%;
-    padding: 27px 18px;
-
-    border: 1px solid #d8dce0;
-    border-radius: 12px;
-
-    background: #ffffff;
-
-    cursor: pointer;
-
-    box-shadow: none;
-
-    transition:
-        border-color .15s ease,
-        background .15s ease,
-        transform .15s ease;
-}
-
-.property:active {
-    transform: scale(.99);
-}
-
-.property.selected {
-    border: 2px solid #222222;
-    background: #ffffff;
-}
-
-.property input {
-    position: absolute;
-
-    width: 1px;
-    height: 1px;
-
-    opacity: 0;
-    pointer-events: none;
-}
-
-.property-name {
-    color: #222222;
-
-    font-size: 27px;
-    line-height: 1.3;
-    font-weight: 400;
-}
-
-.property-sub {
-    margin-top: 7px;
-
-    color: #777777;
-
-    font-size: 14px;
-    line-height: 1.45;
-    font-weight: 400;
-}
-
-
-/* =========================================================
-   PRICE
-========================================================= */
-
-.price-card {
-    width: 100%;
-
-    overflow: hidden;
-
-    border: 1px solid #d8dce0;
-    border-radius: 12px;
-
-    background: #ffffff;
-
-    box-shadow: none;
-}
-
-.price-top {
-    padding: 20px 17px;
-
-    background: #2A7B9B;
-    background: #0a6082;
-    background: linear-gradient(90deg,rgba(10, 96, 130, 1) 45%, rgba(13, 163, 76, 1) 100%);
-    color: #000000;
-
-    text-align: center;
-}
-
-.price-property {
-    margin: 0 0 7px;
-
-    color: #ffffff;
-
-    font-size: 21px;
-    line-height: 1.35;
-    font-weight: 400;
-}
-
-.price-label {
-    color: #bbbbbb;
-
-    font-size: 13px;
-    line-height: 1.4;
-    font-weight: 400;
-}
-
-.price-big {
-    margin-top: 4px;
-
-    color: #ffffff;
-
-    font-size: 40px;
-    line-height: 1.2;
-    font-weight: 400;
-
-    letter-spacing: -.5px;
-}
-
-.price-content {
-    padding: 16px;
-}
-
-
-/* =========================================================
-   DETAILS
-========================================================= */
-
-.detail-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-}
-
-.detail-box {
-    padding: 14px 12px;
-
-    border: 1px solid #e0e3e6;
-    border-radius: 10px;
-
-    background: #ffffff;
-
-    box-shadow: none;
-}
-
-.detail-label {
-    color: #777777;
-
-    font-size: 12px;
-    line-height: 1.4;
-    font-weight: 400;
-}
-
-.detail-value {
-    margin-top: 4px;
-
-    color: #222222;
-
-    font-size: 17px;
-    line-height: 1.4;
-    font-weight: 400;
-}
-
-
-/* =========================================================
-   CHECKBOX
-========================================================= */
-
-.confirm {
-    display: flex;
-    align-items: flex-start;
-
-    gap: 11px;
-
-    width: 100%;
-
-    margin-top: 17px;
-    padding: 15px;
-
-    border: 1px solid #d8dce0;
-    border-radius: 11px;
-
-    background: #ffffff;
-
-    cursor: pointer;
-}
-
-.confirm input {
-    width: 20px;
-    height: 20px;
-    min-width: 20px;
-
-    margin: 2px 0 0;
-
-    accent-color: #222222;
-}
-
-.confirm-text {
-    color: #444444;
-
-    font-size: 15px;
-    line-height: 1.5;
-    font-weight: 400;
-}
-
-
-/* =========================================================
-   LOCATION
-========================================================= */
-
-.location {
-    width: 100%;
-
-    overflow: hidden;
-
-    border: 1px solid #222222;
-    border-radius: 12px;
-
-    background: #ffffff;
-
-    box-shadow: none;
-}
-
-.location-head {
-    padding: 13px 16px;
-
-    background: #0a6082;
-    background: linear-gradient(90deg,rgba(10, 96, 130, 1) 45%, rgba(13, 163, 76, 1) 100%);
-    color: #ffffff;
-
-    font-size: 15px;
-    line-height: 1.4;
-    font-weight: 400;
-}
-
-.location-body {
-    padding: 19px 16px;
-}
-
-.address {
-    color: #222222;
-
-    font-size: 24px;
-    line-height: 1.45;
-    font-weight: 400;
-    letter-spacing: -.2px;
-}
-
-.location-note {
-    margin-top: 11px;
-
-    color: #666666;
-
-    font-size: 14px;
-    line-height: 1.5;
-    font-weight: 400;
-}
-
-
-/* =========================================================
-   MAP BUTTON
-========================================================= */
-
-.map-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 100%;
-    min-height: 53px;
-
-    margin-top: 17px;
-    padding: 12px 15px;
-
-    border-radius: 10px;
-
-    background: #2563eb !important;
-    color: #ffffff !important;
-
-    text-align: center;
-    text-decoration: none !important;
-
-    font-family: Arial, Helvetica, sans-serif !important;
-    font-size: 16px !important;
-    font-weight: 400 !important;
-    line-height: 1.4 !important;
-    text-transform: none !important;
-
-    box-shadow: none !important;
-}
-
-.map-btn:hover,
-.map-btn:focus,
-.map-btn:active,
-.map-btn:visited {
-    background: #1d4ed8 !important;
-    color: #ffffff !important;
-    text-decoration: none !important;
-}
-
-
-/* =========================================================
-   LANDMARKS
-========================================================= */
-
-.landmarks {
-    margin-top: 20px;
-}
-
-.landmarks-toggle {
-    width: 100%;
-    min-height: 54px;
-
-    padding: 12px 15px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    border: 1px solid #d8dce0;
-    border-radius: 11px;
-
-    background: #ffffff;
-    color: #222222;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    font-size: 19px;
-    line-height: 1.3;
-    font-weight: 400;
-
-    cursor: pointer;
-
-    box-shadow: none;
-}
-
-.landmarks-toggle .arrow {
-    width: 30px;
-    height: 30px;
-    min-width: 30px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: #eeeeee;
-    color: #333333;
-
-    font-size: 19px;
-    line-height: 1;
-
-    transition: transform .2s ease;
-}
-
-.landmarks-toggle.open .arrow {
-    transform: rotate(180deg);
-}
-
-.landmarks-content {
-    display: none;
-    padding-top: 12px;
-}
-
-.landmarks-content.open {
-    display: block;
-}
-
-.landmarks-sub {
-    margin: 0 0 12px;
-
-    color: #777777;
-
-    font-size: 13px;
-    line-height: 1.5;
-    font-weight: 400;
-}
-
-.landmark {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 10px;
-
-    width: 100%;
-
-    margin-bottom: 8px;
-    padding: 11px 12px;
-
-    border: 1px solid #e1e4e7;
-    border-radius: 10px;
-
-    background: #ffffff;
-
-    box-shadow: none;
-}
-
-.landmark-name {
-    color: #333333;
-
-    font-size: 14px;
-    line-height: 1.4;
-    font-weight: 400;
-}
-
-.landmark-distance {
-    margin-top: 2px;
-
-    color: #222222;
-
-    font-size: 17px;
-    line-height: 1.3;
-    font-weight: 400;
-}
-
-.landmark-map {
-    flex-shrink: 0;
-
-    padding: 8px 10px;
-
-    border-radius: 8px;
-
-    background: #eef4ff !important;
-    color: #2563eb !important;
-
-    text-decoration: none !important;
-
-    font-family: Arial, Helvetica, sans-serif !important;
-    font-size: 12px !important;
-    line-height: 1.2 !important;
-    font-weight: 400 !important;
-    text-transform: none !important;
-}
-
-.landmark-map:hover,
-.landmark-map:focus,
-.landmark-map:active,
-.landmark-map:visited {
-    background: #e0ebff !important;
-    color: #2563eb !important;
-    text-decoration: none !important;
-}
-
-
-/* =========================================================
-   FORM BUTTONS
-========================================================= */
-
-.buttons {
-    display: flex;
-
-    gap: 9px;
-
-    width: 100%;
-
-    margin-top: 21px;
-}
-
-.buttons button {
-    min-height: 53px;
-
-    border: 0;
-    border-radius: 10px;
-
-    font-family: Arial, Helvetica, sans-serif !important;
-
-    font-size: 16px !important;
-    line-height: 1.3 !important;
-    font-weight: 400 !important;
-
-    cursor: pointer;
-
-    box-shadow: none !important;
-    text-transform: none !important;
-}
-
-.back {
-    width: 32%;
-
-    background: #eeeeee !important;
-    color: #333333 !important;
-}
-
-.next,
-.submit {
-    flex: 1;
-
-    background: #222222 !important;
-    color: #ffffff !important;
-}
-
-.next:hover,
-.next:focus,
-.next:active,
-.submit:hover,
-.submit:focus,
-.submit:active {
-    background: #111111 !important;
-    color: #ffffff !important;
-}
-
-.next:disabled {
-    background: #d5d8db !important;
-    color: #777777 !important;
-
-    cursor: not-allowed;
-}
-
-
-/* =========================================================
-   ERROR
-========================================================= */
-
-.error {
-    display: none;
-
-    margin-top: 12px;
-    padding: 11px;
-
-    border: 1px solid #fecaca;
-    border-radius: 9px;
-
-    background: #fff1f2;
-    color: #991b1b;
-
-    font-size: 14px;
-    line-height: 1.45;
-    font-weight: 400;
-}
-
-
-/* =========================================================
-   SUCCESS
-========================================================= */
-
-.success {
-    display: none;
-
-    width: 100%;
-
-    padding: 20px 2px;
-
-    text-align: center;
-}
-
-.success-icon {
-    width: 72px;
-    height: 72px;
-
-    margin: 5px auto 18px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: #dcfce7;
-    color: #159447;
-
-    font-size: 38px;
-    line-height: 1;
-    font-weight: 400;
-}
-
-.success h2 {
-    margin: 0 0 9px;
-
-    color: #222222;
-
-    font-size: 28px;
-    line-height: 1.3;
-    font-weight: 400;
-}
-
-.success p {
-    margin: 0;
-
-    color: #666666;
-
-    font-size: 15px;
-    line-height: 1.6;
-    font-weight: 400;
-}
-
-
-/* =========================================================
-   ELEMENTOR-SAFE CALL NOW BUTTON
-========================================================= */
-
-.success a.call-btn,
-.success a.call-btn:link,
-.success a.call-btn:visited,
-.success a.call-btn:hover,
-.success a.call-btn:focus,
-.success a.call-btn:active {
-
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-
-    width: 100% !important;
-    min-height: 62px !important;
-
-    margin: 0 !important;
-    padding: 14px 18px !important;
-
-    border: 0 !important;
-    border-radius: 11px !important;
-
-    background: #159447 !important;
-    background-color: #159447 !important;
-
-    color: #ffffff !important;
-
-    font-family: Arial, Helvetica, sans-serif !important;
-    font-size: 19px !important;
-    font-weight: 400 !important;
-    line-height: 1.3 !important;
-    letter-spacing: 0 !important;
-
-    text-align: center !important;
-    text-decoration: none !important;
-    text-transform: none !important;
-
-    box-shadow: none !important;
-
-    opacity: 1 !important;
-
-    cursor: pointer !important;
-
-    -webkit-appearance: none !important;
-    appearance: none !important;
-}
-
-.success a.call-btn:hover,
-.success a.call-btn:focus,
-.success a.call-btn:active {
-
-    background: #117a3a !important;
-    background-color: #117a3a !important;
-
-    color: #ffffff !important;
-
-    text-decoration: none !important;
-    outline: none !important;
-}
-
-.success a.call-btn *,
-.success a.call-btn span {
-
-    color: #ffffff !important;
-
-    font-family: Arial, Helvetica, sans-serif !important;
-    font-size: 19px !important;
-    font-weight: 400 !important;
-    line-height: 1.3 !important;
-
-    text-decoration: none !important;
-    text-transform: none !important;
-}
-
-
-/* =========================================================
-   CALL LABEL
-========================================================= */
-
-.call-label {
-    margin-top: 22px;
-    margin-bottom: 9px;
-
-    color: #666666;
-
-    font-size: 14px;
-    line-height: 1.4;
-    font-weight: 400;
-}
-
-
-/* =========================================================
-   ELEMENTOR-SAFE HOME BUTTON
-========================================================= */
-
-.success a.home-btn,
-.success a.home-btn:link,
-.success a.home-btn:visited,
-.success a.home-btn:hover,
-.success a.home-btn:focus,
-.success a.home-btn:active {
-
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-
-    width: 100% !important;
-    min-height: 56px !important;
-
-    margin: 12px 0 0 !important;
-    padding: 13px 16px !important;
-
-    border: 1px solid #d1d5db !important;
-    border-radius: 10px !important;
-
-    background: #ffffff !important;
-    background-color: #ffffff !important;
-
-    color: #222222 !important;
-
-    font-family: Arial, Helvetica, sans-serif !important;
-    font-size: 16px !important;
-    font-weight: 400 !important;
-    line-height: 1.3 !important;
-    letter-spacing: 0 !important;
-
-    text-align: center !important;
-    text-decoration: none !important;
-    text-transform: none !important;
-
-    box-shadow: none !important;
-
-    opacity: 1 !important;
-
-    cursor: pointer !important;
-
-    -webkit-appearance: none !important;
-    appearance: none !important;
-}
-
-.success a.home-btn:hover {
-
-    background: #f5f5f5 !important;
-    background-color: #f5f5f5 !important;
-
-    color: #222222 !important;
-
-    text-decoration: none !important;
-}
-
-.success a.home-btn:focus,
-.success a.home-btn:active {
-
-    background: #f5f5f5 !important;
-    background-color: #f5f5f5 !important;
-
-    color: #222222 !important;
-
-    text-decoration: none !important;
-
-    outline: none !important;
-}
-
-.success a.home-btn *,
-.success a.home-btn span {
-
-    color: #222222 !important;
-
-    font-family: Arial, Helvetica, sans-serif !important;
-    font-size: 16px !important;
-    font-weight: 400 !important;
-    line-height: 1.3 !important;
-
-    text-decoration: none !important;
-    text-transform: none !important;
-}
-
-
-/* =========================================================
-   REMOVE ALL SHADOWS
-========================================================= */
-
-.card,
-.property,
-.price-card,
-.detail-box,
-.confirm,
-.location,
-.landmarks-toggle,
-.landmark,
-.map-btn,
-button,
-.call-btn,
-.home-btn {
-
-    box-shadow: none !important;
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 480px) {
-
-    .form-wrap {
-        padding: 12px;
-    }
-
-    .card {
-        padding: 18px 1px;
-    }
-
-    .title {
-        font-size: 24px;
-    }
-
-    .subtitle {
-        font-size: 14px;
-    }
-
-    .step-title {
-        font-size: 21px;
-    }
-
-    .property {
-        padding: 24px 16px;
-    }
-
-    .property-name {
-        font-size: 24px;
-    }
-
-    .price-big {
-        font-size: 35px;
-    }
-
-    .price-property {
-        font-size: 19px;
-    }
-
-    .address {
-        font-size: 21px;
-    }
-
-    .detail-value {
-        font-size: 15px;
-    }
-
-    .landmarks-toggle {
-        font-size: 17px;
-    }
-
-    .success a.call-btn,
-    .success a.call-btn:link,
-    .success a.call-btn:visited {
-
-        min-height: 62px !important;
-
-        padding: 15px 16px !important;
-
-        font-size: 18px !important;
-    }
-
-    .success a.call-btn span {
-
-        font-size: 18px !important;
-    }
-
-    .success a.home-btn,
-    .success a.home-btn:link,
-    .success a.home-btn:visited {
-
-        min-height: 56px !important;
-
-        font-size: 16px !important;
-    }
-
-    .success a.home-btn span {
-
-        font-size: 16px !important;
-    }
-
-}
-
-
-/* =========================================================
-   SAFE AREA
-========================================================= */
-
-@supports (padding: env(safe-area-inset-bottom)) {
-
-    .form-wrap {
-
-        padding-bottom:
-            calc(14px + env(safe-area-inset-bottom));
-
-    }
-
-}
-
-</style>
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Krishna Anandam - Premium 3 BHK Duplex Villas & Residential Plots in Baratha, Jhansi. Gated community with Premium Amenities for all. Book your dream home today!">
+    <meta property="og:title" content="Krishna Anandam | Premium Villas & Plots in Jhansi">
+    <meta property="og:description" content="3 BHK Villas & Residential Plots in a gated community with equal world-class amenities for all owners. Limited units only. Enquire now!">
+    <meta property="og:type" content="website">
+    <title>Krishna Anandam | Premium 3 BHK Villas & Plots in Jhansi - Enquire Now</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --gold: #D4A843;
+            --gold-dark: #B8860B;
+            --gold-light: #F0D78C;
+            --gold-pale: #FFFBF0;
+            --navy: #0F172A;
+            --navy-light: #1E293B;
+            --slate: #334155;
+            --slate-light: #64748B;
+            --gray: #F1F5F9;
+            --gray-warm: #FAFAF8;
+            --white: #ffffff;
+            --green: #10B981;
+            --red: #EF4444;
+            --teal: #14B8A6;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --shadow-gold: 0 10px 40px -10px rgba(212, 168, 67, 0.4);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--slate);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: var(--white);
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(212, 168, 67, 0.4); }
+            50% { box-shadow: 0 0 0 15px rgba(212, 168, 67, 0); }
+        }
+        .anim-up { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .anim-left { animation: fadeInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .anim-scale { animation: scaleIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 80px 24px 80px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(180deg, var(--gray-warm) 0%, var(--white) 100%);
+        }
+        .hero-bg-pattern {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(212, 168, 67, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(212, 168, 67, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 60% 80%, rgba(15, 23, 42, 0.03) 0%, transparent 50%);
+        }
+        .hero-decor {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            animation: float 6s ease-in-out infinite;
+        }
+        .hero-decor-1 {
+            width: 400px; height: 400px;
+            background: rgba(212, 168, 67, 0.15);
+            top: 10%; right: -5%;
+        }
+        .hero-decor-2 {
+            width: 300px; height: 300px;
+            background: rgba(212, 168, 67, 0.1);
+            bottom: 10%; left: -5%;
+            animation-delay: -3s;
+        }
+        .hero-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: var(--green);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 28px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.8rem;
+            font-weight: 800;
+            color: var(--navy);
+            line-height: 1.15;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero h1 .highlight-underline {
+            position: relative;
+            display: inline-block;
+        }
+        .hero h1 .highlight-underline::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, var(--gold-light), var(--gold));
+            opacity: 0.3;
+            border-radius: 4px;
+            z-index: -1;
+        }
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--slate-light);
+            margin-bottom: 36px;
+            line-height: 1.7;
+            max-width: 520px;
+        }
+        .hero-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-bottom: 40px;
+        }
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: var(--slate);
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 10px 0;
+        }
+        .hero-feature-icon {
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, var(--gold-pale), #FFF8E7);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-dark);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(212, 168, 67, 0.15);
+        }
+        .hero-cta-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: var(--shadow-gold);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+        .btn-primary:hover::before { left: 100%; }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px -10px rgba(212, 168, 67, 0.5);
+        }
+        .btn-secondary {
+            background: var(--white);
+            color: var(--navy);
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            border: 2px solid var(--gray);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: var(--shadow-sm);
+        }
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold-dark);
+            box-shadow: var(--shadow);
+            transform: translateY(-2px);
+        }
+        .btn-outline-gold {
+            background: transparent;
+            color: var(--gold-dark);
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: 2px solid var(--gold);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-outline-gold:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-2px);
+        }
+        .trust-badges {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--slate-light);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .trust-badge i { color: var(--gold-dark); font-size: 1rem; }
+
+        /* Villa Image */
+        .villa-image-wrapper {
+            background: var(--white);
+            border-radius: 28px;
+            overflow: hidden;
+            animation: scaleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+            box-shadow: 
+                0 0 0 1px rgba(0,0,0,0.05),
+                0 20px 60px -10px rgba(0,0,0,0.1),
+                0 40px 80px -20px rgba(0,0,0,0.08);
+            position: relative;
+        }
+        .villa-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: linear-gradient(135deg, var(--navy), var(--navy-light));
+            padding: 50px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .stats-bar::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .stats-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .stat-item { position: relative; }
+        .stat-item::after {
+            content: '';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 60%;
+            background: rgba(255,255,255,0.1);
+        }
+        .stat-item:last-child::after { display: none; }
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+        .stat-label {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        .stat-icon {
+            width: 50px; height: 50px;
+            background: rgba(212, 168, 67, 0.15);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            color: var(--gold);
+            font-size: 1.3rem;
+        }
+
+        /* Sections */
+        .section {
+            padding: 100px 24px;
+            position: relative;
+        }
+        .section-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gold-pale);
+            color: var(--gold-dark);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+        }
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--navy);
+            margin-bottom: 16px;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+        .section-header p {
+            color: var(--slate-light);
+            font-size: 1.15rem;
+            line-height: 1.7;
+        }
+
+        /* Specs Detail Section */
+        .specs-detail-section { background: var(--gray-warm); }
+        .specs-detail-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .specs-detail-card {
+            background: var(--white);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.06);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s ease;
+        }
+        .specs-detail-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+        .specs-detail-header {
+            padding: 32px 32px 24px;
+            position: relative;
+        }
+        .specs-detail-header.villa-header {
+            background: linear-gradient(135deg, var(--gold-pale), #FFF8E7);
+        }
+        .specs-detail-header.plot-header {
+            background: linear-gradient(135deg, #ECFDF5, #D1FAE5);
+        }
+        .specs-detail-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+        }
+        .specs-detail-badge.best { background: var(--green); }
+        .specs-detail-badge.new { background: var(--teal); }
+        .specs-detail-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+        .specs-detail-price-label {
+            font-size: 0.8rem;
+            color: var(--slate-light);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .specs-detail-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--gold-dark);
+            line-height: 1.2;
+        }
+        .specs-detail-body {
+            padding: 28px 32px;
+        }
+        .specs-detail-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .specs-detail-row:last-child { border-bottom: none; }
+        .specs-detail-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: var(--slate);
+            font-weight: 500;
+        }
+        .specs-detail-label i {
+            color: var(--gold-dark);
+            font-size: 1rem;
+            width: 20px;
+        }
+        .specs-detail-value {
+            font-weight: 700;
+            color: var(--navy);
+            font-size: 0.95rem;
+        }
+        .specs-detail-equal {
+            margin-top: 20px;
+            padding: 14px 18px;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: var(--green);
+            font-weight: 600;
+        }
+        .specs-detail-equal i { font-size: 1.1rem; }
+        .specs-detail-cta {
+            padding: 0 32px 32px;
+        }
+        .specs-detail-cta a {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* Amenities Grid */
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .amenity-card {
+            background: var(--white);
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 20px;
+            padding: 40px 32px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .amenity-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            transform: scaleX(0);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 20px 20px 0 0;
+        }
+        .amenity-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);
+            border-color: transparent;
+        }
+        .amenity-card:hover::before { transform: scaleX(1); }
+        .amenity-icon {
+            width: 72px; height: 72px;
+            background: linear-gradient(135deg, var(--gold-pale), #FFF8E7);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 1.6rem;
+            color: var(--gold-dark);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 168, 67, 0.15);
+        }
+        .amenity-card:hover .amenity-icon {
+            transform: scale(1.1) rotate(-5deg);
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: white;
+            box-shadow: var(--shadow-gold);
+        }
+        .amenity-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+            color: var(--navy);
+            font-weight: 700;
+        }
+        .amenity-card p {
+            font-size: 0.9rem;
+            color: var(--slate-light);
+            line-height: 1.6;
+        }
+
+        /* Specs */
+        .specs-section { background: var(--white); }
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .spec-card {
+            background: var(--white);
+            color: var(--text);
+            padding: 36px 24px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+        .spec-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        .spec-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+        .spec-card:hover::after { transform: scaleX(1); }
+        .spec-card i {
+            font-size: 2.2rem;
+            color: var(--gold-dark);
+            margin-bottom: 16px;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+        .spec-card:hover i { transform: scale(1.15); }
+        .spec-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            color: var(--navy);
+            font-weight: 700;
+        }
+        .spec-card p {
+            font-size: 0.85rem;
+            color: var(--slate-light);
+        }
+
+        /* Location */
+        .location-section { background: var(--gray-warm); }
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        .location-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--navy);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+        .location-info > p {
+            color: var(--slate-light);
+            margin-bottom: 36px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        .location-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .location-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--white);
+            padding: 18px 24px;
+            border-radius: 14px;
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+        .location-item:hover {
+            transform: translateX(8px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(212, 168, 67, 0.3);
+        }
+        .location-name {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-weight: 600;
+            color: var(--navy);
+            font-size: 0.95rem;
+        }
+        .location-name i {
+            color: var(--gold-dark);
+            font-size: 1.2rem;
+            width: 24px;
+        }
+        .location-dist {
+            background: linear-gradient(135deg, var(--gold-pale), #FFF8E7);
+            color: var(--gold-dark);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border: 1px solid rgba(212, 168, 67, 0.2);
+        }
+        .location-cta { margin-top: 36px; }
+        .location-map {
+            background: var(--white);
+            border-radius: 24px;
+            overflow: hidden;
+            height: 100%;
+            min-height: 450px;
+            position: relative;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+        .location-map iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 450px;
+            border: none;
+        }
+        .map-overlay {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 16px 20px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .map-overlay i { color: var(--gold-dark); font-size: 1.3rem; }
+        .map-overlay span { font-weight: 600; color: var(--navy); font-size: 0.95rem; }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--navy) 0%, #1a1a3e 50%, var(--navy-light) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 120px 24px;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .cta-decor {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+        }
+        .cta-decor-1 {
+            width: 500px; height: 500px;
+            background: var(--gold);
+            top: -20%; left: -10%;
+            animation: float 8s ease-in-out infinite;
+        }
+        .cta-decor-2 {
+            width: 400px; height: 400px;
+            background: var(--gold-light);
+            bottom: -20%; right: -10%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .urgency-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #FCA5A5;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-bottom: 28px;
+            animation: pulse-glow 2.5s infinite;
+            font-size: 0.9rem;
+        }
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            color: white;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+        .cta-section p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.15rem;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+        .cta-btn {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--navy);
+            padding: 20px 48px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 10px 40px -10px rgba(212, 168, 67, 0.5);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.6s;
+        }
+        .cta-btn:hover::before { left: 100%; }
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 50px -10px rgba(212, 168, 67, 0.6);
+        }
+        .cta-phone {
+            margin-top: 24px;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.6);
+        }
+        .cta-phone strong { color: var(--gold); font-size: 1.2rem; }
+
+        /* Footer */
+        .footer {
+            background: var(--navy);
+            color: rgba(255,255,255,0.5);
+            padding: 50px 24px 30px;
+            text-align: center;
+        }
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .footer p { font-size: 0.9rem; }
+        .footer-bottom {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            font-size: 0.8rem;
+            opacity: 0.5;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--gray); }
+        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
+
+        /* Sticky Bottom Button */
+        .sticky-enquire-btn {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: white;
+            padding: 18px 24px;
+            border: none;
+            font-weight: 800;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        .sticky-enquire-btn:hover {
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+            box-shadow: 0 -6px 30px rgba(212, 168, 67, 0.4);
+        }
+        .sticky-enquire-btn i {
+            font-size: 1.2rem;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-gold);
+            transition: all 0.3s ease;
+        }
+        .mobile-menu-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px -5px rgba(212, 168, 67, 0.5);
+        }
+
+        @media (max-width: 1024px) {
+            .hero-container { grid-template-columns: 1fr; gap: 50px; }
+            .hero h1 { font-size: 3rem; }
+            .header-nav { display: none; }
+            .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+            .specs-grid { grid-template-columns: repeat(2, 1fr); }
+            .location-grid { grid-template-columns: 1fr; gap: 50px; }
+            .stats-container { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+            .stat-item::after { display: none; }
+            .specs-detail-grid { grid-template-columns: 1fr; }
+            .mobile-menu-btn { display: block; }
+        }
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 2.4rem; }
+            .hero-features { grid-template-columns: 1fr; }
+            .hero-cta-group { flex-direction: column; }
+            .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+            .amenities-grid { grid-template-columns: 1fr; }
+            .specs-grid { grid-template-columns: 1fr; }
+            .section-header h2 { font-size: 2rem; }
+            .cta-section h2 { font-size: 2.2rem; }
+            .stats-container { grid-template-columns: 1fr 1fr; }
+            .form-container iframe { height: 750px; }
+            .trust-badges { justify-content: center; }
+            .section { padding: 70px 20px; }
+            .specs-detail-price { font-size: 1.8rem; }
+        }
+    </style>
+<base target="_blank">
 </head>
-
-
 <body>
 
+    <section class="hero">
+        <div class="hero-bg-pattern"></div>
+        <div class="hero-decor hero-decor-1"></div>
+        <div class="hero-decor hero-decor-2"></div>
 
-<div class="form-wrap">
-
-<div class="card">
-
-
-<!-- =====================================================
-     FORM CONTENT
-===================================================== -->
-
-<div id="formContent">
-
-
-
-<!-- =====================================================
-     PROGRESS
-===================================================== -->
-
-<div class="progress">
-
-    <div class="pstep active" id="p1">1</div>
-
-    <div class="pline" id="l1"></div>
-
-    <div class="pstep" id="p2">2</div>
-
-    <div class="pline" id="l2"></div>
-
-    <div class="pstep" id="p3">3</div>
-
-</div>
-
-
-<!-- =====================================================
-     STEP 1
-===================================================== -->
-
-<section class="step active" id="step1">
-
-    <div class="step-title">
-        Choose Your Property
-    </div>
-
-    <div class="step-desc">
-        Select what you are interested in.
-    </div>
-
-    <div class="property-list">
-
-        <label class="property" id="villaOption">
-
-            <input
-                type="radio"
-                name="property"
-                value="Villa">
-
-            <div class="property-name">
-                Villas
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge anim-up">
+                    <i class="fas fa-shield-check"></i>
+                    RERA Approved Project
+                </div>
+                <h1 class="anim-up delay-1">
+                    Premium <span class="highlight">Villas & Plots</span><br>
+                    in <span class="highlight-underline">the Heart of Jhansi</span>
+                </h1>
+                <p class="hero-subtitle anim-up delay-2">
+                    Choose from <strong>3 BHK Duplex Villas</strong> or <strong>Residential Plots</strong> 
+                    across 4.4 acres of prime land at Baratha, Jhansi. Only <strong>97 exclusive units</strong> 
+                    in a secured gated community with <strong>Premium Amenities for all</strong>.
+                </p>
+                <div class="hero-features anim-up delay-3">
+                    <div class="hero-feature">
+                        <div class="hero-feature-icon"><i class="fas fa-house-chimney"></i></div>
+                        <span>3 BHK Duplex Villas</span>
+                    </div>
+                    <div class="hero-feature">
+                        <div class="hero-feature-icon"><i class="fas fa-map"></i></div>
+                        <span>Residential Plots</span>
+                    </div>
+                    <div class="hero-feature">
+                        <div class="hero-feature-icon"><i class="fas fa-equals"></i></div>
+                        <span>Premium Amenities for All</span>
+                    </div>
+                    <div class="hero-feature">
+                        <div class="hero-feature-icon"><i class="fas fa-shield-halved"></i></div>
+                        <span>24/7 Gated Security</span>
+                    </div>
+                    <div class="hero-feature">
+                        <div class="hero-feature-icon"><i class="fas fa-bolt"></i></div>
+                        <span>Full Power Backup</span>
+                    </div>
+                    <div class="hero-feature">
+                        <div class="hero-feature-icon"><i class="fas fa-file-shield"></i></div>
+                        <span>100% Free-Hold</span>
+                    </div>
+                </div>
+                <div class="trust-badges anim-up delay-5">
+                    <div class="trust-badge"><i class="fas fa-lock"></i><span>Gated Community</span></div>
+                    <div class="trust-badge"><i class="fas fa-file-shield"></i><span>Free-Hold Property</span></div>
+                    <div class="trust-badge"><i class="fas fa-certificate"></i><span>RERA Registered</span></div>
+                </div>
             </div>
 
-            <div class="property-sub">
-                3 Bedrooms
+            <div class="villa-image-wrapper" id="enquire">
+                <img src="https://raw.githubusercontent.com/pariflex1/ka-lead-form/refs/heads/main/ka.webp" alt="Premium Villa" class="villa-image">
             </div>
-
-        </label>
-
-
-        <label class="property" id="plotOption">
-
-            <input
-                type="radio"
-                name="property"
-                value="Plot">
-
-            <div class="property-name">
-                Plots
-            </div>
-
-            <div class="property-sub">
-                Residential Plots
-            </div>
-
-        </label>
-
-    </div>
-
-</section>
-
-<!-- =====================================================
-     STEP 2
-===================================================== -->
-
-<section class="step" id="step2">
-
-    <div class="step-title">
-        Confirm Property & Price
-    </div>
-
-    <div class="step-desc">
-        Please review the selected property details and starting price.
-    </div>
-
-
-    <div class="price-card">
-
-
-        <div class="price-top">
-
-            <div
-                class="price-property"
-                id="selectedProperty">
-            </div>
-
-            <div class="price-label">
-                BASIC PRICE STARTS FROM
-            </div>
-
-            <div
-                class="price-big"
-                id="selectedPrice">
-            </div>
-
         </div>
+    </section>
 
-
-        <div class="price-content">
-
-
-            <!-- VILLA DETAILS -->
-
-            <div
-                class="detail-grid"
-                id="villaDetails"
-                style="display:none;">
-
-
-                <div class="detail-box">
-
-                    <div class="detail-label">
-                        Bedrooms
-                    </div>
-
-                    <div class="detail-value">
-                        3 Bedrooms
-                    </div>
-
-                </div>
-
-
-                <div class="detail-box">
-
-                    <div class="detail-label">
-                        Constructed Area
-                    </div>
-
-                    <div class="detail-value">
-                        1,600 sq.ft.
-                    </div>
-
-                </div>
-
-
-                <div class="detail-box">
-
-                    <div class="detail-label">
-                        Plot Size
-                    </div>
-
-                    <div class="detail-value">
-                        21 × 46 ft.
-                    </div>
-
-                </div>
-
-
-                <div class="detail-box">
-
-                    <div class="detail-label">
-                        Plot Area
-                    </div>
-
-                    <div class="detail-value">
-                        966 sq.ft.
-                    </div>
-
-                </div>
-
-
+    <div class="stats-bar">
+        <div class="stats-container">
+            <div class="stat-item reveal">
+                <div class="stat-icon"><i class="fas fa-map"></i></div>
+                <div class="stat-number" data-count="4.4">0</div>
+                <div class="stat-label">Acres of Prime Land</div>
             </div>
-
-
-            <!-- PLOT DETAILS -->
-
-            <div
-                class="detail-grid"
-                id="plotDetails"
-                style="display:none;">
-
-
-                <div class="detail-box">
-
-                    <div class="detail-label">
-                        Plot Size
-                    </div>
-
-                    <div class="detail-value">
-                        21 × 46 ft.
-                    </div>
-
-                </div>
-
-
-                <div class="detail-box">
-
-                    <div class="detail-label">
-                        Plot Area
-                    </div>
-
-                    <div class="detail-value">
-                        966 sq.ft.
-                    </div>
-
-                </div>
-
-
+            <div class="stat-item reveal">
+                <div class="stat-icon"><i class="fas fa-building"></i></div>
+                <div class="stat-number" data-count="97">0</div>
+                <div class="stat-label">Exclusive Units Only</div>
             </div>
-
-
+            <div class="stat-item reveal">
+                <div class="stat-icon"><i class="fas fa-equals"></i></div>
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Premium Amenities</div>
+            </div>
+            <div class="stat-item reveal">
+                <div class="stat-icon"><i class="fas fa-certificate"></i></div>
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Free-Hold Property</div>
+            </div>
         </div>
-
     </div>
 
-
-    <label class="confirm">
-
-        <input
-            type="checkbox"
-            id="priceConfirm">
-
-        <span class="confirm-text">
-            I have read and understood the above property details and basic starting price.
-        </span>
-
-    </label>
-
-
-    <div class="buttons">
-
-        <button
-            type="button"
-            class="back"
-            onclick="goStep(1)">
-
-            Back
-
-        </button>
-
-
-        <button
-            type="button"
-            class="next"
-            id="next2"
-            disabled
-            onclick="goStep(3)">
-
-            Continue
-
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     STEP 3
-===================================================== -->
-
-<section class="step" id="step3">
-
-
-    <div class="step-title">
-        Confirm Site Location
-    </div>
-
-    <div class="step-desc">
-        Please verify the project location before continuing.
-    </div>
-
-
-    <!-- LOCATION -->
-
-    <div class="location">
-
-
-        <div class="location-head">
-            PROJECT SITE LOCATION
+    <section class="section specs-detail-section" id="specs-detail">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-label"><i class="fas fa-clipboard-list"></i> Property Details</span>
+                <h2>Choose Your Perfect <span style="color: var(--gold-dark);">Dream Home</span></h2>
+                <p>Whether you prefer a ready-to-move villa or want to build your own home on a plot, both options come with the same premium plot size and equal community benefits.</p>
+            </div>
+            <div class="specs-detail-grid">
+                <div class="specs-detail-card reveal">
+                    <div class="specs-detail-header villa-header">
+                        <span class="specs-detail-badge best"><i class="fas fa-star"></i> Best Seller</span>
+                        <h3>3 Bedrooms Villas</h3>
+                        <div class="specs-detail-price-label">Basic Price Starts From</div>
+                        <div class="specs-detail-price">Rs. 48.86 Lakhs</div>
+                    </div>
+                    <div class="specs-detail-body">
+                        <div class="specs-detail-row">
+                            <span class="specs-detail-label"><i class="fas fa-bed"></i> Bedrooms</span>
+                            <span class="specs-detail-value">3 Bedrooms</span>
+                        </div>
+                        <div class="specs-detail-row">
+                            <span class="specs-detail-label"><i class="fas fa-ruler-combined"></i> Constructed Area</span>
+                            <span class="specs-detail-value">1,600 sq.ft.</span>
+                        </div>
+                        <div class="specs-detail-row">
+                            <span class="specs-detail-label"><i class="fas fa-vector-square"></i> Plot Size</span>
+                            <span class="specs-detail-value">21 x 46 ft.</span>
+                        </div>
+                        <div class="specs-detail-row">
+                            <span class="specs-detail-label"><i class="fas fa-map"></i> Plot Area</span>
+                            <span class="specs-detail-value">966 sq.ft.</span>
+                        </div>
+                        <div class="specs-detail-equal">
+                            <i class="fas fa-check-circle"></i>
+                            Same community amenities as plot owners
+                        </div>
+                    </div>
+                </div>
+                <div class="specs-detail-card reveal">
+                    <div class="specs-detail-header plot-header">
+                        <span class="specs-detail-badge new"><i class="fas fa-bolt"></i> New Launch</span>
+                        <h3>Residential Plots</h3>
+                        <div class="specs-detail-price-label">Basic Price Starts From</div>
+                        <div class="specs-detail-price">Rs. 23.18 Lakhs</div>
+                    </div>
+                    <div class="specs-detail-body">
+                        <div class="specs-detail-row">
+                            <span class="specs-detail-label"><i class="fas fa-vector-square"></i> Plot Size</span>
+                            <span class="specs-detail-value">21 x 46 ft.</span>
+                        </div>
+                        <div class="specs-detail-row">
+                            <span class="specs-detail-label"><i class="fas fa-map"></i> Plot Area</span>
+                            <span class="specs-detail-value">966 sq.ft.</span>
+                        </div>
+                        <div class="specs-detail-row">
+                            <span class="specs-detail-label"><i class="fas fa-road"></i> Road Access</span>
+                            <span class="specs-detail-value">Wide Internal Roads</span>
+                        </div>
+                        <div class="specs-detail-row">
+                            <span class="specs-detail-label"><i class="fas fa-file-shield"></i> Title</span>
+                            <span class="specs-detail-value">Free-Hold</span>
+                        </div>
+                        <div class="specs-detail-equal">
+                            <i class="fas fa-check-circle"></i>
+                            Same community amenities as villa owners
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-
-        <div class="location-body">
-
-
-            <div class="address">
-
-                Near Diamond Cement,<br>
-                Jhansi-Kanpur Road,<br>
-                Gram Baratha,<br>
-                Jhansi (UP)
-
+    <section class="section" id="amenities">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-label"><i class="fas fa-star"></i> World-Class Amenities</span>
+                <h2>Premium Amenities for <span style="color: var(--gold-dark);">Every Owner</span></h2>
+                <p>At Krishna Anandam, we believe in equality. Every villa owner and plot owner enjoys the same world-class community facilities without any difference.</p>
             </div>
-
-
-            <div class="location-note">
-
-                Open Google Maps and verify the site location.
-
+            <div class="amenities-grid">
+                <div class="amenity-card reveal">
+                    <div class="amenity-icon"><i class="fas fa-water"></i></div>
+                    <h3>Swimming Pool</h3>
+                    <p>Resort-style pool for relaxation and fitness within the community.</p>
+                </div>
+                <div class="amenity-card reveal">
+                    <div class="amenity-icon"><i class="fas fa-child-reaching"></i></div>
+                    <h3>Children's Play Area</h3>
+                    <p>Safe and vibrant play zones designed for your little ones to enjoy.</p>
+                </div>
+                <div class="amenity-card reveal">
+                    <div class="amenity-icon"><i class="fas fa-spa"></i></div>
+                    <h3>Meditation & Yoga Zones</h3>
+                    <p>Peaceful dedicated spaces for your daily wellness routine.</p>
+                </div>
+                <div class="amenity-card reveal">
+                    <div class="amenity-icon"><i class="fas fa-table-tennis"></i></div>
+                    <h3>Badminton Court</h3>
+                    <p>Professional-grade court for sports enthusiasts.</p>
+                </div>
+                <div class="amenity-card reveal">
+                    <div class="amenity-icon"><i class="fas fa-chair"></i></div>
+                    <h3>Senior Citizen's Area</h3>
+                    <p>Comfortable sitting spaces for elderly residents.</p>
+                </div>
+                <div class="amenity-card reveal">
+                    <div class="amenity-icon"><i class="fas fa-store"></i></div>
+                    <h3>Shopping Arcade</h3>
+                    <p>Convenient on-site shopping for daily needs.</p>
+                </div>
             </div>
-
-
-            <a
-                href="https://maps.app.goo.gl/couHFcQhgE5giSu27"
-                target="_blank"
-                rel="noopener"
-                class="map-btn"
-                onclick="mapOpened()">
-
-                Open Site Location in Google Maps
-
-            </a>
-
-
         </div>
+    </section>
 
-    </div>
-
-
-    <!-- LANDMARKS -->
-
-    <div class="landmarks">
-
-
-        <button
-            type="button"
-            class="landmarks-toggle"
-            onclick="toggleLandmarks()">
-
-            <span>
-                Nearby Landmarks
-            </span>
-
-            <span
-                class="arrow"
-                id="landmarkArrow">
-
-                🔻
-            </span>
-
-        </button>
-
-
-        <div
-            class="landmarks-content"
-            id="landmarksContent">
-
-
-            <div class="landmarks-sub">
-                Approximate distance from the project site
+    <section class="section specs-section" id="specs">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-label"><i class="fas fa-ruler-combined"></i> Villa Configuration</span>
+                <h2>Thoughtfully Designed <span style="color: var(--gold-dark);">Living Spaces</span></h2>
+                <p>Every corner crafted to provide comfort, elegance, and functionality.</p>
             </div>
-
-
-            <div class="landmark">
-
-                <div>
-
-                    <div class="landmark-name">
-                        Kanpur-Gwalior Bypass
-                    </div>
-
-                    <div class="landmark-distance">
-                        11 km
-                    </div>
-
+            <div class="specs-grid">
+                <div class="spec-card reveal">
+                    <i class="fas fa-bed"></i>
+                    <h4>3 Bedrooms</h4>
+                    <p>Spacious & well-ventilated</p>
                 </div>
-
-                <a
-                    class="landmark-map"
-                    target="_blank"
-                    rel="noopener"
-                    href="https://www.google.com/maps/dir/?api=1&origin=Near+Diamond+Cement,+Jhansi-Kanpur+Road,+Gram+Baratha,+Jhansi,+Uttar+Pradesh&destination=Kanpur-Gwalior+Bypass,+Jhansi,+Uttar+Pradesh">
-
-                    Maps
-
-                </a>
-
-            </div>
-
-
-            <div class="landmark">
-
-                <div>
-
-                    <div class="landmark-name">
-                        Medical College
-                    </div>
-
-                    <div class="landmark-distance">
-                        12 km
-                    </div>
-
+                <div class="spec-card reveal">
+                    <i class="fas fa-couch"></i>
+                    <h4>Drawing & Dining</h4>
+                    <p>Grand living spaces</p>
                 </div>
-
-                <a
-                    class="landmark-map"
-                    target="_blank"
-                    rel="noopener"
-                    href="https://www.google.com/maps/dir/?api=1&origin=Near+Diamond+Cement,+Jhansi-Kanpur+Road,+Gram+Baratha,+Jhansi,+Uttar+Pradesh&destination=Medical+College,+Jhansi,+Uttar+Pradesh">
-
-                    Maps
-
-                </a>
-
-            </div>
-
-
-            <div class="landmark">
-
-                <div>
-
-                    <div class="landmark-name">
-                        Jhansi Bus Stand
-                    </div>
-
-                    <div class="landmark-distance">
-                        16 km
-                    </div>
-
+                <div class="spec-card reveal">
+                    <i class="fas fa-kitchen-set"></i>
+                    <h4>Modern Kitchen</h4>
+                    <p>Efficient layout design</p>
                 </div>
-
-                <a
-                    class="landmark-map"
-                    target="_blank"
-                    rel="noopener"
-                    href="https://www.google.com/maps/dir/?api=1&origin=Near+Diamond+Cement,+Jhansi-Kanpur+Road,+Gram+Baratha,+Jhansi,+Uttar+Pradesh&destination=Jhansi+Bus+Stand,+Jhansi,+Uttar+Pradesh">
-
-                    Maps
-
-                </a>
-
-            </div>
-
-
-            <div class="landmark">
-
-                <div>
-
-                    <div class="landmark-name">
-                        Elite Crossing
-                    </div>
-
-                    <div class="landmark-distance">
-                        17 km
-                    </div>
-
+                <div class="spec-card reveal">
+                    <i class="fas fa-seedling"></i>
+                    <h4>Private Lawns</h4>
+                    <p>Front & rear gardens</p>
                 </div>
-
-                <a
-                    class="landmark-map"
-                    target="_blank"
-                    rel="noopener"
-                    href="https://www.google.com/maps/dir/?api=1&origin=Near+Diamond+Cement,+Jhansi-Kanpur+Road,+Gram+Baratha,+Jhansi,+Uttar+Pradesh&destination=Elite+Crossing,+Jhansi,+Uttar+Pradesh">
-
-                    Maps
-
-                </a>
-
-            </div>
-
-
-            <div class="landmark">
-
-                <div>
-
-                    <div class="landmark-name">
-                        Manik Chock (Sehar)
-                    </div>
-
-                    <div class="landmark-distance">
-                        18 km
-                    </div>
-
+                <div class="spec-card reveal">
+                    <i class="fas fa-door-closed"></i>
+                    <h4>Porch & Lobby</h4>
+                    <p>Grand entrance area</p>
                 </div>
-
-                <a
-                    class="landmark-map"
-                    target="_blank"
-                    rel="noopener"
-                    href="https://www.google.com/maps/dir/?api=1&origin=Near+Diamond+Cement,+Jhansi-Kanpur+Road,+Gram+Baratha,+Jhansi,+Uttar+Pradesh&destination=Manik+Chock,+Sehar,+Jhansi,+Uttar+Pradesh">
-
-                    Maps
-
-                </a>
-
-            </div>
-
-
-            <div class="landmark">
-
-                <div>
-
-                    <div class="landmark-name">
-                        Jhansi Railway Station
-                    </div>
-
-                    <div class="landmark-distance">
-                        19 km
-                    </div>
-
+                <div class="spec-card reveal">
+                    <i class="fas fa-person-booth"></i>
+                    <h4>Balcony</h4>
+                    <p>Private outdoor space</p>
                 </div>
-
-                <a
-                    class="landmark-map"
-                    target="_blank"
-                    rel="noopener"
-                    href="https://www.google.com/maps/dir/?api=1&origin=Near+Diamond+Cement,+Jhansi-Kanpur+Road,+Gram+Baratha,+Jhansi,+Uttar+Pradesh&destination=Jhansi+Railway+Station,+Jhansi,+Uttar+Pradesh">
-
-                    Maps
-
-                </a>
-
-            </div>
-
-
-            <div class="landmark">
-
-                <div>
-
-                    <div class="landmark-name">
-                        Sipri Bazar
-                    </div>
-
-                    <div class="landmark-distance">
-                        21 km
-                    </div>
-
+                <div class="spec-card reveal">
+                    <i class="fas fa-car"></i>
+                    <h4>Parking</h4>
+                    <p>Ample vehicle space</p>
                 </div>
-
-                <a
-                    class="landmark-map"
-                    target="_blank"
-                    rel="noopener"
-                    href="https://www.google.com/maps/dir/?api=1&origin=Near+Diamond+Cement,+Jhansi-Kanpur+Road,+Gram+Baratha,+Jhansi,+Uttar+Pradesh&destination=Sipri+Bazar,+Jhansi,+Uttar+Pradesh">
-
-                    Maps
-
-                </a>
-
+                <div class="spec-card reveal">
+                    <i class="fas fa-bolt"></i>
+                    <h4>Power Backup</h4>
+                    <p>24/7 uninterrupted supply</p>
+                </div>
             </div>
-
-
         </div>
+    </section>
 
-    </div>
+    <section class="section location-section" id="location">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-label"><i class="fas fa-location-dot"></i> Prime Location</span>
+                <h2>Strategically Located in <span style="color: var(--gold-dark);">Baratha, Jhansi</span></h2>
+                <p>Excellent connectivity to all major landmarks and city centers.</p>
+            </div>
+            <div class="location-grid">
+                <div class="location-info reveal">
+                    <h3>Key Distances from Project Site</h3>
+                    <p>Well-connected to major transportation hubs, medical facilities, and city centers.</p>
+                    <div class="location-list">
+                        <div class="location-item">
+                            <span class="location-name"><i class="fas fa-road"></i> Kanpur-Gwalior Bypass</span>
+                            <span class="location-dist">11 km</span>
+                        </div>
+                        <div class="location-item">
+                            <span class="location-name"><i class="fas fa-hospital"></i> Medical College</span>
+                            <span class="location-dist">12 km</span>
+                        </div>
+                        <div class="location-item">
+                            <span class="location-name"><i class="fas fa-bus"></i> Jhansi Bus Stand</span>
+                            <span class="location-dist">16 km</span>
+                        </div>
+                        <div class="location-item">
+                            <span class="location-name"><i class="fas fa-location-dot"></i> Elite Crossing</span>
+                            <span class="location-dist">17 km</span>
+                        </div>
+                        <div class="location-item">
+                            <span class="location-name"><i class="fas fa-city"></i> Manik Chock (Sehar)</span>
+                            <span class="location-dist">18 km</span>
+                        </div>
+                        <div class="location-item">
+                            <span class="location-name"><i class="fas fa-train"></i> Jhansi Railway Station</span>
+                            <span class="location-dist">19 km</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="location-map reveal">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4468.944626776688!2d78.7172935!3d25.4911647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39779d9c45e6c8f5%3A0x88e22742038cef68!2sKrishna%20Anandam!5e1!3m2!1sen!2sin!4v1786365898501!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    <div class="map-overlay">
+                        <i class="fas fa-map-pin"></i>
+                        <span>Near Diamond Cement, Jhansi-Kanpur Road, Baratha, Jhansi (UP)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <section class="cta-section">
+        <div class="cta-decor cta-decor-1"></div>
+        <div class="cta-decor cta-decor-2"></div>
+        <div class="cta-content">
+            <div class="urgency-badge">
+                <i class="fas fa-fire"></i>
+                Only 97 Units Available — Selling Fast!
+            </div>
+            <h2>Don't Miss Your Chance to Own a <span style="color: var(--gold);">Premium Villa or Plot</span></h2>
+            <p>Join the select few who will call Krishna Anandam their home. Every owner gets the same world-class amenities, security, and community lifestyle. Fill in your details for the best pricing.</p>
+            <p class="cta-phone">
+                <i class="fas fa-phone"></i> Request for a <strong>CALL</strong>
+            </p>
+        </div>
+    </section>
 
-    <!-- LOCATION CONFIRM -->
+    <footer class="footer">
+        <div class="footer-brand">Krishna Anandam</div>
+        <p>Premium 3 BHK Duplex Villas & Residential Plots | Baratha, Jhansi</p>
+        <p style="margin-top: 6px; font-size: 0.85rem; opacity: 0.7;">Premium Amenities for all villa and plot owners in our gated community</p>
+        <div class="footer-bottom">
+            &copy; 2026 Krishna Anandam. All Rights Reserved. RERA Registered.
+        </div>
+    </footer>
 
-    <label class="confirm">
-
-        <input
-            type="checkbox"
-            id="locationConfirm">
-
-        <span class="confirm-text">
-
-            I have checked the Google Maps location and firmly confirm that I am interested in this site location.
-
-        </span>
-
-    </label>
-
-
-    <div class="buttons">
-
-        <button
-            type="button"
-            class="back"
-            onclick="goStep(2)">
-
-            Back
-
-        </button>
-
-
-        <button
-            type="button"
-            class="submit"
-            id="submitBtn"
-            onclick="submitInquiry()">
-
-            Continue
-
-        </button>
-
-    </div>
-
-
-    <div
-        class="error"
-        id="error">
-    </div>
-
-
-</section>
-
-
-</div>
-
-
-<!-- =====================================================
-     SUCCESS
-===================================================== -->
-
-<div
-    class="success"
-    id="success">
-
-
-    <div class="success-icon">
-        ✓
-    </div>
-
-
-    <h2>
-        Thank You!
-    </h2>
-
-
-        For immediate assistance, please call us.
-    </p>
-
-
-    <div class="call-label">
-     
-    </div>
-
-
-    <!-- CALL BUTTON -->
-
-    <a
-        href="tel:9956934058"
-        class="call-btn"
-        id="callButton"
-        onclick="callConfirmed(event)"
-        aria-label="Call Krishna Anandam">
-
-        <span>
-            Call Now — 9956934058
-        </span>
-
+    <!-- Sticky Bottom Enquire Now Button -->
+    <a href="https://pariflex1.github.io/ka-lead-form/form" class="sticky-enquire-btn">
+        <i class="fas fa-paper-plane"></i>
+        Enquire Now
     </a>
 
+    <script>
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    const statNum = entry.target.querySelector('.stat-number[data-count]');
+                    if (statNum && !statNum.classList.contains('counted')) {
+                        animateCounter(statNum);
+                        statNum.classList.add('counted');
+                    }
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-    <!-- HOME BUTTON -->
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    <a
-        href="https://pariflex1.github.io/ka-lead-form/visit.html"
-        class="home-btn"
-        aria-label="Book a Visit">
+        function animateCounter(el) {
+            const target = parseFloat(el.dataset.count);
+            const duration = 2000;
+            const start = performance.now();
+            const isDecimal = target % 1 !== 0;
+            function update(currentTime) {
+                const elapsed = currentTime - start;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeOut = 1 - Math.pow(1 - progress, 3);
+                const current = target * easeOut;
+                el.textContent = isDecimal ? current.toFixed(1) : Math.floor(current);
+                if (progress < 1) requestAnimationFrame(update);
+            }
+            requestAnimationFrame(update);
+        }
 
-        <span>
-            ← Book you visit
-        </span>
-
-    </a>
-
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<script>
-
-/* =========================================================
-   CONFIG
-========================================================= */
-
-const WEBHOOK =
-"https://hook.eu1.make.com/qq1q993c9x4icmkbkvd5wcdvorvjffv8";
-
-const MAP_URL =
-"https://maps.app.goo.gl/couHFcQhgE5giSu27";
-
-const SITE_LOCATION =
-"Near Diamond Cement, Jhansi-Kanpur Road, Gram Baratha, Jhansi (UP)";
-
-const CALL_NUMBER =
-"9956934058";
-
-
-/* =========================================================
-   FORM DATA
-========================================================= */
-
-const data = {
-
-    propertyType: "",
-    about: "",
-    price: "",
-    propertyDetails: "",
-
-    plotSize: "",
-    plotArea: "",
-    constructedArea: "",
-
-    priceConfirmed: false,
-    locationConfirmed: false,
-    mapOpened: false
-
-};
-
-
-/* =========================================================
-   PROPERTY SELECTION
-   Automatically moves to Step 2
-========================================================= */
-
-document
-.querySelectorAll('input[name="property"]')
-.forEach(input => {
-
-    input.addEventListener("change", function() {
-
-        document
-        .querySelectorAll(".property")
-        .forEach(el => {
-
-            el.classList.remove("selected");
-
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            });
         });
-
-
-        this
-        .closest(".property")
-        .classList.add("selected");
-
-
-        data.propertyType = this.value;
-
-
-        if (this.value === "Villa") {
-
-            data.about = "Villa";
-
-            data.price = "₹48.86 Lakhs";
-
-            data.plotSize = "21 × 46 ft.";
-
-            data.plotArea = "966 sq.ft.";
-
-            data.constructedArea = "1,600 sq.ft.";
-
-            data.propertyDetails =
-                "3 Bedrooms Villa | Constructed Area: 1,600 sq.ft. | Plot Size: 21 × 46 ft. | Plot Area: 966 sq.ft.";
-
-        } else {
-
-            data.about = "Plot";
-
-            data.price = "₹23.18 Lakhs";
-
-            data.plotSize = "21 × 46 ft.";
-
-            data.plotArea = "966 sq.ft.";
-
-            data.constructedArea = "";
-
-            data.propertyDetails =
-                "Plot Size: 21 × 46 ft. | Plot Area: 966 sq.ft.";
-
-        }
-
-
-        /*
-         * Automatically move to Step 2
-         */
-
-        setTimeout(function() {
-
-            goStep(2);
-
-        }, 120);
-
-    });
-
-});
-
-/* =========================================================
-   PRICE CONFIRMATION
-========================================================= */
-
-document
-.getElementById("priceConfirm")
-.addEventListener("change", function() {
-
-    data.priceConfirmed =
-        this.checked;
-
-    document
-    .getElementById("next2")
-    .disabled =
-        !this.checked;
-
-});
-
-
-/* =========================================================
-   LOCATION CONFIRMATION
-========================================================= */
-
-document
-.getElementById("locationConfirm")
-.addEventListener("change", function() {
-
-    data.locationConfirmed =
-        this.checked;
-
-});
-
-
-/* =========================================================
-   MAP OPENED
-========================================================= */
-
-function mapOpened() {
-
-    data.mapOpened = true;
-
-}
-
-
-/* =========================================================
-   LANDMARKS
-========================================================= */
-
-function toggleLandmarks() {
-
-    const content =
-        document.getElementById(
-            "landmarksContent"
-        );
-
-    const toggle =
-        document.querySelector(
-            ".landmarks-toggle"
-        );
-
-    content.classList.toggle("open");
-
-    toggle.classList.toggle("open");
-
-}
-
-
-/* =========================================================
-   STEP NAVIGATION
-========================================================= */
-
-function goStep(step) {
-
-
-    if (step === 2) {
-
-        if (!data.propertyType) {
-            return;
-        }
-
-
-        document
-        .getElementById("selectedProperty")
-        .textContent =
-            data.propertyType === "Villa"
-            ? "3 Bedrooms Villas"
-            : "Residential Plots";
-
-
-        document
-        .getElementById("selectedPrice")
-        .textContent =
-            data.price;
-
-
-        document
-        .getElementById("villaDetails")
-        .style.display =
-            data.propertyType === "Villa"
-            ? "grid"
-            : "none";
-
-
-        document
-        .getElementById("plotDetails")
-        .style.display =
-            data.propertyType === "Plot"
-            ? "grid"
-            : "none";
-
-    }
-
-
-    if (step === 3) {
-
-        if (!data.priceConfirmed) {
-            return;
-        }
-
-    }
-
-
-    document
-    .querySelectorAll(".step")
-    .forEach(el => {
-
-        el.classList.remove("active");
-
-    });
-
-
-    document
-    .getElementById("step" + step)
-    .classList.add("active");
-
-
-    updateProgress(step);
-
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
-}
-
-
-/* =========================================================
-   PROGRESS
-========================================================= */
-
-function updateProgress(step) {
-
-
-    for (let i = 1; i <= 3; i++) {
-
-        const item =
-            document.getElementById("p" + i);
-
-        item.classList.remove(
-            "active",
-            "done"
-        );
-
-
-        if (i < step) {
-
-            item.classList.add("done");
-
-        }
-
-
-        if (i === step) {
-
-            item.classList.add("active");
-
-        }
-
-    }
-
-
-    for (let i = 1; i <= 2; i++) {
-
-        const line =
-            document.getElementById("l" + i);
-
-        if (i < step) {
-
-            line.classList.add("done");
-
-        } else {
-
-            line.classList.remove("done");
-
-        }
-
-    }
-
-}
-
-
-/* =========================================================
-   WEBHOOK PAYLOAD
-========================================================= */
-
-function createPayload(action) {
-
-
-    const payload =
-        new URLSearchParams();
-
-
-    payload.append(
-        "Action",
-        action
-    );
-
-
-    payload.append(
-        "About",
-        data.about
-    );
-
-
-    payload.append(
-        "Property Type",
-        data.propertyType
-    );
-
-
-    payload.append(
-        "Price",
-        data.price
-    );
-
-
-    payload.append(
-        "Price Confirmation",
-        data.priceConfirmed
-        ? "Confirmed"
-        : "Not Confirmed"
-    );
-
-
-    payload.append(
-        "Property Details",
-        data.propertyDetails
-    );
-
-
-    payload.append(
-        "Plot Size",
-        data.plotSize
-    );
-
-
-    payload.append(
-        "Plot Area",
-        data.plotArea
-    );
-
-
-    payload.append(
-        "Constructed Area",
-        data.constructedArea
-    );
-
-
-    payload.append(
-        "Location",
-        SITE_LOCATION
-    );
-
-
-    payload.append(
-        "Location Confirmation",
-        data.locationConfirmed
-        ? "Confirmed"
-        : "Not Confirmed"
-    );
-
-
-    payload.append(
-        "Google Map Opened",
-        data.mapOpened
-        ? "Yes"
-        : "No"
-    );
-
-
-    payload.append(
-        "Google Map Link",
-        MAP_URL
-    );
-
-
-    payload.append(
-        "Lead From",
-        "Krishna Anandam Website"
-    );
-
-
-    payload.append(
-        "Site",
-        "Krishna Anandam"
-    );
-
-
-    payload.append(
-        "Agent Name",
-        "RVMC"
-    );
-
-
-    payload.append(
-        "Client Contact",
-        "919956934058"
-    );
-
-
-    payload.append(
-        "Site Url",
-        window.location.href
-    );
-
-
-    payload.append(
-        "Call Number",
-        CALL_NUMBER
-    );
-
-
-    payload.append(
-        "Timestamp",
-        new Date().toLocaleString("en-IN")
-    );
-
-
-    return payload;
-
-}
-
-
-/* =========================================================
-   STEP 3 CONTINUE
-   NO WEBHOOK
-========================================================= */
-
-function submitInquiry() {
-
-
-    const error =
-        document.getElementById("error");
-
-
-    error.style.display =
-        "none";
-
-
-    if (!data.locationConfirmed) {
-
-        error.textContent =
-            "Please confirm the site location before continuing.";
-
-        error.style.display =
-            "block";
-
-        return;
-
-    }
-
-
-    /*
-     * IMPORTANT:
-     *
-     * No webhook is triggered here.
-     *
-     * Continue only opens the
-     * Thank You screen.
-     */
-
-    showSuccess();
-
-}
-
-
-/* =========================================================
-   SUCCESS
-========================================================= */
-
-function showSuccess() {
-
-
-    document
-    .getElementById("formContent")
-    .style.display =
-        "none";
-
-
-    document
-    .getElementById("success")
-    .style.display =
-        "block";
-
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
-}
-
-
-/* =========================================================
-   CALL BUTTON
-   WEBHOOK ONLY HERE
-========================================================= */
-
-function callConfirmed(event) {
-
-
-    event.preventDefault();
-
-
-    const payload =
-        createPayload(
-            "Call Confirmed"
-        );
-
-
-    /*
-     * Make webhook fires ONLY
-     * when Call Now is clicked.
-     */
-
-    fetch(
-        WEBHOOK,
-        {
-            method: "POST",
-            body: payload,
-            mode: "no-cors",
-            keepalive: true
-        }
-    ).catch(() => {});
-
-
-    /*
-     * Open phone dialer.
-     */
-
-    setTimeout(function() {
-
-        window.location.href =
-            "tel:" + CALL_NUMBER;
-
-    }, 200);
-
-}
-
-</script>
-
+    </script>
+
+    <!-- Facebook Pixel (Replace YOUR_PIXEL_ID) -->
+    <!--
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('track', 'PageView');
+    </script>
+    -->
 
 </body>
 </html>
