@@ -3,1353 +3,749 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Krishna Anandam - Premium 3 BHK Duplex Villas & Residential Plots in Baratha, Jhansi. Gated community with Premium Amenities for all. Book your dream home today!">
-    <meta property="og:title" content="Krishna Anandam | Premium Villas & Plots in Jhansi">
-    <meta property="og:description" content="3 BHK Villas & Residential Plots in a gated community with equal world-class amenities for all owners. Limited units only. Enquire now!">
-    <meta property="og:type" content="website">
-    <title>Krishna Anandam | Premium 3 BHK Villas & Plots in Jhansi - Enquire Now</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Krishna Anandam - Premium Villas & Plots in Jhansi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --gold: #D4A843;
-            --gold-dark: #B8860B;
-            --gold-light: #F0D78C;
-            --gold-pale: #FFFBF0;
-            --navy: #0F172A;
-            --navy-light: #1E293B;
-            --slate: #334155;
-            --slate-light: #64748B;
-            --gray: #F1F5F9;
-            --gray-warm: #FAFAF8;
-            --white: #ffffff;
-            --green: #10B981;
-            --red: #EF4444;
-            --teal: #14B8A6;
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-            --shadow-gold: 0 10px 40px -10px rgba(212, 168, 67, 0.4);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: var(--slate);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
-            overflow-x: hidden;
-            background: var(--white);
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInLeft {
-            from { opacity: 0; transform: translateX(-40px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes scaleIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(212, 168, 67, 0.4); }
-            50% { box-shadow: 0 0 0 15px rgba(212, 168, 67, 0); }
-        }
-        .anim-up { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
-        .anim-left { animation: fadeInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
-        .anim-scale { animation: scaleIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
-        .delay-4 { animation-delay: 0.4s; }
-        .delay-5 { animation-delay: 0.5s; }
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
+            color: #0a0a0a;
+            background: #fafafa;
         }
 
-        /* Hero */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 80px 24px 80px;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(180deg, var(--gray-warm) 0%, var(--white) 100%);
-        }
-        .hero-bg-pattern {
-            position: absolute;
-            inset: 0;
-            background-image: 
-                radial-gradient(circle at 20% 50%, rgba(212, 168, 67, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(212, 168, 67, 0.06) 0%, transparent 40%),
-                radial-gradient(circle at 60% 80%, rgba(15, 23, 42, 0.03) 0%, transparent 50%);
-        }
-        .hero-decor {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.5;
-            animation: float 6s ease-in-out infinite;
-        }
-        .hero-decor-1 {
-            width: 400px; height: 400px;
-            background: rgba(212, 168, 67, 0.15);
-            top: 10%; right: -5%;
-        }
-        .hero-decor-2 {
-            width: 300px; height: 300px;
-            background: rgba(212, 168, 67, 0.1);
-            bottom: 10%; left: -5%;
-            animation-delay: -3s;
-        }
-        .hero-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 80px;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            color: var(--green);
-            padding: 10px 24px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            margin-bottom: 28px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.8rem;
-            font-weight: 800;
-            color: var(--navy);
-            line-height: 1.15;
-            margin-bottom: 24px;
-            letter-spacing: -1px;
-        }
-        .hero h1 .highlight {
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .hero h1 .highlight-underline {
-            position: relative;
-            display: inline-block;
-        }
-        .hero h1 .highlight-underline::after {
-            content: '';
-            position: absolute;
-            bottom: 4px;
-            left: 0;
-            width: 100%;
-            height: 8px;
-            background: linear-gradient(90deg, var(--gold-light), var(--gold));
-            opacity: 0.3;
-            border-radius: 4px;
-            z-index: -1;
-        }
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: var(--slate-light);
-            margin-bottom: 36px;
-            line-height: 1.7;
-            max-width: 520px;
-        }
-        .hero-features {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 18px;
-            margin-bottom: 40px;
-        }
-        .hero-feature {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            color: var(--slate);
-            font-size: 0.95rem;
-            font-weight: 500;
-            padding: 10px 0;
-        }
-        .hero-feature-icon {
-            width: 44px; height: 44px;
-            background: linear-gradient(135deg, var(--gold-pale), #FFF8E7);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold-dark);
-            font-size: 1.1rem;
-            flex-shrink: 0;
-            box-shadow: 0 2px 8px rgba(212, 168, 67, 0.15);
-        }
-        .hero-cta-group {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            margin-bottom: 32px;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            color: white;
-            padding: 18px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.05rem;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: var(--shadow-gold);
-            position: relative;
-            overflow: hidden;
-        }
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.6s;
-        }
-        .btn-primary:hover::before { left: 100%; }
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 40px -10px rgba(212, 168, 67, 0.5);
-        }
-        .btn-secondary {
-            background: var(--white);
-            color: var(--navy);
-            padding: 18px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.05rem;
-            border: 2px solid var(--gray);
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: var(--shadow-sm);
-        }
-        .btn-secondary:hover {
-            border-color: var(--gold);
-            color: var(--gold-dark);
-            box-shadow: var(--shadow);
-            transform: translateY(-2px);
-        }
-        .btn-outline-gold {
-            background: transparent;
-            color: var(--gold-dark);
-            padding: 14px 32px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.95rem;
-            border: 2px solid var(--gold);
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .btn-outline-gold:hover {
-            background: var(--gold);
-            color: white;
-            transform: translateY(-2px);
-        }
-        .trust-badges {
-            display: flex;
-            gap: 28px;
-            flex-wrap: wrap;
-        }
-        .trust-badge {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--slate-light);
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-        .trust-badge i { color: var(--gold-dark); font-size: 1rem; }
-
-        /* Villa Image */
-        .villa-image-wrapper {
-            background: var(--white);
-            border-radius: 28px;
-            overflow: hidden;
-            animation: scaleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
-            box-shadow: 
-                0 0 0 1px rgba(0,0,0,0.05),
-                0 20px 60px -10px rgba(0,0,0,0.1),
-                0 40px 80px -20px rgba(0,0,0,0.08);
-            position: relative;
-        }
-        .villa-image {
+        .hero-video {
             width: 100%;
             height: auto;
             display: block;
-            object-fit: cover;
         }
 
-        /* Stats Bar */
-        .stats-bar {
-            background: linear-gradient(135deg, var(--navy), var(--navy-light));
-            padding: 50px 24px;
-            position: relative;
-            overflow: hidden;
+        .hero-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 16px;
+            margin-top: 24px;
         }
-        .stats-bar::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-        .stats-container {
-            max-width: 1280px;
+
+        .container {
+            max-width: 480px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
-            text-align: center;
-            position: relative;
-            z-index: 1;
+            padding: 0 20px;
         }
-        .stat-item { position: relative; }
-        .stat-item::after {
-            content: '';
-            position: absolute;
-            right: -20px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 1px;
-            height: 60%;
-            background: rgba(255,255,255,0.1);
+
+        .hero {
+            padding: 40px 0 32px;
+            background: #ffffff;
         }
-        .stat-item:last-child::after { display: none; }
-        .stat-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--gold);
-            line-height: 1;
-            margin-bottom: 8px;
-            display: inline-block;
-        }
-        .stat-label {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-        .stat-icon {
-            width: 50px; height: 50px;
-            background: rgba(212, 168, 67, 0.15);
-            border-radius: 14px;
+
+        .approval-badges {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 16px;
-            color: var(--gold);
-            font-size: 1.3rem;
-        }
-
-        /* Sections */
-        .section {
-            padding: 100px 24px;
-            position: relative;
-        }
-        .section-container {
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-        .section-header {
-            text-align: center;
-            margin-bottom: 70px;
-            max-width: 650px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .section-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--gold-pale);
-            color: var(--gold-dark);
-            padding: 8px 24px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
+            gap: 10px;
             margin-bottom: 20px;
-        }
-        .section-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            color: var(--navy);
-            margin-bottom: 16px;
-            line-height: 1.2;
-            letter-spacing: -0.5px;
-        }
-        .section-header p {
-            color: var(--slate-light);
-            font-size: 1.15rem;
-            line-height: 1.7;
+            flex-wrap: wrap;
         }
 
-        /* Specs Detail Section */
-        .specs-detail-section { background: var(--gray-warm); }
-        .specs-detail-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-        .specs-detail-card {
-            background: var(--white);
-            border-radius: 24px;
-            overflow: hidden;
-            border: 1px solid rgba(0,0,0,0.06);
-            box-shadow: var(--shadow-sm);
-            transition: all 0.4s ease;
-        }
-        .specs-detail-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
-        }
-        .specs-detail-header {
-            padding: 32px 32px 24px;
-            position: relative;
-        }
-        .specs-detail-header.villa-header {
-            background: linear-gradient(135deg, var(--gold-pale), #FFF8E7);
-        }
-        .specs-detail-header.plot-header {
-            background: linear-gradient(135deg, #ECFDF5, #D1FAE5);
-        }
-        .specs-detail-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 16px;
-            border-radius: 50px;
+        .approval-badge {
+            background: #0a0a0a;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
             font-size: 0.75rem;
             font-weight: 700;
-            color: white;
-            margin-bottom: 16px;
-        }
-        .specs-detail-badge.best { background: var(--green); }
-        .specs-detail-badge.new { background: var(--teal); }
-        .specs-detail-header h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            color: var(--navy);
-            margin-bottom: 8px;
-        }
-        .specs-detail-price-label {
-            font-size: 0.8rem;
-            color: var(--slate-light);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 4px;
-        }
-        .specs-detail-price {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--gold-dark);
-            line-height: 1.2;
-        }
-        .specs-detail-body {
-            padding: 28px 32px;
-        }
-        .specs-detail-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 14px 0;
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-        }
-        .specs-detail-row:last-child { border-bottom: none; }
-        .specs-detail-label {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 0.95rem;
-            color: var(--slate);
-            font-weight: 500;
-        }
-        .specs-detail-label i {
-            color: var(--gold-dark);
-            font-size: 1rem;
-            width: 20px;
-        }
-        .specs-detail-value {
-            font-weight: 700;
-            color: var(--navy);
-            font-size: 0.95rem;
-        }
-        .specs-detail-equal {
-            margin-top: 20px;
-            padding: 14px 18px;
-            background: rgba(16, 185, 129, 0.08);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.85rem;
-            color: var(--green);
-            font-weight: 600;
-        }
-        .specs-detail-equal i { font-size: 1.1rem; }
-        .specs-detail-cta {
-            padding: 0 32px 32px;
-        }
-        .specs-detail-cta a {
-            width: 100%;
-            justify-content: center;
+            letter-spacing: 0.5px;
         }
 
-        /* Amenities Grid */
-        .amenities-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
+        .rera-details {
+            background: #f5f5f5;
+            padding: 16px;
+            border-radius: 12px;
+            margin-top: 20px;
+            border-left: 4px solid #0a0a0a;
         }
-        .amenity-card {
-            background: var(--white);
-            border: 1px solid rgba(0,0,0,0.06);
-            border-radius: 20px;
-            padding: 40px 32px;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        .amenity-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--gold), var(--gold-light));
-            transform: scaleX(0);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            border-radius: 20px 20px 0 0;
-        }
-        .amenity-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);
-            border-color: transparent;
-        }
-        .amenity-card:hover::before { transform: scaleX(1); }
-        .amenity-icon {
-            width: 72px; height: 72px;
-            background: linear-gradient(135deg, var(--gold-pale), #FFF8E7);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            font-size: 1.6rem;
-            color: var(--gold-dark);
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(212, 168, 67, 0.15);
-        }
-        .amenity-card:hover .amenity-icon {
-            transform: scale(1.1) rotate(-5deg);
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            color: white;
-            box-shadow: var(--shadow-gold);
-        }
-        .amenity-card h3 {
-            font-size: 1.15rem;
-            margin-bottom: 10px;
-            color: var(--navy);
+
+        .rera-details h4 {
+            font-size: 0.85rem;
             font-weight: 700;
+            color: #0a0a0a;
+            margin-bottom: 8px;
         }
-        .amenity-card p {
-            font-size: 0.9rem;
-            color: var(--slate-light);
+
+        .rera-details p {
+            font-size: 0.8rem;
+            color: #4a4a4a;
+            margin: 4px 0;
+            line-height: 1.5;
+        }
+
+        .rera-details a {
+            color: #0a0a0a;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px solid #0a0a0a;
+        }
+
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            line-height: 1.1;
+            color: #0a0a0a;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            margin-bottom: 12px;
+            color: #6a6a6a;
+            font-weight: 400;
             line-height: 1.6;
         }
 
-        /* Specs */
-        .specs-section { background: var(--white); }
-        .specs-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-        }
-        .spec-card {
-            background: var(--white);
-            color: var(--text);
-            padding: 36px 24px;
-            border-radius: 20px;
-            text-align: center;
-            border: 1px solid rgba(0,0,0,0.05);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: var(--shadow-sm);
-            position: relative;
-            overflow: hidden;
-        }
-        .spec-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--gold), var(--gold-light));
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-        .spec-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-xl);
-        }
-        .spec-card:hover::after { transform: scaleX(1); }
-        .spec-card i {
-            font-size: 2.2rem;
-            color: var(--gold-dark);
-            margin-bottom: 16px;
+        .highlight {
+            background: #f5f5f5;
+            padding: 10px 16px;
+            border-radius: 8px;
             display: inline-block;
-            transition: transform 0.3s;
-        }
-        .spec-card:hover i { transform: scale(1.15); }
-        .spec-card h4 {
-            font-size: 1.1rem;
-            margin-bottom: 6px;
-            color: var(--navy);
-            font-weight: 700;
-        }
-        .spec-card p {
+            margin-top: 12px;
             font-size: 0.85rem;
-            color: var(--slate-light);
-        }
-
-        /* Location */
-        .location-section { background: var(--gray-warm); }
-        .location-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-        .location-info h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            color: var(--navy);
-            margin-bottom: 16px;
-            line-height: 1.2;
-        }
-        .location-info > p {
-            color: var(--slate-light);
-            margin-bottom: 36px;
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
-        .location-list {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-        .location-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: var(--white);
-            padding: 18px 24px;
-            border-radius: 14px;
-            border: 1px solid rgba(0,0,0,0.06);
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-sm);
-        }
-        .location-item:hover {
-            transform: translateX(8px);
-            box-shadow: var(--shadow-lg);
-            border-color: rgba(212, 168, 67, 0.3);
-        }
-        .location-name {
-            display: flex;
-            align-items: center;
-            gap: 14px;
             font-weight: 600;
-            color: var(--navy);
-            font-size: 0.95rem;
+            color: #0a0a0a;
         }
-        .location-name i {
-            color: var(--gold-dark);
-            font-size: 1.2rem;
-            width: 24px;
-        }
-        .location-dist {
-            background: linear-gradient(135deg, var(--gold-pale), #FFF8E7);
-            color: var(--gold-dark);
-            padding: 6px 18px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            border: 1px solid rgba(212, 168, 67, 0.2);
-        }
-        .location-cta { margin-top: 36px; }
-        .location-map {
-            background: var(--white);
-            border-radius: 24px;
-            overflow: hidden;
-            height: 100%;
-            min-height: 450px;
-            position: relative;
-            box-shadow: var(--shadow-xl);
-            border: 1px solid rgba(0,0,0,0.06);
-        }
-        .location-map iframe {
-            width: 100%;
-            height: 100%;
-            min-height: 450px;
-            border: none;
-        }
-        .map-overlay {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            padding: 16px 20px;
-            border-radius: 16px;
-            box-shadow: var(--shadow-lg);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .map-overlay i { color: var(--gold-dark); font-size: 1.3rem; }
-        .map-overlay span { font-weight: 600; color: var(--navy); font-size: 0.95rem; }
 
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, var(--navy) 0%, #1a1a3e 50%, var(--navy-light) 100%);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            padding: 120px 24px;
+        section {
+            padding: 40px 0;
         }
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-        .cta-decor {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.15;
-        }
-        .cta-decor-1 {
-            width: 500px; height: 500px;
-            background: var(--gold);
-            top: -20%; left: -10%;
-            animation: float 8s ease-in-out infinite;
-        }
-        .cta-decor-2 {
-            width: 400px; height: 400px;
-            background: var(--gold-light);
-            bottom: -20%; right: -10%;
-            animation: float 8s ease-in-out infinite reverse;
-        }
-        .cta-content {
-            position: relative;
-            z-index: 1;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        .urgency-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(239, 68, 68, 0.15);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            color: #FCA5A5;
-            padding: 12px 28px;
-            border-radius: 50px;
-            font-weight: 700;
-            margin-bottom: 28px;
-            animation: pulse-glow 2.5s infinite;
-            font-size: 0.9rem;
-        }
-        .cta-section h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.2rem;
-            color: white;
-            margin-bottom: 20px;
-            line-height: 1.2;
+
+        h3 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            color: #0a0a0a;
+            font-weight: 800;
             letter-spacing: -0.5px;
         }
-        .cta-section p {
-            color: rgba(255,255,255,0.7);
-            font-size: 1.15rem;
-            margin-bottom: 40px;
-            line-height: 1.7;
-        }
-        .cta-btn {
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
-            color: var(--navy);
-            padding: 20px 48px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 1.1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            box-shadow: 0 10px 40px -10px rgba(212, 168, 67, 0.5);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .cta-btn::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: left 0.6s;
-        }
-        .cta-btn:hover::before { left: 100%; }
-        .cta-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 50px -10px rgba(212, 168, 67, 0.6);
-        }
-        .cta-phone {
-            margin-top: 24px;
-            font-size: 1rem;
-            color: rgba(255,255,255,0.6);
-        }
-        .cta-phone strong { color: var(--gold); font-size: 1.2rem; }
 
-        /* Footer */
-        .footer {
-            background: var(--navy);
-            color: rgba(255,255,255,0.5);
-            padding: 50px 24px 30px;
-            text-align: center;
+        .grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 24px;
         }
-        .footer-brand {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--gold);
-            margin-bottom: 8px;
+
+        .card {
+            background: #ffffff;
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid #e8e8e8;
+        }
+
+        .card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #0a0a0a;
             font-weight: 700;
         }
-        .footer p { font-size: 0.9rem; }
-        .footer-bottom {
-            margin-top: 24px;
-            padding-top: 24px;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            font-size: 0.8rem;
-            opacity: 0.5;
+
+        .card p {
+            color: #6a6a6a;
+            font-size: 0.9rem;
         }
 
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--gray); }
-        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
-
-        /* Sticky Bottom Button */
-        .sticky-enquire-btn {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            color: white;
-            padding: 18px 24px;
-            border: none;
+        .price {
+            font-size: 1.8rem;
             font-weight: 800;
-            font-size: 1.1rem;
-            cursor: pointer;
-            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+            color: #0a0a0a;
+            margin: 12px 0;
+        }
+
+        .specs-list {
+            list-style: none;
+            margin-top: 16px;
+        }
+
+        .specs-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            color: #4a4a4a;
+        }
+
+        .specs-list li:last-child {
+            border-bottom: none;
+        }
+
+        .specs-list li span:last-child {
+            font-weight: 600;
+            color: #0a0a0a;
+        }
+
+        .stats {
+            background: #ffffff;
+            padding: 40px 0;
+            border-top: 1px solid #e8e8e8;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+            color: #0a0a0a;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #6a6a6a;
+            font-weight: 500;
+        }
+
+        .location-list {
+            list-style: none;
+            margin-top: 24px;
+        }
+
+        .location-list li {
+            padding: 16px;
+            background: #ffffff;
+            margin-bottom: 12px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            border: 1px solid #e8e8e8;
+        }
+
+        .location-list li span:first-child {
+            color: #4a4a4a;
+        }
+
+        .distance {
+            font-weight: 700;
+            color: #0a0a0a;
+            background: #f5f5f5;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .amenity {
+            padding: 24px 20px;
+            background: #ffffff;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid #e8e8e8;
+        }
+
+        .amenity-icon {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .amenity h4 {
+            margin-bottom: 4px;
+            color: #0a0a0a;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .amenity p {
+            font-size: 0.8rem;
+            color: #6a6a6a;
+            line-height: 1.4;
+        }
+
+        footer {
+            background: #0a0a0a;
+            color: white;
+            padding: 40px 0 24px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 8px 0;
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        .contact-section {
+            background: #0a0a0a;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .contact-section h3 {
+            color: white;
+            margin-bottom: 16px;
+            font-size: 1.8rem;
+        }
+
+        .contact-section p {
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            opacity: 0.8;
+        }
+
+        .floating-contact-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #0a0a0a;
+            color: white;
+            padding: 16px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
             transition: all 0.3s ease;
-            z-index: 1001;
+            font-size: 0.9rem;
+        }
+
+        .floating-contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-header {
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            color: #6a6a6a;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #0a0a0a;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .map-container {
+            margin-top: 24px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #e8e8e8;
+        }
+
+        .map-container iframe {
+            border-radius: 16px;
+        }
+
+        .map-label {
+            margin-top: 12px;
+            text-align: center;
+            color: #6a6a6a;
+            font-size: 0.85rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .btn-plan {
+            flex: 1;
+            background: #ffffff;
+            color: #0a0a0a;
+            padding: 16px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-        .sticky-enquire-btn:hover {
-            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-            box-shadow: 0 -6px 30px rgba(212, 168, 67, 0.4);
-        }
-        .sticky-enquire-btn i {
-            font-size: 1.2rem;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            color: white;
-            padding: 12px 24px;
-            border-radius: 50px;
-            border: none;
-            font-weight: 700;
-            font-size: 0.9rem;
+            gap: 8px;
+            border: 2px solid #e8e8e8;
             cursor: pointer;
-            box-shadow: var(--shadow-gold);
             transition: all 0.3s ease;
         }
-        .mobile-menu-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px -5px rgba(212, 168, 67, 0.5);
+
+        .btn-plan:hover {
+            background: #0a0a0a;
+            color: white;
+            border-color: #0a0a0a;
         }
 
-        @media (max-width: 1024px) {
-            .hero-container { grid-template-columns: 1fr; gap: 50px; }
-            .hero h1 { font-size: 3rem; }
-            .header-nav { display: none; }
-            .amenities-grid { grid-template-columns: repeat(2, 1fr); }
-            .specs-grid { grid-template-columns: repeat(2, 1fr); }
-            .location-grid { grid-template-columns: 1fr; gap: 50px; }
-            .stats-container { grid-template-columns: repeat(2, 1fr); gap: 30px; }
-            .stat-item::after { display: none; }
-            .specs-detail-grid { grid-template-columns: 1fr; }
-            .mobile-menu-btn { display: block; }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
-        @media (max-width: 640px) {
-            .hero h1 { font-size: 2.4rem; }
-            .hero-features { grid-template-columns: 1fr; }
-            .hero-cta-group { flex-direction: column; }
-            .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
-            .amenities-grid { grid-template-columns: 1fr; }
-            .specs-grid { grid-template-columns: 1fr; }
-            .section-header h2 { font-size: 2rem; }
-            .cta-section h2 { font-size: 2.2rem; }
-            .stats-container { grid-template-columns: 1fr 1fr; }
-            .form-container iframe { height: 750px; }
-            .trust-badges { justify-content: center; }
-            .section { padding: 70px 20px; }
-            .specs-detail-price { font-size: 1.8rem; }
+
+        .modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 100%;
+            max-height: 90vh;
+            animation: zoomIn 0.3s ease;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 12px;
+            object-fit: contain;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: white;
+            color: #0a0a0a;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 24px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .floating-contact-btn {
+                padding: 14px 24px;
+                font-size: 0.85rem;
+                bottom: 20px;
+                right: 20px;
+            }
         }
     </style>
 </head>
 <body>
+    <video class="hero-video" autoplay loop muted playsinline>
+        <source src="https://github.com/pariflex1/ka-lead-form/raw/main/kavideo.webm" type="video/webm">
+    </video>
 
     <section class="hero">
-        <div class="hero-bg-pattern"></div>
-        <div class="hero-decor hero-decor-1"></div>
-        <div class="hero-decor hero-decor-2"></div>
-
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-badge anim-up">
-                    <i class="fas fa-shield-check"></i>
-                    RERA Approved Project
-                </div>
-                <h1 class="anim-up delay-1">
-                    Premium <span class="highlight">Villas & Plots</span><br>
-                    in <span class="highlight-underline">the Heart of Jhansi</span>
-                </h1>
-                <p class="hero-subtitle anim-up delay-2">
-                    Choose from <strong>3 BHK Duplex Villas</strong> or <strong>Residential Plots</strong> 
-                    across 4.4 acres of prime land at Baratha, Jhansi. Only <strong>97 exclusive units</strong> 
-                    in a secured gated community with <strong>Premium Amenities for all</strong>.
-                </p>
-                <div class="hero-features anim-up delay-3">
-                    <div class="hero-feature">
-                        <div class="hero-feature-icon"><i class="fas fa-house-chimney"></i></div>
-                        <span>3 BHK Duplex Villas</span>
-                    </div>
-                    <div class="hero-feature">
-                        <div class="hero-feature-icon"><i class="fas fa-map"></i></div>
-                        <span>Residential Plots</span>
-                    </div>
-                    <div class="hero-feature">
-                        <div class="hero-feature-icon"><i class="fas fa-equals"></i></div>
-                        <span>Premium Amenities for All</span>
-                    </div>
-                    <div class="hero-feature">
-                        <div class="hero-feature-icon"><i class="fas fa-shield-halved"></i></div>
-                        <span>24/7 Gated Security</span>
-                    </div>
-                    <div class="hero-feature">
-                        <div class="hero-feature-icon"><i class="fas fa-bolt"></i></div>
-                        <span>Full Power Backup</span>
-                    </div>
-                    <div class="hero-feature">
-                        <div class="hero-feature-icon"><i class="fas fa-file-shield"></i></div>
-                        <span>100% Free-Hold</span>
-                    </div>
-                </div>
-                <div class="trust-badges anim-up delay-5">
-                    <div class="trust-badge"><i class="fas fa-lock"></i><span>Gated Community</span></div>
-                    <div class="trust-badge"><i class="fas fa-file-shield"></i><span>Free-Hold Property</span></div>
-                    <div class="trust-badge"><i class="fas fa-certificate"></i><span>RERA Registered</span></div>
-                </div>
+        <div class="container">
+            <div class="approval-badges">
+                <span class="approval-badge jda">✓ JDA APPROVED</span>
+                <span class="approval-badge rera">✓ RERA REGISTERED</span>
             </div>
-
-            <div class="villa-image-wrapper" id="enquire">
-                <img src="https://raw.githubusercontent.com/pariflex1/ka-lead-form/refs/heads/main/ka.webp" alt="Premium Villa" class="villa-image">
+            <h2>Premium Villas & Residential Plots in Jhansi</h2>
+            <p>Your Own Home. Your Own Plot. Your Own Peace.</p>
+            <p>A premium gated residential community at Baratha, Jhansi - thoughtfully planned for families who want a peaceful lifestyle, modern amenities and a well-connected location.</p>
+            <p class="highlight">Limited Premium Villas & Plots | 4.4 Acres | Gated Community</p>
+            <div class="rera-details">
+                <h4>RERA Registration Details</h4>
+                <p><strong>RERA No:</strong> UPRERAPRJ687405</p>
+                <p><strong>Website:</strong> <a href="https://www.up-rera.in" target="_blank">www.up-rera.in</a></p>
+                <p><strong>Collection AC:</strong> 19500210002445</p>
+            </div>
+            <div class="action-buttons">
+                <button class="btn-plan" onclick="openModal('layout')">📐 View Layout</button>
+                <button class="btn-plan" onclick="openModal('unit')">🏠 Unit Plan</button>
             </div>
         </div>
     </section>
 
-    <div class="stats-bar">
-        <div class="stats-container">
-            <div class="stat-item reveal">
-                <div class="stat-icon"><i class="fas fa-map"></i></div>
-                <div class="stat-number" data-count="4.4">0</div>
-                <div class="stat-label">Acres of Prime Land</div>
-            </div>
-            <div class="stat-item reveal">
-                <div class="stat-icon"><i class="fas fa-building"></i></div>
-                <div class="stat-number" data-count="97">0</div>
-                <div class="stat-label">Exclusive Units Only</div>
-            </div>
-            <div class="stat-item reveal">
-                <div class="stat-icon"><i class="fas fa-equals"></i></div>
-                <div class="stat-number">100%</div>
-                <div class="stat-label">Premium Amenities</div>
-            </div>
-            <div class="stat-item reveal">
-                <div class="stat-icon"><i class="fas fa-certificate"></i></div>
-                <div class="stat-number">100%</div>
-                <div class="stat-label">Free-Hold Property</div>
+    <div class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat">
+                    <div class="stat-number">4.4</div>
+                    <div class="stat-label">Acres of Prime Land</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">97</div>
+                    <div class="stat-label">Exclusive Units</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Premium Amenities</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Free-Hold</div>
+                </div>
             </div>
         </div>
     </div>
 
-    <section class="section specs-detail-section" id="specs-detail">
-        <div class="section-container">
-            <div class="section-header reveal">
-                <span class="section-label"><i class="fas fa-clipboard-list"></i> Property Details</span>
-                <h2>Choose Your Perfect <span style="color: var(--gold-dark);">Dream Home</span></h2>
-                <p>Whether you prefer a ready-to-move villa or want to build your own home on a plot, both options come with the same premium plot size and equal community benefits.</p>
-            </div>
-            <div class="specs-detail-grid">
-                <div class="specs-detail-card reveal">
-                    <div class="specs-detail-header villa-header">
-                        <span class="specs-detail-badge best"><i class="fas fa-star"></i> Best Seller</span>
-                        <h3>3 Bedrooms Villas</h3>
-                        <div class="specs-detail-price-label">Basic Price Starts From</div>
-                        <div class="specs-detail-price">Rs. 48.86 Lakhs</div>
-                    </div>
-                    <div class="specs-detail-body">
-                        <div class="specs-detail-row">
-                            <span class="specs-detail-label"><i class="fas fa-bed"></i> Bedrooms</span>
-                            <span class="specs-detail-value">3 Bedrooms</span>
-                        </div>
-                        <div class="specs-detail-row">
-                            <span class="specs-detail-label"><i class="fas fa-ruler-combined"></i> Constructed Area</span>
-                            <span class="specs-detail-value">1,600 sq.ft.</span>
-                        </div>
-                        <div class="specs-detail-row">
-                            <span class="specs-detail-label"><i class="fas fa-vector-square"></i> Plot Size</span>
-                            <span class="specs-detail-value">21 x 46 ft.</span>
-                        </div>
-                        <div class="specs-detail-row">
-                            <span class="specs-detail-label"><i class="fas fa-map"></i> Plot Area</span>
-                            <span class="specs-detail-value">966 sq.ft.</span>
-                        </div>
-                        <div class="specs-detail-equal">
-                            <i class="fas fa-check-circle"></i>
-                            Same community amenities as plot owners
-                        </div>
-                    </div>
+    <section>
+        <div class="container">
+            <h3 class="section-header">Choose Your Dream Home</h3>
+            <p class="section-subtitle">Whether you prefer a ready-to-move villa or want to build your own home on a plot, both options come with the same premium plot size and equal community benefits.</p>
+            
+            <div class="grid">
+                <div class="card">
+                    <span class="badge">Best Seller</span>
+                    <h4>3 BHK Duplex Villas</h4>
+                    <div class="price">₹48.86 Lakhs</div>
+                    <p style="margin-bottom: 12px;">Basic Price Starts From</p>
+                    <ul class="specs-list">
+                        <li><span>Bedrooms</span><span>3 BHK</span></li>
+                        <li><span>Constructed Area</span><span>1,600 sq.ft.</span></li>
+                        <li><span>Plot Size</span><span>21 x 46 ft.</span></li>
+                        <li><span>Plot Area</span><span>966 sq.ft.</span></li>
+                    </ul>
+                    <p style="margin-top: 14px; font-weight: 600; font-size: 0.85rem; color: #667eea;">✓ Same amenities as plot owners</p>
                 </div>
-                <div class="specs-detail-card reveal">
-                    <div class="specs-detail-header plot-header">
-                        <span class="specs-detail-badge new"><i class="fas fa-bolt"></i> New Launch</span>
-                        <h3>Residential Plots</h3>
-                        <div class="specs-detail-price-label">Basic Price Starts From</div>
-                        <div class="specs-detail-price">Rs. 23.18 Lakhs</div>
-                    </div>
-                    <div class="specs-detail-body">
-                        <div class="specs-detail-row">
-                            <span class="specs-detail-label"><i class="fas fa-vector-square"></i> Plot Size</span>
-                            <span class="specs-detail-value">21 x 46 ft.</span>
-                        </div>
-                        <div class="specs-detail-row">
-                            <span class="specs-detail-label"><i class="fas fa-map"></i> Plot Area</span>
-                            <span class="specs-detail-value">966 sq.ft.</span>
-                        </div>
-                        <div class="specs-detail-row">
-                            <span class="specs-detail-label"><i class="fas fa-road"></i> Road Access</span>
-                            <span class="specs-detail-value">Wide Internal Roads</span>
-                        </div>
-                        <div class="specs-detail-row">
-                            <span class="specs-detail-label"><i class="fas fa-file-shield"></i> Title</span>
-                            <span class="specs-detail-value">Free-Hold</span>
-                        </div>
-                        <div class="specs-detail-equal">
-                            <i class="fas fa-check-circle"></i>
-                            Same community amenities as villa owners
-                        </div>
-                    </div>
+
+                <div class="card">
+                    <span class="badge">New Launch</span>
+                    <h4>Residential Plots</h4>
+                    <div class="price">₹23.18 Lakhs</div>
+                    <p style="margin-bottom: 12px;">Basic Price Starts From</p>
+                    <ul class="specs-list">
+                        <li><span>Plot Size</span><span>21 x 46 ft.</span></li>
+                        <li><span>Plot Area</span><span>966 sq.ft.</span></li>
+                        <li><span>Road Access</span><span>Wide Roads</span></li>
+                        <li><span>Title</span><span>Free-Hold</span></li>
+                    </ul>
+                    <p style="margin-top: 14px; font-weight: 600; font-size: 0.85rem; color: #667eea;">✓ Same amenities as villa owners</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section" id="amenities">
-        <div class="section-container">
-            <div class="section-header reveal">
-                <span class="section-label"><i class="fas fa-star"></i> World-Class Amenities</span>
-                <h2>Premium Amenities for <span style="color: var(--gold-dark);">Every Owner</span></h2>
-                <p>At Krishna Anandam, we believe in equality. Every villa owner and plot owner enjoys the same world-class community facilities without any difference.</p>
-            </div>
+    <section style="background: #f8f9fa;">
+        <div class="container">
+            <h3 class="section-header">Premium Amenities</h3>
+            <p class="section-subtitle">Every villa owner and plot owner enjoys the same world-class community facilities without any difference.</p>
+            
             <div class="amenities-grid">
-                <div class="amenity-card reveal">
-                    <div class="amenity-icon"><i class="fas fa-water"></i></div>
-                    <h3>Swimming Pool</h3>
-                    <p>Resort-style pool for relaxation and fitness within the community.</p>
+                <div class="amenity">
+                    <div class="amenity-icon">🏊</div>
+                    <h4>Swimming Pool</h4>
+                    <p>Resort-style pool</p>
                 </div>
-                <div class="amenity-card reveal">
-                    <div class="amenity-icon"><i class="fas fa-child-reaching"></i></div>
-                    <h3>Children's Play Area</h3>
-                    <p>Safe and vibrant play zones designed for your little ones to enjoy.</p>
+                <div class="amenity">
+                    <div class="amenity-icon">🎪</div>
+                    <h4>Play Area</h4>
+                    <p>Safe play zones</p>
                 </div>
-                <div class="amenity-card reveal">
-                    <div class="amenity-icon"><i class="fas fa-spa"></i></div>
-                    <h3>Meditation & Yoga Zones</h3>
-                    <p>Peaceful dedicated spaces for your daily wellness routine.</p>
+                <div class="amenity">
+                    <div class="amenity-icon">🧘</div>
+                    <h4>Yoga Zones</h4>
+                    <p>Wellness spaces</p>
                 </div>
-                <div class="amenity-card reveal">
-                    <div class="amenity-icon"><i class="fas fa-table-tennis"></i></div>
-                    <h3>Badminton Court</h3>
-                    <p>Professional-grade court for sports enthusiasts.</p>
+                <div class="amenity">
+                    <div class="amenity-icon">🏸</div>
+                    <h4>Badminton</h4>
+                    <p>Sports facility</p>
                 </div>
-                <div class="amenity-card reveal">
-                    <div class="amenity-icon"><i class="fas fa-chair"></i></div>
-                    <h3>Senior Citizen's Area</h3>
-                    <p>Comfortable sitting spaces for elderly residents.</p>
+                <div class="amenity">
+                    <div class="amenity-icon">👴</div>
+                    <h4>Senior Area</h4>
+                    <p>Sitting spaces</p>
                 </div>
-                <div class="amenity-card reveal">
-                    <div class="amenity-icon"><i class="fas fa-store"></i></div>
-                    <h3>Shopping Arcade</h3>
-                    <p>Convenient on-site shopping for daily needs.</p>
+                <div class="amenity">
+                    <div class="amenity-icon">🛒</div>
+                    <h4>Shopping</h4>
+                    <p>On-site arcade</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section specs-section" id="specs">
-        <div class="section-container">
-            <div class="section-header reveal">
-                <span class="section-label"><i class="fas fa-ruler-combined"></i> Villa Configuration</span>
-                <h2>Thoughtfully Designed <span style="color: var(--gold-dark);">Living Spaces</span></h2>
-                <p>Every corner crafted to provide comfort, elegance, and functionality.</p>
-            </div>
-            <div class="specs-grid">
-                <div class="spec-card reveal">
-                    <i class="fas fa-bed"></i>
+    <section>
+        <div class="container">
+            <h3 class="section-header">Villa Features</h3>
+            <p class="section-subtitle">Every corner crafted to provide comfort, elegance, and functionality.</p>
+            
+            <div class="amenities-grid">
+                <div class="amenity">
+                    <div class="amenity-icon">🛏️</div>
                     <h4>3 Bedrooms</h4>
-                    <p>Spacious & well-ventilated</p>
+                    <p>Spacious rooms</p>
                 </div>
-                <div class="spec-card reveal">
-                    <i class="fas fa-couch"></i>
+                <div class="amenity">
+                    <div class="amenity-icon">🛋️</div>
                     <h4>Drawing & Dining</h4>
-                    <p>Grand living spaces</p>
+                    <p>Grand spaces</p>
                 </div>
-                <div class="spec-card reveal">
-                    <i class="fas fa-kitchen-set"></i>
+                <div class="amenity">
+                    <div class="amenity-icon">🍳</div>
                     <h4>Modern Kitchen</h4>
-                    <p>Efficient layout design</p>
+                    <p>Efficient layout</p>
                 </div>
-                <div class="spec-card reveal">
-                    <i class="fas fa-seedling"></i>
+                <div class="amenity">
+                    <div class="amenity-icon">🌳</div>
                     <h4>Private Lawns</h4>
                     <p>Front & rear gardens</p>
                 </div>
-                <div class="spec-card reveal">
-                    <i class="fas fa-door-closed"></i>
+                <div class="amenity">
+                    <div class="amenity-icon">🚪</div>
                     <h4>Porch & Lobby</h4>
-                    <p>Grand entrance area</p>
+                    <p>Grand entrance</p>
                 </div>
-                <div class="spec-card reveal">
-                    <i class="fas fa-person-booth"></i>
+                <div class="amenity">
+                    <div class="amenity-icon">🏡</div>
                     <h4>Balcony</h4>
-                    <p>Private outdoor space</p>
+                    <p>Outdoor space</p>
                 </div>
-                <div class="spec-card reveal">
-                    <i class="fas fa-car"></i>
+                <div class="amenity">
+                    <div class="amenity-icon">🚗</div>
                     <h4>Parking</h4>
-                    <p>Ample vehicle space</p>
+                    <p>Ample space</p>
                 </div>
-                <div class="spec-card reveal">
-                    <i class="fas fa-bolt"></i>
+                <div class="amenity">
+                    <div class="amenity-icon">⚡</div>
                     <h4>Power Backup</h4>
-                    <p>24/7 uninterrupted supply</p>
+                    <p>24/7 supply</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section location-section" id="location">
-        <div class="section-container">
-            <div class="section-header reveal">
-                <span class="section-label"><i class="fas fa-location-dot"></i> Prime Location</span>
-                <h2>Strategically Located in <span style="color: var(--gold-dark);">Baratha, Jhansi</span></h2>
-                <p>Excellent connectivity to all major landmarks and city centers.</p>
+    <section style="background: #f8f9fa;">
+        <div class="container">
+            <h3 class="section-header">Prime Location</h3>
+            <p class="section-subtitle">Strategically located in Baratha, Jhansi with excellent connectivity to major landmarks.</p>
+            
+            <ul class="location-list">
+                <li>
+                    <span>📍 Kanpur-Gwalior Bypass</span>
+                    <span class="distance">11 km</span>
+                </li>
+                <li>
+                    <span>🏥 Medical College</span>
+                    <span class="distance">12 km</span>
+                </li>
+                <li>
+                    <span>🚌 Jhansi Bus Stand</span>
+                    <span class="distance">16 km</span>
+                </li>
+                <li>
+                    <span>📍 Elite Crossing</span>
+                    <span class="distance">17 km</span>
+                </li>
+                <li>
+                    <span>🏙️ Manik Chock (Sehar)</span>
+                    <span class="distance">18 km</span>
+                </li>
+                <li>
+                    <span>🚆 Railway Station</span>
+                    <span class="distance">19 km</span>
+                </li>
+            </ul>
+            
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4468.944626776688!2d78.7172935!3d25.4911647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39779d9c45e6c8f5%3A0x88e22742038cef68!2sKrishna%20Anandam!5e1!3m2!1sen!2sin!4v1786365898501!5m2!1sen!2sin" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
-            <div class="location-grid">
-                <div class="location-info reveal">
-                    <h3>Key Distances from Project Site</h3>
-                    <p>Well-connected to major transportation hubs, medical facilities, and city centers.</p>
-                    <div class="location-list">
-                        <div class="location-item">
-                            <span class="location-name"><i class="fas fa-road"></i> Kanpur-Gwalior Bypass</span>
-                            <span class="location-dist">11 km</span>
-                        </div>
-                        <div class="location-item">
-                            <span class="location-name"><i class="fas fa-hospital"></i> Medical College</span>
-                            <span class="location-dist">12 km</span>
-                        </div>
-                        <div class="location-item">
-                            <span class="location-name"><i class="fas fa-bus"></i> Jhansi Bus Stand</span>
-                            <span class="location-dist">16 km</span>
-                        </div>
-                        <div class="location-item">
-                            <span class="location-name"><i class="fas fa-location-dot"></i> Elite Crossing</span>
-                            <span class="location-dist">17 km</span>
-                        </div>
-                        <div class="location-item">
-                            <span class="location-name"><i class="fas fa-city"></i> Manik Chock (Sehar)</span>
-                            <span class="location-dist">18 km</span>
-                        </div>
-                        <div class="location-item">
-                            <span class="location-name"><i class="fas fa-train"></i> Jhansi Railway Station</span>
-                            <span class="location-dist">19 km</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="location-map reveal">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4468.944626776688!2d78.7172935!3d25.4911647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39779d9c45e6c8f5%3A0x88e22742038cef68!2sKrishna%20Anandam!5e1!3m2!1sen!2sin!4v1786365898501!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                    <div class="map-overlay">
-                        <i class="fas fa-map-pin"></i>
-                        <span>Near Diamond Cement, Jhansi-Kanpur Road, Baratha, Jhansi (UP)</span>
-                    </div>
-                </div>
-            </div>
+            <p class="map-label">📍 Near Diamond Cement, Jhansi-Kanpur Road, Baratha, Jhansi (UP)</p>
         </div>
     </section>
 
-    <section class="cta-section">
-        <div class="cta-decor cta-decor-1"></div>
-        <div class="cta-decor cta-decor-2"></div>
-        <div class="cta-content">
-            <div class="urgency-badge">
-                <i class="fas fa-fire"></i>
-                Only 97 Units Available — Selling Fast!
-            </div>
-            <h2>Don't Miss Your Chance to Own a <span style="color: var(--gold);">Premium Villa or Plot</span></h2>
-            <p>Join the select few who will call Krishna Anandam their home. Every owner gets the same world-class amenities, security, and community lifestyle. Fill in your details for the best pricing.</p>
-            <p class="cta-phone">
-                <i class="fas fa-phone"></i> Request for a <strong>CALL</strong>
-            </p>
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h3>Don't Miss Your Chance!</h3>
+            <p>Only 97 Units Available — Selling Fast!</p>
+            <p>Join the select few who will call Krishna Anandam their home. Every owner gets the same world-class amenities, security, and lifestyle.</p>
+            <a href="https://pariflex1.github.io/ka-lead-form/form" class="cta-button" style="background: white; color: #667eea; font-size: 1rem; padding: 14px 28px; font-weight: 700;">Enquire Now</a>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="footer-brand">Krishna Anandam</div>
-        <p>Premium 3 BHK Duplex Villas & Residential Plots | Baratha, Jhansi</p>
-        <p style="margin-top: 6px; font-size: 0.85rem; opacity: 0.7;">Premium Amenities for all villa and plot owners in our gated community</p>
-        <div class="footer-bottom">
-            &copy; 2026 Krishna Anandam. All Rights Reserved. RERA Registered.
+    <footer>
+        <div class="container">
+            <h2 style="margin-bottom: 10px; font-size: 1.3rem; font-weight: 700;">Krishna Anandam</h2>
+            <p>Premium 3 BHK Duplex Villas & Residential Plots</p>
+            <p>Baratha, Jhansi</p>
+            <p style="margin-top: 12px; opacity: 0.7;">Premium Amenities for all villa and plot owners</p>
+            <p style="margin-top: 20px; opacity: 0.6; font-size: 0.8rem;">&copy; 2026 Krishna Anandam. All Rights Reserved. RERA Registered.</p>
         </div>
     </footer>
 
-    <!-- Sticky Bottom Enquire Now Button -->
-    <a href="https://pariflex1.github.io/ka-lead-form/form" class="sticky-enquire-btn">
-        <i class="fas fa-paper-plane"></i>
-        Enquire Now
-    </a>
+    <a href="https://pariflex1.github.io/ka-lead-form/form" class="floating-contact-btn">Contact Us</a>
+
+    <!-- Modals -->
+    <div id="layoutModal" class="modal" onclick="closeModal('layout')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal('layout')">Close</button>
+            <img src="https://raw.githubusercontent.com/pariflex1/ka-lead-form/refs/heads/main/layout.JPG" alt="Layout Plan" class="modal-image">
+        </div>
+    </div>
+
+    <div id="unitModal" class="modal" onclick="closeModal('unit')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal('unit')">Close</button>
+            <img src="https://raw.githubusercontent.com/pariflex1/ka-lead-form/refs/heads/main/unit.JPG" alt="Unit Plan" class="modal-image">
+        </div>
+    </div>
 
     <script>
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    const statNum = entry.target.querySelector('.stat-number[data-count]');
-                    if (statNum && !statNum.classList.contains('counted')) {
-                        animateCounter(statNum);
-                        statNum.classList.add('counted');
-                    }
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-        function animateCounter(el) {
-            const target = parseFloat(el.dataset.count);
-            const duration = 2000;
-            const start = performance.now();
-            const isDecimal = target % 1 !== 0;
-            function update(currentTime) {
-                const elapsed = currentTime - start;
-                const progress = Math.min(elapsed / duration, 1);
-                const easeOut = 1 - Math.pow(1 - progress, 3);
-                const current = target * easeOut;
-                el.textContent = isDecimal ? current.toFixed(1) : Math.floor(current);
-                if (progress < 1) requestAnimationFrame(update);
-            }
-            requestAnimationFrame(update);
+        // Modal Functions
+        function openModal(type) {
+            const modal = document.getElementById(type === 'layout' ? 'layoutModal' : 'unitModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            });
+        function closeModal(type) {
+            const modal = document.getElementById(type === 'layout' ? 'layoutModal' : 'unitModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal('layout');
+                closeModal('unit');
+            }
         });
     </script>
-
-    <!-- Facebook Pixel (Replace YOUR_PIXEL_ID) -->
-    <!--
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', 'YOUR_PIXEL_ID');
-    fbq('track', 'PageView');
-    </script>
-    -->
-
 </body>
 </html>
