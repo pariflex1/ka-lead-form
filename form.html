@@ -1,0 +1,1979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>Krishna Anandam | Property Inquiry</title>
+
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;min-height:100%;background:#fff}
+body{
+  color:#111;
+  font-family:Arial,Helvetica,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+button,a,input{font:inherit;-webkit-tap-highlight-color:transparent}
+.form-wrap{
+  width:100%;
+  max-width:680px;
+  min-height:100vh;
+  min-height:100dvh;
+  margin:0 auto;
+  padding:18px;
+}
+.card{
+  width:100%;
+  min-height:calc(100vh - 36px);
+  min-height:calc(100dvh - 36px);
+  padding:18px 0 28px;
+  background:#fff;
+}
+.title{margin:0 0 7px;text-align:center;color:#111;font-size:32px;line-height:1.08;font-weight:800;letter-spacing:-1.2px}
+.subtitle{margin:0 0 24px;text-align:center;color:#666;font-size:15px;line-height:1.4}
+.progress{display:flex;align-items:center;width:100%;margin:0 0 30px}
+.pstep{
+  width:36px;height:36px;min-width:36px;display:flex;align-items:center;justify-content:center;
+  border-radius:50%;background:#e9e9e9;color:#777;font-size:15px;font-weight:700
+}
+.pstep.active{background:#111;color:#fff}.pstep.done{background:#111;color:#fff}
+.pline{flex:1;height:2px;background:#e3e3e3}.pline.done{background:#111}
+.step{display:none}.step.active{display:block}
+.step-title{margin:0 0 6px;color:#111;font-size:30px;line-height:1.08;font-weight:800;letter-spacing:-1px}
+.step-desc{margin:0 0 22px;color:#666;font-size:15px;line-height:1.45}
+.property-list{display:grid;gap:14px}
+.property{
+  position:relative;display:block;width:100%;padding:24px 20px;
+  border:2px solid #ddd;border-radius:16px;background:#fff;cursor:pointer;
+  transition:border-color .15s,background .15s,transform .15s
+}
+.property:active{transform:scale(.99)}
+.property.selected{border-color:#111;background:#fafafa}
+.property input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.property-name{color:#111;font-size:30px;line-height:1.05;font-weight:800;letter-spacing:-.7px}
+.property-sub{margin-top:8px;color:#666;font-size:15px;line-height:1.35}
+.property-price{margin-top:15px;color:#111;font-size:23px;line-height:1.15;font-weight:800}
+.price-card{
+  width:100%;overflow:hidden;border:2px solid #111;border-radius:16px;background:#fff
+}
+.price-top{padding:24px 20px;background:#111;color:#fff;text-align:left}
+.price-property{margin:0 0 10px;color:#fff;font-size:25px;line-height:1.1;font-weight:800}
+.price-label{color:#aaa;font-size:12px;line-height:1.3;font-weight:700;letter-spacing:.6px}
+.price-big{margin-top:5px;color:#fff;font-size:43px;line-height:1.05;font-weight:800;letter-spacing:-1.2px}
+.price-content{padding:16px}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.detail-box{padding:14px;border:1px solid #ddd;border-radius:11px;background:#fff}
+.detail-label{color:#777;font-size:12px;line-height:1.3;font-weight:700}
+.detail-value{margin-top:5px;color:#111;font-size:17px;line-height:1.25;font-weight:700}
+.price-note{margin-top:12px;padding:10px 12px;border-radius:9px;background:#f3f3f3;color:#555;font-size:12px;line-height:1.4}
+.confirm{
+  display:flex;align-items:flex-start;gap:11px;width:100%;margin-top:15px;padding:15px;
+  border:2px solid #ddd;border-radius:12px;background:#fff;cursor:pointer
+}
+.confirm input{width:22px;height:22px;min-width:22px;margin:1px 0 0;accent-color:#111}
+.confirm-text{color:#222;font-size:15px;line-height:1.45;font-weight:600}
+.location{width:100%;overflow:hidden;border:2px solid #111;border-radius:16px;background:#fff}
+.location-head{padding:14px 16px;background:#111;color:#fff;font-size:13px;line-height:1.3;font-weight:800;letter-spacing:.5px}
+.location-body{padding:19px 16px}
+.address{color:#111;font-size:25px;line-height:1.28;font-weight:800;letter-spacing:-.4px}
+.location-note{margin-top:9px;color:#666;font-size:13px;line-height:1.4}
+.map-btn{
+  display:flex;align-items:center;justify-content:center;width:100%;min-height:56px;margin-top:16px;
+  padding:12px 15px;border-radius:11px;background:#111!important;color:#fff!important;
+  text-align:center;text-decoration:none!important;font-size:16px!important;font-weight:700!important
+}
+.landmarks{margin-top:14px}
+.landmarks-toggle{
+  width:100%;min-height:50px;padding:11px 14px;display:flex;align-items:center;justify-content:space-between;
+  border:1px solid #ddd;border-radius:11px;background:#fff;color:#111;font-size:16px;font-weight:700;cursor:pointer
+}
+.landmarks-toggle .arrow{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#eee;font-size:15px;transition:transform .2s}
+.landmarks-toggle.open .arrow{transform:rotate(180deg)}
+.landmarks-content{display:none;padding-top:10px}.landmarks-content.open{display:block}
+.landmarks-sub{margin:0 0 9px;color:#777;font-size:12px}
+.landmark{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;margin-bottom:7px;padding:10px 11px;border:1px solid #e1e1e1;border-radius:9px}
+.landmark-name{color:#333;font-size:13px;font-weight:600}.landmark-distance{margin-top:2px;color:#111;font-size:15px;font-weight:800}
+.landmark-map{flex-shrink:0;padding:7px 9px;border-radius:7px;background:#f1f1f1!important;color:#111!important;text-decoration:none!important;font-size:11px!important;font-weight:700!important}
+.buttons{display:flex;gap:9px;width:100%;margin-top:18px}
+.buttons button{min-height:58px;border:0;border-radius:11px;font-size:17px!important;font-weight:800!important;cursor:pointer}
+.back{width:30%;background:#eee!important;color:#222!important}.next,.submit{flex:1;background:#111!important;color:#fff!important}
+.next:disabled{background:#d5d5d5!important;color:#777!important;cursor:not-allowed}
+.error{display:none;margin-top:10px;padding:10px;border:1px solid #f2b8b8;border-radius:9px;background:#fff3f3;color:#991b1b;font-size:13px;line-height:1.4}
+.visit-intent{margin-top:4px}.intent-title{margin-bottom:11px;color:#111;font-size:18px;font-weight:800}
+.intent-option{
+  display:flex;align-items:center;gap:11px;width:100%;min-height:56px;margin-bottom:9px;padding:13px 14px;
+  border:2px solid #ddd;border-radius:11px;background:#fff;color:#222;cursor:pointer
+}
+.intent-option:has(input:checked){border-color:#111;background:#f7f7f7}
+.intent-option input{width:20px;height:20px;margin:0;accent-color:#111}.intent-option span{font-size:16px;font-weight:700}
+.success{display:none;width:100%;padding:25px 0;text-align:center}
+.success-icon{width:70px;height:70px;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#111;color:#fff;font-size:38px;font-weight:400}
+.success h2{margin:0 0 8px;color:#111;font-size:32px;line-height:1.05;font-weight:800;letter-spacing:-1px}
+.success p{margin:0;color:#666;font-size:15px;line-height:1.5}
+.success-summary{margin:19px 0 5px;padding:15px;border:2px solid #111;border-radius:11px;background:#fff;color:#222;font-size:14px;line-height:1.6;text-align:left}
+.call-label{margin:19px 0 8px;color:#666;font-size:13px}
+.success a.call-btn,.success a.call-btn:link,.success a.call-btn:visited{
+  display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;min-height:62px!important;
+  margin:0!important;padding:14px 18px!important;border:0!important;border-radius:11px!important;
+  background:#111!important;color:#fff!important;font-size:19px!important;font-weight:800!important;text-decoration:none!important
+}
+.success a.home-btn,.success a.home-btn:link,.success a.home-btn:visited{
+  display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;min-height:55px!important;
+  margin:10px 0 0!important;padding:13px 16px!important;border:2px solid #ddd!important;border-radius:11px!important;
+  background:#fff!important;color:#111!important;font-size:16px!important;font-weight:700!important;text-decoration:none!important
+}
+@media(max-width:480px){
+  .form-wrap{padding:14px 15px}.card{min-height:calc(100dvh - 28px);padding:12px 0 25px}
+  .title{font-size:29px}.subtitle{font-size:14px;margin-bottom:22px}
+  .progress{margin-bottom:27px}.pstep{width:32px;height:32px;min-width:32px;font-size:13px}
+  .step-title{font-size:27px}.step-desc{font-size:14px;margin-bottom:19px}
+  .property{padding:22px 17px}.property-name{font-size:28px}.property-price{font-size:21px}
+  .price-big{font-size:38px}.price-property{font-size:23px}.address{font-size:22px}
+  .detail-value{font-size:15px}.confirm-text{font-size:14px}.buttons button{min-height:56px}
+}
+</style>
+
+
+
+<style id="premium-mono-ui">
+:root{
+  --black:#0b0b0b;
+  --dark:#151515;
+  --mid:#666;
+  --line:#d9d9d9;
+  --soft:#f4f4f4;
+  --white:#fff;
+}
+html,body{background:var(--white)!important;color:var(--black)!important}
+body{font-family:Arial,Helvetica,sans-serif!important}
+.form-wrap{max-width:620px!important;padding:0 18px!important}
+.card{
+  min-height:100dvh!important;
+  padding:28px 0 32px!important;
+}
+.title{
+  font-size:13px!important;
+  line-height:1!important;
+  letter-spacing:2px!important;
+  text-transform:uppercase!important;
+  color:#777!important;
+  margin:0 0 35px!important;
+  font-weight:800!important;
+}
+.subtitle{display:none!important}
+
+.step-title{
+  font-size:38px!important;
+  letter-spacing:-1.5px!important;
+  font-weight:900!important;
+  color:var(--black)!important;
+  margin-bottom:9px!important;
+}
+.step-desc{
+  max-width:500px!important;
+  font-size:15px!important;
+  color:#777!important;
+  margin-bottom:27px!important;
+}
+
+.property-list{gap:13px!important}
+.property{
+  min-height:150px!important;
+  padding:25px 22px!important;
+  border:1px solid #d5d5d5!important;
+  border-radius:14px!important;
+  background:#fff!important;
+}
+.property:hover{border-color:#777!important}
+.property.selected{
+  border:2px solid var(--black)!important;
+  background:#f7f7f7!important;
+}
+.property-name{
+  font-size:30px!important;
+  font-weight:900!important;
+  letter-spacing:-1px!important;
+}
+.property-sub{font-size:14px!important;color:#777!important}
+.property-price{
+  font-size:24px!important;
+  font-weight:900!important;
+  margin-top:17px!important;
+}
+
+.price-card{
+  border:1px solid #111!important;
+  border-radius:14px!important;
+}
+.price-top{
+  padding:25px 22px!important;
+  background:#111!important;
+}
+.price-property{font-size:25px!important}
+.price-big{
+  font-size:42px!important;
+  font-weight:900!important;
+}
+.price-content{padding:17px!important}
+.detail-box{
+  border:1px solid #ddd!important;
+  background:#fafafa!important;
+}
+.confirm{
+  border:1px solid #ccc!important;
+  border-radius:12px!important;
+  background:#fff!important;
+}
+.confirm:has(input:checked){
+  border:2px solid #111!important;
+  background:#f5f5f5!important;
+}
+
+.location{
+  border:1px solid #111!important;
+  border-radius:14px!important;
+}
+.location-head{
+  background:#111!important;
+  padding:13px 17px!important;
+  font-size:12px!important;
+  letter-spacing:1px!important;
+}
+.location-body{padding:22px 18px!important}
+.address{
+  font-size:26px!important;
+  font-weight:900!important;
+  letter-spacing:-.8px!important;
+}
+.map-btn{
+  background:#111!important;
+  border:1px solid #111!important;
+  border-radius:10px!important;
+}
+.landmarks-toggle{
+  background:#f5f5f5!important;
+  border:1px solid #ddd!important;
+}
+
+.visit-intent{margin-top:0!important}
+.intent-title{
+  font-size:18px!important;
+  font-weight:900!important;
+  margin-bottom:12px!important;
+}
+.intent-option{
+  min-height:58px!important;
+  border:1px solid #d3d3d3!important;
+  border-radius:11px!important;
+}
+.intent-option:has(input:checked){
+  border:2px solid #111!important;
+  background:#f5f5f5!important;
+}
+
+.buttons{gap:10px!important;margin-top:22px!important}
+.buttons button{
+  min-height:58px!important;
+  border-radius:10px!important;
+  font-size:16px!important;
+  font-weight:800!important;
+}
+.back{
+  background:#ededed!important;
+  color:#222!important;
+}
+.next,.submit{
+  background:#111!important;
+  color:#fff!important;
+}
+.next:hover,.submit:hover{background:#2a2a2a!important}
+
+.success{padding-top:30px!important}
+.success-icon{
+  background:#111!important;
+  width:64px!important;
+  height:64px!important;
+}
+.success h2{
+  font-size:36px!important;
+  font-weight:900!important;
+}
+.success-summary{
+  border:1px solid #111!important;
+  background:#f7f7f7!important;
+}
+.success a.call-btn,
+.success a.call-btn:link,
+.success a.call-btn:visited{
+  background:#111!important;
+  border-radius:10px!important;
+}
+.success a.home-btn,
+.success a.home-btn:link,
+.success a.home-btn:visited{
+  background:#fff!important;
+  color:#111!important;
+  border:1px solid #ccc!important;
+  border-radius:10px!important;
+}
+
+@media(max-width:480px){
+  .form-wrap{padding:0 15px!important}
+  .card{padding:25px 0 28px!important}
+  .title{margin-bottom:31px!important}
+  .step-title{
+    font-size:34px!important;
+    line-height:1.02!important;
+  }
+  .step-desc{font-size:14px!important;margin-bottom:23px!important}
+  .property{min-height:140px!important;padding:22px 18px!important}
+  .property-name{font-size:28px!important}
+  .property-price{font-size:22px!important}
+  .price-big{font-size:37px!important}
+  .address{font-size:23px!important}
+  .buttons button{min-height:56px!important}
+}
+</style>
+
+
+<style id="light-typography-short-confirmation">
+/* Light, premium typography */
+body,
+.property-name,
+.property-sub,
+.property-price,
+.step-title,
+.step-desc,
+.address,
+.detail-value,
+.confirm-text,
+.intent-option span,
+.success h2,
+.success-summary{
+  font-weight:400!important;
+}
+.title,
+.price-property,
+.price-big,
+.detail-label,
+.intent-title,
+.success-icon{
+  font-weight:500!important;
+}
+.step-title{
+  font-size:34px!important;
+  letter-spacing:-.8px!important;
+}
+.property-name{font-size:27px!important;letter-spacing:-.4px!important}
+.property-price{font-size:22px!important}
+.price-big{font-size:38px!important}
+.address{font-size:23px!important;letter-spacing:-.4px!important}
+.confirm-text{font-size:14px!important;line-height:1.35!important}
+
+/* Shorter price confirmation */
+.price-content{padding:14px!important}
+.detail-grid{gap:8px!important}
+.detail-box{padding:11px!important}
+.detail-label{font-size:11px!important}
+.detail-value{font-size:14px!important}
+.price-note{
+  margin-top:9px!important;
+  padding:8px 10px!important;
+  font-size:11px!important;
+}
+.confirm{
+  margin-top:10px!important;
+  padding:11px!important;
+}
+.confirm input{
+  width:20px!important;
+  height:20px!important;
+  min-width:20px!important;
+}
+
+/* Active submit/continue button on price confirmation */
+#step2 .next,
+#step2 button.next{
+  background:#111!important;
+  color:#fff!important;
+  opacity:1!important;
+  filter:none!important;
+  cursor:pointer!important;
+}
+#step2 .next:disabled,
+#step2 button.next:disabled{
+  background:#111!important;
+  color:#fff!important;
+  opacity:1!important;
+}
+#step2 .buttons{margin-top:14px!important}
+
+/* Make confirmation screen compact */
+#step2 .step-desc{margin-bottom:15px!important}
+#step2 .price-top{padding:19px 18px!important}
+#step2 .price-property{font-size:21px!important}
+#step2 .price-big{font-size:34px!important}
+#step2 .buttons button{min-height:53px!important}
+
+@media(max-width:480px){
+  .step-title{font-size:31px!important}
+  .property-name{font-size:25px!important}
+  .address{font-size:21px!important}
+  #step2 .price-big{font-size:32px!important}
+}
+</style>
+
+
+<style id="confirmation-validation-ui">
+.confirm.is-required{
+  border-color:#111!important;
+  background:#f1f1f1!important;
+  box-shadow:0 0 0 2px #111 inset!important;
+  animation:confirmPulse .28s ease;
+}
+.confirm.is-required input{
+  accent-color:#111!important;
+}
+@keyframes confirmPulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.015)}
+  100%{transform:scale(1)}
+}
+
+/* Compact inline location */
+.location-body{
+  padding:16px!important;
+}
+.address{
+  font-size:18px!important;
+  line-height:1.35!important;
+  font-weight:400!important;
+}
+.location-note{
+  display:inline!important;
+  margin-left:5px!important;
+  font-size:12px!important;
+}
+.location .map-btn{
+  margin-top:13px!important;
+}
+@media(max-width:480px){
+  .address{font-size:17px!important}
+  .location-note{font-size:11px!important}
+}
+</style>
+
+
+<style id="address-and-confirmation-v6">
+.compact-address{
+  margin:0!important;
+  padding:0!important;
+  color:#333!important;
+  font-size:14px!important;
+  line-height:1.55!important;
+  font-weight:400!important;
+  letter-spacing:0!important;
+}
+.location-body{
+  padding:15px 16px!important;
+}
+.location-note{display:block!important;margin:7px 0 0!important;font-size:11px!important;color:#888!important}
+
+/* Same validation highlight for every confirmation checkbox */
+.confirm.is-required{
+  border-color:#111!important;
+  background:#f1f1f1!important;
+  box-shadow:0 0 0 2px #111 inset!important;
+  animation:confirmPulse .28s ease;
+}
+@keyframes confirmPulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.015)}
+  100%{transform:scale(1)}
+}
+</style>
+
+
+<style id="final-fixes-v7">
+#step2 #next2,
+#step2 #next2:disabled{
+  background:#111!important;
+  color:#fff!important;
+  opacity:1!important;
+  cursor:pointer!important;
+}
+
+/* Compact address: no oversized paragraph styling */
+#step3 .compact-address{
+  margin:0!important;
+  padding:0!important;
+  font-size:14px!important;
+  line-height:1.5!important;
+  font-weight:400!important;
+  color:#333!important;
+}
+
+/* Checkbox validation highlight */
+.confirm.is-required{
+  border:2px solid #111!important;
+  background:#f3f3f3!important;
+  box-shadow:none!important;
+  animation:confirmPulse .28s ease;
+}
+@keyframes confirmPulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.012)}
+  100%{transform:scale(1)}
+}
+</style>
+
+
+<style id="large-type-v8">
+/* Larger, clearer typography */
+.title{
+  font-size:15px!important;
+  letter-spacing:2.2px!important;
+}
+.step-title{
+  font-size:38px!important;
+  line-height:1.08!important;
+  letter-spacing:-1px!important;
+}
+.step-desc{
+  font-size:17px!important;
+  line-height:1.5!important;
+}
+.property-name{
+  font-size:30px!important;
+  line-height:1.1!important;
+}
+.property-sub{
+  font-size:16px!important;
+  line-height:1.45!important;
+}
+.property-price{
+  font-size:24px!important;
+}
+.price-property{
+  font-size:26px!important;
+}
+.price-big{
+  font-size:42px!important;
+}
+.detail-label{
+  font-size:13px!important;
+}
+.detail-value{
+  font-size:17px!important;
+}
+.confirm-text{
+  font-size:16px!important;
+  line-height:1.45!important;
+}
+.address,
+.compact-address{
+  font-size:22px!important;
+  line-height:1.5!important;
+  font-weight:500!important;
+  color:#111!important;
+}
+.location-note{
+  font-size:13px!important;
+}
+.map-btn{
+  font-size:17px!important;
+}
+.landmarks-toggle{
+  font-size:16px!important;
+}
+.intent-title{
+  font-size:20px!important;
+}
+.intent-option span{
+  font-size:17px!important;
+}
+.buttons button{
+  font-size:18px!important;
+}
+.success h2{
+  font-size:38px!important;
+}
+.success p{
+  font-size:17px!important;
+}
+.success-summary{
+  font-size:16px!important;
+}
+@media(max-width:480px){
+  .step-title{font-size:35px!important}
+  .step-desc{font-size:16px!important}
+  .property-name{font-size:29px!important}
+  .property-sub{font-size:15px!important}
+  .property-price{font-size:23px!important}
+  .price-big{font-size:39px!important}
+  .confirm-text{font-size:15px!important}
+  .address,.compact-address{
+    font-size:22px!important;
+    line-height:1.55!important;
+  }
+  .map-btn{font-size:16px!important}
+}
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="form-wrap">
+
+<div class="card">
+
+
+<!-- =====================================================
+     FORM CONTENT
+===================================================== -->
+
+<div id="formContent">
+
+
+
+<!-- =====================================================
+     PROGRESS
+===================================================== -->
+
+
+
+
+<!-- =====================================================
+     STEP 1
+===================================================== -->
+
+<section class="step active" id="step1">
+
+    <div class="step-title">
+        Choose Your Property
+    </div>
+
+    <div class="step-desc">
+        Select what you are interested in.
+    </div>
+
+    <div class="property-list">
+
+        <label class="property" id="villaOption">
+
+            <input
+                type="radio"
+                name="property"
+                value="Villa">
+
+            <div class="property-name">
+                Villas
+            </div>
+
+            <div class="property-sub">
+                3 Bedrooms · 1,600 sq.ft.
+            </div>
+            <div class="property-price">₹48.86 Lakhs*</div>
+
+        </label>
+
+
+        <label class="property" id="plotOption">
+
+            <input
+                type="radio"
+                name="property"
+                value="Plot">
+
+            <div class="property-name">
+                Plots
+            </div>
+
+            <div class="property-sub">
+                966 sq.ft. · 21 × 46 ft.
+            </div>
+            <div class="property-price">₹23.18 Lakhs*</div>
+
+        </label>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     STEP 2
+===================================================== -->
+
+<section class="step" id="step2">
+
+    <div class="step-title">
+        Confirm Property & Price
+    </div>
+
+    <div class="step-desc">
+        Please confirm the price before continuing.
+    </div>
+
+
+    <div class="price-card">
+
+
+        <div class="price-top">
+
+            <div
+                class="price-property"
+                id="selectedProperty">
+            </div>
+
+            <div class="price-label">
+                BASIC PRICE STARTS FROM
+            </div>
+
+            <div
+                class="price-big"
+                id="selectedPrice">
+            </div>
+
+        </div>
+
+
+        <div class="price-content">
+
+
+            <!-- VILLA DETAILS -->
+
+            <div
+                class="detail-grid"
+                id="villaDetails"
+                style="display:none;">
+
+
+                <div class="detail-box">
+
+                    <div class="detail-label">
+                        Bedrooms
+                    </div>
+
+                    <div class="detail-value">
+                        3 Bedrooms
+                    </div>
+
+                </div>
+
+
+                <div class="detail-box">
+
+                    <div class="detail-label">
+                        Constructed Area
+                    </div>
+
+                    <div class="detail-value">
+                        1,600 sq.ft.
+                    </div>
+
+                </div>
+
+
+                <div class="detail-box">
+
+                    <div class="detail-label">
+                        Plot Size
+                    </div>
+
+                    <div class="detail-value">
+                        21 × 46 ft.
+                    </div>
+
+                </div>
+
+
+                <div class="detail-box">
+
+                    <div class="detail-label">
+                        Plot Area
+                    </div>
+
+                    <div class="detail-value">
+                        966 sq.ft.
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- PLOT DETAILS -->
+
+            <div
+                class="detail-grid"
+                id="plotDetails"
+                style="display:none;">
+
+
+                <div class="detail-box">
+
+                    <div class="detail-label">
+                        Plot Size
+                    </div>
+
+                    <div class="detail-value">
+                        21 × 46 ft.
+                    </div>
+
+                </div>
+
+
+                <div class="detail-box">
+
+                    <div class="detail-label">
+                        Plot Area
+                    </div>
+
+                    <div class="detail-value">
+                        966 sq.ft.
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <label class="confirm">
+
+        <input
+            type="checkbox"
+            id="priceConfirm">
+
+        <span class="confirm-text">
+            I understand the price and want to proceed.
+        </span>
+
+    </label>
+
+
+    <div class="buttons">
+
+        <button
+            type="button"
+            class="back"
+            onclick="goStep(1)">
+
+            Back
+
+        </button>
+
+
+        <button
+            type="button"
+            class="next"
+            id="next2"
+            onclick="goStep(3)">
+
+            Continue
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     STEP 3
+===================================================== -->
+
+<section class="step" id="step3">
+
+
+    <div class="step-title">
+        Confirm Site Location
+    </div>
+
+    <div class="step-desc">
+        Check the location before continuing.
+    </div>
+
+
+    <!-- LOCATION -->
+
+    <div class="location">
+
+
+        <div class="location-head">
+            PROJECT SITE LOCATION
+        </div>
+
+
+        <div class="location-body">
+
+
+            <div class="address compact-address">
+                Near Diamond Cement,<br>
+                Jhansi-Kanpur Road,<br>
+                Badagon,<br>
+                Jhansi (UP)
+            </div>
+
+
+            <div class="location-note">
+
+                Please check the location carefully before confirming your interest.
+
+            </div>
+
+
+            <a
+                href="https://maps.app.goo.gl/couHFcQhgE5giSu27"
+                target="_blank"
+                rel="noopener"
+                class="map-btn"
+                onclick="mapOpened()">
+
+                📍 Open Site Location in Google Maps
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- LANDMARKS -->
+
+    <div class="landmarks">
+
+
+        <button
+            type="button"
+            class="landmarks-toggle"
+            onclick="toggleLandmarks()">
+
+            <span>
+                Nearby Landmarks
+            </span>
+
+            <span
+                class="arrow"
+                id="landmarkArrow">
+
+                🔻
+            </span>
+
+        </button>
+
+
+        <div
+            class="landmarks-content"
+            id="landmarksContent">
+
+
+            <div class="landmarks-sub">
+                Approximate distance from the project site
+            </div>
+
+
+            <div class="landmark">
+
+                <div>
+
+                    <div class="landmark-name">
+                        Kanpur-Gwalior Bypass
+                    </div>
+
+                    <div class="landmark-distance">
+                        11 km
+                    </div>
+
+                </div>
+
+                <a
+                    class="landmark-map"
+                    target="_blank"
+                    rel="noopener"
+                    href="https://www.google.com/maps/dir/?api=1&origin=Near+Diamond+Cement,+Jhansi-Kanpur+Road,+Gram+Baratha,+Jhansi,+Uttar+Pradesh&destination=Kanpur-Gwalior+Bypass,+Jhansi,+Uttar+Pradesh">
+
+                    Maps
+
+                </a>
+
+            </div>
+
+
+            <div class="landmark">
+
+                <div>
+
+                    <div class="landmark-name">
+                        Medical College
+                    </div>
+
+                    <div class="landmark-distance">
+                        12 km
+                    </div>
+
+                </div>
+
+                <a
+                    class="landmark-map"
+                    target="_blank"
+                    rel="noopener"
+                    href="https://www.google.com/maps/dir/?api=1&origin=Near+Diamond+Cement,+Jhansi-Kanpur+Road,+Gram+Baratha,+Jhansi,+Uttar+Pradesh&destination=Medical+College,+Jhansi,+Uttar+Pradesh">
+
+                    Maps
+
+                </a>
+
+            </div>
+
+
+            <div class="landmark">
+
+                <div>
+
+                    <div class="landmark-name">
+                        Jhansi Bus Stand
+                    </div>
+
+                    <div class="landmark-distance">
+                        16 km
+                    </div>
+
+                </div>
+
+                <a
+                    class="landmark-map"
+                    target="_blank"
+                    rel="noopener"
+                    href="https://www.google.com/maps/dir/?api=1&origin=Near+Diamond+Cement,+Jhansi-Kanpur+Road,+Gram+Baratha,+Jhansi,+Uttar+Pradesh&destination=Jhansi+Bus+Stand,+Jhansi,+Uttar+Pradesh">
+
+                    Maps
+
+                </a>
+
+            </div>
+
+
+            <div class="landmark">
+
+                <div>
+
+                    <div class="landmark-name">
+                        Elite Crossing
+                    </div>
+
+                    <div class="landmark-distance">
+                        17 km
+                    </div>
+
+                </div>
+
+                <a
+                    class="landmark-map"
+                    target="_blank"
+                    rel="noopener"
+                    href="https://www.google.com/maps/dir/?api=1&origin=Near+Diamond+Cement,+Jhansi-Kanpur+Road,+Gram+Baratha,+Jhansi,+Uttar+Pradesh&destination=Elite+Crossing,+Jhansi,+Uttar+Pradesh">
+
+                    Maps
+
+                </a>
+
+            </div>
+
+
+            <div class="landmark">
+
+                <div>
+
+                    <div class="landmark-name">
+                        Manik Chock (Sehar)
+                    </div>
+
+                    <div class="landmark-distance">
+                        18 km
+                    </div>
+
+                </div>
+
+                <a
+                    class="landmark-map"
+                    target="_blank"
+                    rel="noopener"
+                    href="https://www.google.com/maps/dir/?api=1&origin=Near+Diamond+Cement,+Jhansi-Kanpur+Road,+Gram+Baratha,+Jhansi,+Uttar+Pradesh&destination=Manik+Chock,+Sehar,+Jhansi,+Uttar+Pradesh">
+
+                    Maps
+
+                </a>
+
+            </div>
+
+
+            <div class="landmark">
+
+                <div>
+
+                    <div class="landmark-name">
+                        Jhansi Railway Station
+                    </div>
+
+                    <div class="landmark-distance">
+                        19 km
+                    </div>
+
+                </div>
+
+                <a
+                    class="landmark-map"
+                    target="_blank"
+                    rel="noopener"
+                    href="https://www.google.com/maps/dir/?api=1&origin=Near+Diamond+Cement,+Jhansi-Kanpur+Road,+Gram+Baratha,+Jhansi,+Uttar+Pradesh&destination=Jhansi+Railway+Station,+Jhansi,+Uttar+Pradesh">
+
+                    Maps
+
+                </a>
+
+            </div>
+
+
+            <div class="landmark">
+
+                <div>
+
+                    <div class="landmark-name">
+                        Sipri Bazar
+                    </div>
+
+                    <div class="landmark-distance">
+                        21 km
+                    </div>
+
+                </div>
+
+                <a
+                    class="landmark-map"
+                    target="_blank"
+                    rel="noopener"
+                    href="https://www.google.com/maps/dir/?api=1&origin=Near+Diamond+Cement,+Jhansi-Kanpur+Road,+Gram+Baratha,+Jhansi,+Uttar+Pradesh&destination=Sipri+Bazar,+Jhansi,+Uttar+Pradesh">
+
+                    Maps
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- LOCATION CONFIRM -->
+
+    <label class="confirm">
+
+        <input
+            type="checkbox"
+            id="locationConfirm">
+
+        <span class="confirm-text">
+
+            I confirm the project location and want to proceed.
+
+        </span>
+
+    </label>
+
+
+    <div class="buttons">
+
+        <button
+            type="button"
+            class="back"
+            onclick="goStep(2)">
+
+            Back
+
+        </button>
+
+
+        <button
+            type="button"
+            class="submit"
+            id="submitBtn"
+            onclick="goStep(4)">
+
+            Continue
+
+        </button>
+
+    </div>
+
+
+    <div
+        class="error"
+        id="error">
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     STEP 4
+===================================================== -->
+
+<section class="step" id="step4">
+
+    <div class="step-title">
+        What would you like to do?
+    </div>
+
+    <div class="step-desc">
+        You have confirmed the property price and project location. Please tell us your preferred next step.
+    </div>
+
+    <div class="visit-intent">
+        <div class="intent-title">When are you planning to visit?</div>
+
+        <label class="intent-option">
+            <input type="radio" name="visitIntent" value="This week">
+            <span>This week</span>
+        </label>
+
+        <label class="intent-option">
+            <input type="radio" name="visitIntent" value="Within 15 days">
+            <span>Within 15 days</span>
+        </label>
+
+        <label class="intent-option">
+            <input type="radio" name="visitIntent" value="Within 1 month">
+            <span>Within 1 month</span>
+        </label>
+
+        <label class="intent-option">
+            <input type="radio" name="visitIntent" value="Just exploring">
+            <span>Just exploring</span>
+        </label>
+    </div>
+
+    <div class="buttons">
+        <button type="button" class="back" onclick="goStep(3)">Back</button>
+        <button type="button" class="next" id="finalContinue" onclick="submitInquiry()" disabled>
+            Continue
+        </button>
+    </div>
+
+    <div class="error" id="error"></div>
+
+</section>
+
+</div>
+
+
+<!-- =====================================================
+     SUCCESS
+===================================================== -->
+
+<div
+    class="success"
+    id="success">
+
+
+    <div class="success-icon">
+        ✓
+    </div>
+
+
+    <h2>
+        Thank You!
+    </h2>
+
+
+        You have confirmed the property price and project location. Choose how you would like to proceed.
+    </p>
+
+
+
+    <div class="success-summary" id="successSummary"></div>
+
+    <div class="call-label">
+     
+    </div>
+
+
+    <!-- CALL BUTTON -->
+
+    <a
+        href="tel:9956934058"
+        class="call-btn"
+        id="callButton"
+        onclick="callConfirmed(event)"
+        aria-label="Call Krishna Anandam">
+
+        <span>
+            Call Now — 9956934058
+        </span>
+
+    </a>
+
+
+    <!-- HOME BUTTON -->
+
+    <a
+        href="https://pariflex1.github.io/ka-lead-form/visit.html"
+        class="home-btn"
+        aria-label="Book a Visit">
+
+        <span>
+            📍 Book a Site Visit
+        </span>
+
+    </a>
+
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   CONFIG
+========================================================= */
+
+const WEBHOOK =
+"https://hook.eu1.make.com/qq1q993c9x4icmkbkvd5wcdvorvjffv8";
+
+const MAP_URL =
+"https://maps.app.goo.gl/couHFcQhgE5giSu27";
+
+const SITE_LOCATION =
+"Near Diamond Cement, Jhansi-Kanpur Road, Badagon, Jhansi (UP)";
+
+const CALL_NUMBER =
+"9956934058";
+
+
+/* =========================================================
+   FORM DATA
+========================================================= */
+
+const data = {
+
+    propertyType: "",
+    about: "",
+    price: "",
+    propertyDetails: "",
+
+    plotSize: "",
+    plotArea: "",
+    constructedArea: "",
+
+    priceConfirmed: false,
+    locationConfirmed: false,
+    mapOpened: false,
+    visitIntent: ""
+
+};
+
+
+/* =========================================================
+   PROPERTY SELECTION
+   Automatically moves to Step 2
+========================================================= */
+
+document
+.querySelectorAll('input[name="property"]')
+.forEach(input => {
+
+    input.addEventListener("change", function() {
+
+        document
+        .querySelectorAll(".property")
+        .forEach(el => {
+
+            el.classList.remove("selected");
+
+        });
+
+
+        this
+        .closest(".property")
+        .classList.add("selected");
+
+
+        data.propertyType = this.value;
+
+
+        if (this.value === "Villa") {
+
+            data.about = "Villa";
+
+            data.price = "₹48.86 Lakhs";
+
+            data.plotSize = "21 × 46 ft.";
+
+            data.plotArea = "966 sq.ft.";
+
+            data.constructedArea = "1,600 sq.ft.";
+
+            data.propertyDetails =
+                "3 Bedrooms Villa | Constructed Area: 1,600 sq.ft. | Plot Size: 21 × 46 ft. | Plot Area: 966 sq.ft.";
+
+        } else {
+
+            data.about = "Plot";
+
+            data.price = "₹23.18 Lakhs";
+
+            data.plotSize = "21 × 46 ft.";
+
+            data.plotArea = "966 sq.ft.";
+
+            data.constructedArea = "";
+
+            data.propertyDetails =
+                "Plot Size: 21 × 46 ft. | Plot Area: 966 sq.ft.";
+
+        }
+
+
+        /*
+         * Automatically move to Step 2
+         */
+
+        setTimeout(function() {
+
+            goStep(2);
+
+        }, 120);
+
+    });
+
+});
+
+/* =========================================================
+   PRICE CONFIRMATION
+========================================================= */
+
+document
+.getElementById("priceConfirm")
+.addEventListener("change", function() {
+
+    data.priceConfirmed =
+        this.checked;
+
+    const box =
+        this.closest(".confirm");
+
+    if (this.checked && box) {
+        box.classList.remove("is-required");
+    }
+
+});
+
+
+/* =========================================================
+   LOCATION CONFIRMATION
+========================================================= */
+
+document
+.getElementById("locationConfirm")
+.addEventListener("change", function() {
+
+    data.locationConfirmed =
+        this.checked;
+
+    const box =
+        this.closest(".confirm");
+
+    if (this.checked && box) {
+        box.classList.remove("is-required");
+    }
+
+});
+
+
+/* =========================================================
+   MAP OPENED
+========================================================= */
+
+function mapOpened() {
+
+    data.mapOpened = true;
+
+}
+
+
+/* =========================================================
+   LANDMARKS
+========================================================= */
+
+function toggleLandmarks() {
+
+    const content =
+        document.getElementById(
+            "landmarksContent"
+        );
+
+    const toggle =
+        document.querySelector(
+            ".landmarks-toggle"
+        );
+
+    content.classList.toggle("open");
+
+    toggle.classList.toggle("open");
+
+}
+
+
+
+/* =========================================================
+   VISIT INTENT
+========================================================= */
+
+document
+.querySelectorAll('input[name="visitIntent"]')
+.forEach(input => {
+
+    input.addEventListener("change", function() {
+
+        data.visitIntent = this.value;
+
+        document
+        .getElementById("finalContinue")
+        .disabled = false;
+
+    });
+
+});
+
+/* =========================================================
+   STEP NAVIGATION
+========================================================= */
+
+function goStep(step) {
+
+
+    if (step === 2) {
+
+        if (!data.propertyType) {
+            return;
+        }
+
+
+        document
+        .getElementById("selectedProperty")
+        .textContent =
+            data.propertyType === "Villa"
+            ? "3 Bedrooms Villas"
+            : "Residential Plots";
+
+
+        document
+        .getElementById("selectedPrice")
+        .textContent =
+            data.price;
+
+
+        document
+        .getElementById("villaDetails")
+        .style.display =
+            data.propertyType === "Villa"
+            ? "grid"
+            : "none";
+
+
+        document
+        .getElementById("plotDetails")
+        .style.display =
+            data.propertyType === "Plot"
+            ? "grid"
+            : "none";
+
+    }
+
+
+    if (step === 3) {
+
+        if (!data.priceConfirmed) {
+
+            const confirmBox =
+                document.querySelector("#step2 .confirm");
+
+            if (confirmBox) {
+
+                confirmBox.classList.add("is-required");
+
+                confirmBox.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+                setTimeout(() => {
+                    confirmBox.classList.remove("is-required");
+                }, 1400);
+
+            }
+
+            return;
+        }
+
+    }
+
+    if (step === 4) {
+
+        if (!data.locationConfirmed) {
+
+            const confirmBox =
+                document.querySelector('#step3 .confirm');
+
+            if (confirmBox) {
+
+                confirmBox.classList.add("is-required");
+
+                confirmBox.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+                setTimeout(() => {
+                    confirmBox.classList.remove("is-required");
+                }, 1400);
+
+            }
+
+            return;
+        }
+
+    }
+
+
+    document
+    .querySelectorAll(".step")
+    .forEach(el => {
+
+        el.classList.remove("active");
+
+    });
+
+
+    document
+    .getElementById("step" + step)
+    .classList.add("active");
+
+
+    updateProgress(step);
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+function updateProgress(step) {
+    // Progress indicator intentionally removed.
+}
+
+function createPayload(action) {
+
+
+    const payload =
+        new URLSearchParams();
+
+
+    payload.append(
+        "Action",
+        action
+    );
+
+
+    payload.append(
+        "About",
+        data.about
+    );
+
+
+    payload.append(
+        "Property Type",
+        data.propertyType
+    );
+
+
+    payload.append(
+        "Price",
+        data.price
+    );
+
+
+    payload.append(
+        "Price Confirmation",
+        data.priceConfirmed
+        ? "Confirmed"
+        : "Not Confirmed"
+    );
+
+
+    payload.append(
+        "Property Details",
+        data.propertyDetails
+    );
+
+
+    payload.append(
+        "Plot Size",
+        data.plotSize
+    );
+
+
+    payload.append(
+        "Plot Area",
+        data.plotArea
+    );
+
+
+    payload.append(
+        "Constructed Area",
+        data.constructedArea
+    );
+
+
+    payload.append(
+        "Location",
+        SITE_LOCATION
+    );
+
+
+    payload.append(
+        "Location Confirmation",
+        data.locationConfirmed
+        ? "Confirmed"
+        : "Not Confirmed"
+    );
+
+
+    payload.append(
+        "Google Map Opened",
+        data.mapOpened
+        ? "Yes"
+        : "No"
+    );
+
+
+    payload.append(
+        "Google Map Link",
+        MAP_URL
+    );
+
+    payload.append(
+        "Visit Intent",
+        data.visitIntent
+    );
+
+
+    payload.append(
+        "Lead From",
+        "Krishna Anandam Website"
+    );
+
+
+    payload.append(
+        "Site",
+        "Krishna Anandam"
+    );
+
+
+    payload.append(
+        "Agent Name",
+        "RVMC"
+    );
+
+
+    payload.append(
+        "Client Contact",
+        "919956934058"
+    );
+
+
+    payload.append(
+        "Site Url",
+        window.location.href
+    );
+
+
+    payload.append(
+        "Call Number",
+        CALL_NUMBER
+    );
+
+
+    payload.append(
+        "Timestamp",
+        new Date().toLocaleString("en-IN")
+    );
+
+
+    return payload;
+
+}
+
+
+/* =========================================================
+   STEP 3 CONTINUE
+   NO WEBHOOK
+========================================================= */
+
+function submitInquiry() {
+
+    const error =
+        document.getElementById("error");
+
+    error.style.display = "none";
+
+    if (!data.locationConfirmed) {
+
+        error.textContent =
+            "Please confirm the project location before continuing.";
+
+        error.style.display = "block";
+        return;
+
+    }
+
+    if (!data.visitIntent) {
+
+        error.textContent =
+            "Please select when you are planning to visit.";
+
+        error.style.display = "block";
+        return;
+
+    }
+
+    /*
+     * No webhook is triggered here.
+     * The lead is recorded only when the
+     * user actually clicks the Call Now button.
+     */
+
+    showSuccess();
+
+}
+
+
+/* =========================================================
+   SUCCESS
+========================================================= */
+
+function showSuccess() {
+
+    const summary =
+        document.getElementById("successSummary");
+
+    summary.innerHTML =
+        "<strong>Property:</strong> " +
+        (data.propertyType === "Villa" ? "3 BHK Villa" : "Residential Plot") +
+        "<br><strong>Price:</strong> " + data.price +
+        "<br><strong>Location:</strong> " + SITE_LOCATION +
+        "<br><strong>Visit intent:</strong> " + data.visitIntent;
+
+
+    document
+    .getElementById("formContent")
+    .style.display =
+        "none";
+
+
+    document
+    .getElementById("success")
+    .style.display =
+        "block";
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================================================
+   CALL BUTTON
+   WEBHOOK ONLY HERE
+========================================================= */
+
+function callConfirmed(event) {
+
+
+    event.preventDefault();
+
+
+    const payload =
+        createPayload(
+            "Call Confirmed"
+        );
+
+
+    /*
+     * Make webhook fires ONLY
+     * when Call Now is clicked.
+     */
+
+    fetch(
+        WEBHOOK,
+        {
+            method: "POST",
+            body: payload,
+            mode: "no-cors",
+            keepalive: true
+        }
+    ).catch(() => {});
+
+
+    /*
+     * Open phone dialer.
+     */
+
+    setTimeout(function() {
+
+        window.location.href =
+            "tel:" + CALL_NUMBER;
+
+    }, 200);
+
+}
+
+</script>
+
+
+</body>
+</html>
