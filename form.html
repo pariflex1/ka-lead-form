@@ -32,7 +32,7 @@ button,a,input{font:inherit;-webkit-tap-highlight-color:transparent}
   min-height:calc(100vh - 36px);
   min-height:calc(100dvh - 36px);
   padding:18px 0 28px;
-  background:#fff;
+  background: #fff;
 }
 .title{margin:0 0 7px;text-align:center;color:#111;font-size:32px;line-height:1.08;font-weight:800;letter-spacing:-1.2px}
 .subtitle{margin:0 0 24px;text-align:center;color:#666;font-size:15px;line-height:1.4}
@@ -84,25 +84,28 @@ button,a,input{font:inherit;-webkit-tap-highlight-color:transparent}
 .location-note{margin-top:9px;color:#666;font-size:13px;line-height:1.4}
 .map-btn{
   display:flex;align-items:center;justify-content:center;width:100%;min-height:56px;margin-top:16px;
-  padding:12px 15px;border-radius:11px;background:#111!important;color:#fff!important;
+  padding:12px 15px;border-radius:11px;background:linear-gradient(90deg,#186efc,#42a7ff 80%)!important;color:#fff!important;
   text-align:center;text-decoration:none!important;font-size:16px!important;font-weight:700!important
 }
+.map-btn:hover{background:linear-gradient(90deg,#2054da,#2586e8)!important}
 .landmarks{margin-top:14px}
 .landmarks-toggle{
   width:100%;min-height:50px;padding:11px 14px;display:flex;align-items:center;justify-content:space-between;
-  border:1px solid #ddd;border-radius:11px;background:#fff;color:#111;font-size:16px;font-weight:700;cursor:pointer
+  border:2px solid #186efc!important;border-radius:11px;background:#fff!important;color:#186efc!important;font-size:16px;font-weight:700;cursor:pointer
 }
-.landmarks-toggle .arrow{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#eee;font-size:15px;transition:transform .2s}
+.landmarks-toggle:hover{border-color:#2054da!important;color:#2054da!important;background:#f3f8ff!important}
+.landmarks-toggle .arrow{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(24,110,252,.12);color:#186efc;font-size:15px;transition:transform .2s}
 .landmarks-toggle.open .arrow{transform:rotate(180deg)}
 .landmarks-content{display:none;padding-top:10px}.landmarks-content.open{display:block}
 .landmarks-sub{margin:0 0 9px;color:#777;font-size:12px}
 .landmark{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;margin-bottom:7px;padding:10px 11px;border:1px solid #e1e1e1;border-radius:9px}
 .landmark-name{color:#333;font-size:13px;font-weight:600}.landmark-distance{margin-top:2px;color:#111;font-size:15px;font-weight:800}
-.landmark-map{flex-shrink:0;padding:7px 9px;border-radius:7px;background:#f1f1f1!important;color:#111!important;text-decoration:none!important;font-size:11px!important;font-weight:700!important}
+.landmark-map{flex-shrink:0;padding:7px 9px;border-radius:7px;background:linear-gradient(90deg,#186efc,#42a7ff 80%)!important;color:#fff!important;text-decoration:none!important;font-size:11px!important;font-weight:700!important}
 .buttons{display:flex;gap:9px;width:100%;margin-top:18px}
 .buttons button{min-height:58px;border:0;border-radius:11px;font-size:17px!important;font-weight:800!important;cursor:pointer}
-.back{width:30%;background:#eee!important;color:#222!important}.next,.submit{flex:1;background:#111!important;color:#fff!important}
-.next:disabled{background:#d5d5d5!important;color:#777!important;cursor:not-allowed}
+.back{width:30%;border:2px solid #186efc!important;background:#fff!important;color:#186efc!important}.next,.submit{flex:1;background:linear-gradient(90deg,#186efc,#42a7ff 80%)!important;color:#fff!important}
+.back:hover{border-color:#2054da!important;color:#2054da!important;background:#f3f8ff!important}
+.next:disabled{background:linear-gradient(90deg,#b8cdfa,#c5dbff 80%)!important;color:#fff!important;cursor:not-allowed}
 .error{display:none;margin-top:10px;padding:10px;border:1px solid #f2b8b8;border-radius:9px;background:#fff3f3;color:#991b1b;font-size:13px;line-height:1.4}
 .visit-intent{margin-top:4px}.intent-title{margin-bottom:11px;color:#111;font-size:18px;font-weight:800}
 .intent-option{
@@ -120,12 +123,18 @@ button,a,input{font:inherit;-webkit-tap-highlight-color:transparent}
 .success a.call-btn,.success a.call-btn:link,.success a.call-btn:visited{
   display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;min-height:62px!important;
   margin:0!important;padding:14px 18px!important;border:0!important;border-radius:11px!important;
-  background:#111!important;color:#fff!important;font-size:19px!important;font-weight:800!important;text-decoration:none!important
+  background:linear-gradient(90deg,#186efc,#42a7ff 80%)!important;color:#fff!important;font-size:19px!important;font-weight:800!important;text-decoration:none!important
+}
+.success a.call-btn:hover,.success a.call-btn:active{
+  background:linear-gradient(90deg,#2054da,#2586e8)!important
 }
 .success a.home-btn,.success a.home-btn:link,.success a.home-btn:visited{
   display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;min-height:55px!important;
-  margin:10px 0 0!important;padding:13px 16px!important;border:2px solid #ddd!important;border-radius:11px!important;
-  background:#fff!important;color:#111!important;font-size:16px!important;font-weight:700!important;text-decoration:none!important
+  margin:10px 0 0!important;padding:13px 16px!important;border:2px solid #186efc!important;border-radius:11px!important;
+  background:#fff!important;color:#186efc!important;font-size:16px!important;font-weight:700!important;text-decoration:none!important
+}
+.success a.home-btn:hover,.success a.home-btn:active{
+  border-color:#2054da!important;color:#2054da!important;background:#f3f8ff!important
 }
 @media(max-width:480px){
   .form-wrap{padding:14px 15px}.card{min-height:calc(100dvh - 28px);padding:12px 0 25px}
@@ -251,14 +260,17 @@ body{font-family:Arial,Helvetica,sans-serif!important}
   letter-spacing:-.8px!important;
 }
 .map-btn{
-  background:#111!important;
+  background:linear-gradient(90deg,#186efc,#42a7ff 80%)!important;
   border:1px solid #111!important;
   border-radius:10px!important;
 }
+.map-btn:hover{background:linear-gradient(90deg,#2054da,#2586e8)!important}
 .landmarks-toggle{
-  background:#f5f5f5!important;
-  border:1px solid #ddd!important;
+  background:#fff!important;
+  color:#186efc!important;
+  border:2px solid #186efc!important;
 }
+.landmarks-toggle:hover{background:#f3f8ff!important;border-color:#2054da!important;color:#2054da!important}
 
 .visit-intent{margin-top:0!important}
 .intent-title{
@@ -284,14 +296,16 @@ body{font-family:Arial,Helvetica,sans-serif!important}
   font-weight:800!important;
 }
 .back{
-  background:#ededed!important;
-  color:#222!important;
+  background:#fff!important;
+  color:#186efc!important;
+  border:2px solid #186efc!important;
 }
 .next,.submit{
-  background:#111!important;
+  background:linear-gradient(90deg,#186efc,#42a7ff 80%)!important;
   color:#fff!important;
 }
-.next:hover,.submit:hover{background:#2a2a2a!important}
+.next:hover,.submit:hover{background:linear-gradient(90deg,#2054da,#2586e8)!important}
+.back:hover{background:#f3f8ff!important;border-color:#2054da!important;color:#2054da!important}
 
 .success{padding-top:30px!important}
 .success-icon{
@@ -310,16 +324,24 @@ body{font-family:Arial,Helvetica,sans-serif!important}
 .success a.call-btn,
 .success a.call-btn:link,
 .success a.call-btn:visited{
-  background:#111!important;
+  background:linear-gradient(90deg,#186efc,#42a7ff 80%)!important;
   border-radius:10px!important;
+}
+.success a.call-btn:hover{
+  background:linear-gradient(90deg,#2054da,#2586e8)!important;
 }
 .success a.home-btn,
 .success a.home-btn:link,
 .success a.home-btn:visited{
   background:#fff!important;
-  color:#111!important;
-  border:1px solid #ccc!important;
+  color:#186efc!important;
+  border:2px solid #186efc!important;
   border-radius:10px!important;
+}
+.success a.home-btn:hover{
+  background:#f3f8ff!important;
+  border-color:#2054da!important;
+  color:#2054da!important;
 }
 
 @media(max-width:480px){
@@ -399,7 +421,7 @@ body,
 /* Active submit/continue button on price confirmation */
 #step2 .next,
 #step2 button.next{
-  background:#111!important;
+  background:linear-gradient(90deg,#186efc,#42a7ff 80%)!important;
   color:#fff!important;
   opacity:1!important;
   filter:none!important;
@@ -407,7 +429,7 @@ body,
 }
 #step2 .next:disabled,
 #step2 button.next:disabled{
-  background:#111!important;
+  background:linear-gradient(90deg,#186efc,#42a7ff 80%)!important;
   color:#fff!important;
   opacity:1!important;
 }
@@ -502,7 +524,7 @@ body,
 <style id="final-fixes-v7">
 #step2 #next2,
 #step2 #next2:disabled{
-  background:#111!important;
+  background:linear-gradient(90deg,#186efc,#42a7ff 80%)!important;
   color:#fff!important;
   opacity:1!important;
   cursor:pointer!important;
@@ -625,11 +647,75 @@ body,
 }
 </style>
 
+<style id="animated-gradient-bg">
+html{background:#ffffff!important}
+body{background:#ffffff!important}
+.bg-anim{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  z-index:0;
+  pointer-events:none;
+  background:
+    linear-gradient(0deg,#ffffff 0%,rgba(255,255,255,0) 60%),
+    linear-gradient(135deg,#e8f1ff 0%,#ffe9f2 25%,#fff4e0 50%,#e6f7ef 75%,#eef0ff 100%);
+  background-size:100% 100%,400% 400%;
+  background-position:0 0,0% 0%;
+  animation:bgFlow 16s ease-in-out infinite;
+}
+@keyframes bgFlow{
+  0%{background-position:0 0,0% 0%}
+  25%{background-position:0 0,100% 0%}
+  50%{background-position:0 0,100% 100%}
+  75%{background-position:0 0,0% 100%}
+  100%{background-position:0 0,0% 0%}
+}
+.form-wrap{
+  position:relative;
+  z-index:1;
+  background:transparent!important;
+}
+.card{background:transparent!important}
+</style>
+
+
+<style id="no-extra-bold">
+.title,
+.step-title,
+.property-name,
+.property-price,
+.price-property,
+.price-big,
+.detail-label,
+.detail-value,
+.location-head,
+.address,
+.compact-address,
+.landmark-distance,
+.intent-title,
+.success h2,
+.success-summary,
+.buttons button,
+.map-btn,
+.landmarks-toggle,
+.landmark-name,
+.landmark-map,
+.confirm-text,
+.intent-option span,
+.success a.call-btn,
+.success a.home-btn,
+.pstep,
+.price-label{
+  font-weight:400!important;
+}
+</style>
+
 </head>
 
 
 <body>
 
+<div class="bg-anim"></div>
 
 <div class="form-wrap">
 
