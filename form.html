@@ -1300,7 +1300,9 @@ body{background:#ffffff!important}
 
     <div
         class="error"
-        id="error">
+        id="error3"
+        role="alert"
+        aria-live="polite">
     </div>
 
 
@@ -1340,6 +1342,7 @@ body{background:#ffffff!important}
             <span>Within 1 month</span>
         </label>
 
+    </div>
 
     <div class="buttons">
         <button type="button" class="back" onclick="goStep(3)">Back</button>
@@ -1348,7 +1351,7 @@ body{background:#ffffff!important}
         </button>
     </div>
 
-    <div class="error" id="error"></div>
+    <div class="error" id="error4" role="alert" aria-live="polite"></div>
 
 </section>
 
@@ -1374,6 +1377,7 @@ body{background:#ffffff!important}
     </h2>
 
 
+    <p>
         You have confirmed the property price and project location. Choose how you would like to proceed.
     </p>
 
@@ -1916,14 +1920,60 @@ function createPayload(action) {
 
 
 /* =========================================================
+   LEAD DELIVERY
+   Uses sendBeacon so the request survives the page
+   unloading into the phone dialer. Falls back to fetch.
+========================================================= */
+
+function sendLead(action) {
+
+    const payload =
+        createPayload(action);
+
+    if (navigator.sendBeacon) {
+
+        try {
+
+            const blob =
+                new Blob(
+                    [payload.toString()],
+                    {
+                        type:
+                        "application/x-www-form-urlencoded;charset=UTF-8"
+                    }
+                );
+
+            if (navigator.sendBeacon(WEBHOOK, blob)) {
+                return;
+            }
+
+        } catch (e) {
+            /* fall through to fetch */
+        }
+
+    }
+
+    fetch(
+        WEBHOOK,
+        {
+            method: "POST",
+            body: payload,
+            mode: "no-cors",
+            keepalive: true
+        }
+    ).catch(() => {});
+
+}
+
+
+/* =========================================================
    STEP 3 CONTINUE
-   NO WEBHOOK
 ========================================================= */
 
 function submitInquiry() {
 
     const error =
-        document.getElementById("error");
+        document.getElementById("error4");
 
     error.style.display = "none";
 
@@ -1948,10 +1998,14 @@ function submitInquiry() {
     }
 
     /*
-     * No webhook is triggered here.
-     * The lead is recorded only when the
-     * user actually clicks the Call Now button.
+     * Capture the completed lead immediately.
+     * Previously nothing was sent here, so a user who
+     * finished all 4 steps but did not tap "Call Now"
+     * was never recorded. "Call Confirmed" still fires
+     * separately from the call button.
      */
+
+    sendLead("Form Completed");
 
     showSuccess();
 
@@ -2006,38 +2060,22 @@ function callConfirmed(event) {
     event.preventDefault();
 
 
-    const payload =
-        createPayload(
-            "Call Confirmed"
-        );
+    /*
+     * Fires in addition to the "Form Completed"
+     * event already sent on the success screen.
+     */
+
+    sendLead("Call Confirmed");
 
 
     /*
-     * Make webhook fires ONLY
-     * when Call Now is clicked.
+     * Open phone dialer. sendBeacon has already
+     * handed the request to the browser, so this
+     * no longer needs to race a timeout.
      */
 
-    fetch(
-        WEBHOOK,
-        {
-            method: "POST",
-            body: payload,
-            mode: "no-cors",
-            keepalive: true
-        }
-    ).catch(() => {});
-
-
-    /*
-     * Open phone dialer.
-     */
-
-    setTimeout(function() {
-
-        window.location.href =
-            "tel:" + CALL_NUMBER;
-
-    }, 200);
+    window.location.href =
+        "tel:" + CALL_NUMBER;
 
 }
 
