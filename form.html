@@ -647,7 +647,7 @@ body,
 }
 </style>
 
-<style id="animated-gradient-bg">
+<style id="plain-bg">
 html{background:#ffffff!important}
 body{background:#ffffff!important}
 .bg-anim{
@@ -656,19 +656,7 @@ body{background:#ffffff!important}
   width:100%;height:100%;
   z-index:0;
   pointer-events:none;
-  background:
-    linear-gradient(0deg,#ffffff 0%,rgba(255,255,255,0) 60%),
-    linear-gradient(135deg,#e8f1ff 0%,#ffe9f2 25%,#fff4e0 50%,#e6f7ef 75%,#eef0ff 100%);
-  background-size:100% 100%,400% 400%;
-  background-position:0 0,0% 0%;
-  animation:bgFlow 16s ease-in-out infinite;
-}
-@keyframes bgFlow{
-  0%{background-position:0 0,0% 0%}
-  25%{background-position:0 0,100% 0%}
-  50%{background-position:0 0,100% 100%}
-  75%{background-position:0 0,0% 100%}
-  100%{background-position:0 0,0% 0%}
+  background:#ffffff;
 }
 .form-wrap{
   position:relative;
