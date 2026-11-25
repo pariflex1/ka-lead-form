@@ -16,7 +16,7 @@
 <style>:root {
     --ink: #000000;
     --ivory: #ffffff;
-    --gold: #ffffff;
+    --gold: #0a0a0a;
     --gold-l: #ffffff;
     --char: #000000;
     --muted: #4b4b4b;
@@ -83,33 +83,6 @@ body {
     }
 }
 
-/* progress bars */
-.bars {
-    position: absolute;
-    z-index: 30;
-    top: max(12px, env(safe-area-inset-top));
-    left: 16px;
-    right: 16px;
-    display: flex;
-    gap: 4px;
-    pointer-events: none
-}
-
-.bars span {
-    flex: 1;
-    height: 3px;
-    border-radius: 2px;
-    background: rgba(10, 10, 10, .16);
-    overflow: hidden
-}
-
-.bars span i {
-    display: block;
-    height: 100%;
-    width: 0;
-    background: var(--ink);
-    transition: width .5s ease
-}
 
 /* one slide shows at a time via hidden radios */
 .scene {
@@ -120,7 +93,7 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 50px 24px 84px;
+    padding: 40px 24px 102px;
     gap: 14px;
     overflow: hidden;
     opacity: 0;
@@ -243,7 +216,7 @@ body {
 @keyframes nudge {
     50% {
         transform: translateX(4px);
-        box-shadow: 0 0 0 8px rgba(102, 126, 234, .22)
+        box-shadow: 0 0 0 8px rgba(10, 10, 10, .14)
     }
 }
 
@@ -338,7 +311,7 @@ strong {
 }
 
 .dark .rule {
-    background: rgba(165, 173, 245, .7)
+    background: rgba(255, 255, 255, .7)
 }
 
 .badges {
@@ -445,7 +418,7 @@ strong {
 }
 
 .note {
-    color: #4a5bd0;
+    color: #1a1a1a;
     font-weight: 600;
     font-size: 14px
 }
@@ -601,28 +574,31 @@ strong {
 }
 
 .vid-toggle {
-    position: fixed;
-    z-index: 50;
-    top: 24px;
-    right: 60px;
+    position: absolute;
+    z-index: 45;
+    top: max(12px, env(safe-area-inset-top, 0px));
+    right: 12px;
     width: 40px;
     height: 40px;
+    margin: 0;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0;
     border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, .4);
-    background: rgba(10, 10, 10, .65);
-    color: #fff;
+    border: 1px solid rgba(10, 10, 10, .22);
+    background: rgba(255, 255, 255, .85);
+    color: #0a0a0a;
     cursor: pointer;
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
-    transition: transform .2s ease, background .2s ease
+    transition: transform .2s ease, background .4s ease, color .4s ease, border-color .4s ease
 }
 
-.vid-toggle:hover {
-    background: rgba(10, 10, 10, .85)
+.vid-toggle.is-dark {
+    border-color: rgba(255, 255, 255, .4);
+    background: rgba(20, 20, 20, .6);
+    color: #fff
 }
 
 .vid-toggle:active {
@@ -645,6 +621,20 @@ strong {
 
 .vid-toggle.playing .i-pause-v {
     display: block
+}
+
+.vid-toggle.playing::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid currentColor;
+    opacity: 0;
+    animation: dkpulse 2.4s ease-out infinite
+}
+
+.deck.lbopen .vid-toggle {
+    display: none
 }
 
 .video-wrap video {
@@ -693,11 +683,11 @@ strong {
     display: inline-block;
     padding: 8px 16px;
     border-radius: 999px;
-    background: rgba(102, 126, 234, .12);
-    border: 1px solid rgba(102, 126, 234, .3);
+    background: rgba(10, 10, 10, .06);
+    border: 1px solid rgba(10, 10, 10, .28);
     font-size: 13px;
     font-weight: 600;
-    color: #3d47b8
+    color: #1a1a1a
 }
 
 .rera {
@@ -853,7 +843,7 @@ strong {
 button:focus-visible,
 a:focus-visible,
 label:focus-visible {
-    outline: 2px solid var(--gold-l);
+    outline: 2px solid #8a8a8a;
     outline-offset: 3px
 }
 
@@ -1023,7 +1013,7 @@ label:focus-visible {
     .scene {
         gap: 10px;
         padding-top: 44px;
-        padding-bottom: 76px
+        padding-bottom: 98px
     }
 
     .hide-short {
@@ -1105,40 +1095,62 @@ label:focus-visible {
     transform: none
 }
 
-/* progress fills up to the current slide */
-#r0:checked~.deck .bars span:nth-child(-n+1) i,
-#r1:checked~.deck .bars span:nth-child(-n+2) i,
-#r2:checked~.deck .bars span:nth-child(-n+3) i,
-#r3:checked~.deck .bars span:nth-child(-n+4) i,
-#r4:checked~.deck .bars span:nth-child(-n+5) i,
-#r5:checked~.deck .bars span:nth-child(-n+6) i,
-#r6:checked~.deck .bars span:nth-child(-n+7) i,
-#r7:checked~.deck .bars span:nth-child(-n+8) i,
-#r8:checked~.deck .bars span:nth-child(-n+9) i,
-#r9:checked~.deck .bars span:nth-child(-n+10) i,
-#r10:checked~.deck .bars span:nth-child(-n+11) i,
-#r10:checked~.deck .bars span:nth-child(-n+11) i,
-#r11:checked~.deck .bars span:nth-child(-n+12) i {
-    width: 100%
-}
 
-/* light bars on dark slides */
-#r0:checked~.deck .bars span,
-#r2:checked~.deck .bars span,
-#r5:checked~.deck .bars span,
-#r8:checked~.deck .bars span,
-#r9:checked~.deck .bars span,
-#r10:checked~.deck .bars span {
-    background: rgba(255, 255, 255, .24)
-}
+/* bottom slide dock */
+.dock{position:absolute;z-index:40;left:0;right:0;bottom:0;display:flex;align-items:center;padding:8px 0 calc(10px + env(safe-area-inset-bottom,0px));--dk-fg:#0a0a0a;--dk-dim:rgba(10,10,10,.7);--dk-line:rgba(10,10,10,.24);--dk-bg:rgba(255,255,255,.92);--dk-on-fg:#fff;transition:color .5s ease}
+.dock.is-dark{--dk-fg:#fff;--dk-dim:rgba(255,255,255,.75);--dk-line:rgba(255,255,255,.32);--dk-bg:rgba(20,20,20,.9);--dk-on-fg:#0a0a0a}
+.dk-strip{position:relative;flex:1;min-width:0;display:flex;gap:4px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-ms-overflow-style:none;overscroll-behavior-x:contain;padding:12px calc(50% - 32px) 0;-webkit-overflow-scrolling:touch;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 28px,#000 calc(100% - 28px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 28px,#000 calc(100% - 28px),transparent 100%);cursor:grab;touch-action:pan-x}
+.dk-strip::-webkit-scrollbar{display:none}
+.dk-strip.dragging{cursor:grabbing;scroll-behavior:auto}
+.dk-item{position:relative;flex:none;width:64px;display:flex;flex-direction:column;align-items:center;gap:5px;background:none;border:0;padding:0;color:var(--dk-dim);font:inherit;cursor:pointer;-webkit-user-drag:none;transition:color .4s}
+.dk-item+.dk-item::before{content:"";position:absolute;top:19px;right:calc(50% + 21px);width:calc(100% - 42px + 4px);height:2px;border-radius:2px;background:var(--dk-line);transition:background .5s}
+.dk-item.done+.dk-item::before,.dk-item.active::before{background:var(--dk-fg)}
+.dk-ic{position:relative;width:38px;height:38px;border-radius:50%;border:1.5px solid var(--dk-line);background:var(--dk-bg);color:var(--dk-dim);display:grid;place-items:center;transition:transform .55s cubic-bezier(.3,1.6,.5,1),background .4s,color .4s,border-color .4s,box-shadow .4s}
+.dk-ic .ic{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .5s ease}
+.dk-ring{position:absolute;left:-6px;top:-6px;width:calc(100% + 12px);height:calc(100% + 12px);transform:rotate(-90deg);pointer-events:none;opacity:0;transition:opacity .3s;fill:none}
+.dk-ring circle{fill:none;stroke-width:2.5}
+.dk-ring .trk{stroke:var(--dk-line)}
+.dk-ring .prg{stroke:var(--dk-fg);stroke-linecap:round}
+.dk-item.active .dk-ring{opacity:1}
+.dk-item.done .dk-ic{border-color:var(--dk-fg);color:var(--dk-fg)}
+.dk-item:hover .dk-ic{transform:scale(1.08);border-color:var(--dk-fg)}
+.dk-item.active{color:var(--dk-fg)}
+.dk-item.active .dk-ic{background:var(--dk-fg);border-color:var(--dk-fg);color:var(--dk-on-fg);transform:scale(1.18)}
+.dk-item.active .dk-ic .ic{animation:dkpop .6s ease}
+.dk-name{max-width:64px;font-size:10.5px;line-height:1.15;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:.01em}
+.dk-item.active .dk-name{font-weight:700}
+.dk-item:focus-visible .dk-ic{outline:2px solid var(--dk-fg);outline-offset:3px}
+@keyframes dkpulse{0%{transform:scale(.85);opacity:.55}100%{transform:scale(1.45);opacity:0}}
+@keyframes dkpop{0%{transform:scale(.4) rotate(-25deg)}60%{transform:scale(1.2) rotate(6deg)}100%{transform:none}}
+.deck.lbopen .dock{display:none}
+@media(prefers-reduced-motion:reduce){.dk-ic,.dk-ic svg,.dk-strip{transition:none;animation:none;scroll-behavior:auto}.dk-item.active .dk-ic::after,.dk-item.active .dk-ic svg{animation:none}}
 
-#r0:checked~.deck .bars span i,
-#r2:checked~.deck .bars span i,
-#r5:checked~.deck .bars span i,
-#r8:checked~.deck .bars span i,
-#r9:checked~.deck .bars span i {
-    background: var(--ivory)
-}
+
+/* villas carousel */
+.s-villas{gap:10px}
+.vtabs{display:flex;gap:4px;padding:3px;border-radius:999px;background:rgba(10,10,10,.07);pointer-events:auto;z-index:20}
+.vtab{border:0;border-radius:999px;padding:7px 14px;font:inherit;font-size:13px;font-weight:600;background:transparent;color:var(--muted);cursor:pointer;transition:background .35s,color .35s,transform .2s}
+.vtab:active{transform:scale(.96)}
+.vtab.on{background:var(--ink);color:#fff}
+.vcar{width:100%;flex:1 1 0;min-height:140px;display:flex;flex-direction:column;gap:8px;pointer-events:auto!important;z-index:20}
+.vtrack{flex:1 1 0;min-height:0;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;border-radius:14px;border:1px solid rgba(10,10,10,.12);background:#fff;touch-action:pan-x;overscroll-behavior-x:contain;cursor:grab}
+.vtrack::-webkit-scrollbar{display:none}
+.vtrack.dragging{scroll-snap-type:none;cursor:grabbing}
+.vslide{position:relative;flex:0 0 100%;scroll-snap-align:center;scroll-snap-stop:always;display:flex;align-items:center;justify-content:center;background:#fff}
+.vslide img{display:block;width:100%;height:100%;object-fit:contain;cursor:zoom-in;-webkit-user-drag:none}
+.vcap{z-index:30;position:absolute;left:8px;top:8px;padding:4px 10px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.02em;background:rgba(10,10,10,.82);color:#fff;pointer-events:none}
+.vdots{display:flex;justify-content:center;align-items:center;gap:6px}
+.vdot{width:7px;height:7px;padding:0;border:0;border-radius:99px;background:rgba(10,10,10,.22);cursor:pointer;transition:width .35s ease,background .35s}
+.vdot:nth-child(3){margin-right:8px}
+.vdot.on{width:20px;background:var(--ink)}
+.vinfo{width:100%;text-align:left}
+.vinfo.swap{animation:vswap .45s ease}
+@keyframes vswap{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.vstats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.vstats div{padding:8px 10px;border-radius:10px;background:rgba(10,10,10,.05)}
+.vstats span{display:block;font-size:11px;color:var(--muted);line-height:1.3}
+.vstats b{display:block;font-size:14px;line-height:1.3;margin-top:2px}
+.vrooms{margin-top:8px;font-size:13px;color:var(--muted);line-height:1.45;text-align:center}
 
 /* lightbox */
 .lb {
@@ -1198,8 +1210,7 @@ label:focus-visible {
 }
 </style>
 </head>
-<body><input class="pg" type="radio" name="pg" id="r0" checked aria-label="Slide 1"><input class="pg" type="radio" name="pg" id="r1" aria-label="Slide 2"><input class="pg" type="radio" name="pg" id="r2" aria-label="Slide 3"><input class="pg" type="radio" name="pg" id="r3" aria-label="Slide 4"><input class="pg" type="radio" name="pg" id="r4" aria-label="Slide 5"><input class="pg" type="radio" name="pg" id="r5" aria-label="Slide 6"><input class="pg" type="radio" name="pg" id="r6" aria-label="Slide 7"><input class="pg" type="radio" name="pg" id="r7" aria-label="Slide 8"><input class="pg" type="radio" name="pg" id="r8" aria-label="Slide 9"><input class="pg" type="radio" name="pg" id="r9" aria-label="Slide 10"><input class="pg" type="radio" name="pg" id="r10" aria-label="Slide 11"><input class="pg" type="radio" name="pg" id="r11" aria-label="Slide 12"><input class="pg" type="radio" name="pg" id="r11" aria-label="Slide 12"><main class="deck" id="deck" aria-label="Krishna Anandam – Premium villas and residential plots in Jhansi"><div class="bars" aria-hidden="true"><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span></div>
-
+<body><input class="pg" type="radio" name="pg" id="r0" checked aria-label="Slide 1"><input class="pg" type="radio" name="pg" id="r1" aria-label="Slide 2"><input class="pg" type="radio" name="pg" id="r2" aria-label="Slide 3"><input class="pg" type="radio" name="pg" id="r3" aria-label="Slide 4"><input class="pg" type="radio" name="pg" id="r4" aria-label="Slide 5"><input class="pg" type="radio" name="pg" id="r5" aria-label="Slide 6"><input class="pg" type="radio" name="pg" id="r6" aria-label="Slide 7"><input class="pg" type="radio" name="pg" id="r7" aria-label="Slide 8"><input class="pg" type="radio" name="pg" id="r8" aria-label="Slide 9"><input class="pg" type="radio" name="pg" id="r9" aria-label="Slide 10"><input class="pg" type="radio" name="pg" id="r10" aria-label="Slide 11"><input class="pg" type="radio" name="pg" id="r11" aria-label="Slide 12"><main class="deck" id="deck" aria-label="Krishna Anandam – Premium villas and residential plots in Jhansi">
 <section id="p0" class="scene s-hero fx-zoom dark" data-i="0">
   <img class="bg day" src="https://pariflex1.github.io/ka-lead-form/images/day.webp" alt="Krishna Anandam villas, day view">
   <img class="bg night" src="https://pariflex1.github.io/ka-lead-form/images/night.webp" alt="Krishna Anandam villas, night view">
@@ -1213,12 +1224,9 @@ label:focus-visible {
   </div>
   <label class="tap back" for="r0" aria-hidden="true"></label>
   <label class="tap fwd" for="r1" aria-hidden="true"></label>
-  <div class="navrow"><span class="navbtn ghost" aria-hidden="true"></span><label class="navbtn next" for="r1" aria-label="Next slide">›</label></div>
 </section>
 
 <section id="p1" class="scene s-overview fx-zoom" data-i="1">
-  <div class="glow" style="width:260px;height:260px;background:#8b95f0;top:-90px;left:-80px"></div>
-  <div class="glow" style="width:220px;height:220px;background:#a5adf5;bottom:-70px;right:-80px"></div>
   <div class="label rv">Krishna Anandam</div>
   <h2 class="rv d1">A Premium Gated Community in Jhansi</h2>
   <p class="sub rv d1">A thoughtfully planned community at Badagaon, Jhansi — for families who want a peaceful lifestyle, modern amenities and a well-connected location.</p>
@@ -1228,17 +1236,11 @@ label:focus-visible {
     <p><span>Collection A/C</span><b>19500210002445</b></p>
     <p><span>Verify</span><a href="https://www.up-rera.in" target="_blank" rel="noopener">up-rera.in</a></p>
   </div>
-  <div class="actions-row rv d3">
-    <button class="btn-plan" data-lb="https://pariflex1.github.io/ka-lead-form/images/layout.webp" data-alt="Krishna Anandam master layout plan">View Layout</button>
-    <button class="btn-plan" data-lb="https://pariflex1.github.io/ka-lead-form/images/unit.JPG" data-alt="Krishna Anandam unit plan">Unit Plan</button>
-  </div>
   <label class="tap back" for="r0" aria-hidden="true"></label>
   <label class="tap fwd" for="r2" aria-hidden="true"></label>
-  <div class="navrow"><label class="navbtn" for="r0" aria-label="Previous slide">‹</label><span class="hint">Scroll to explore</span><label class="navbtn next" for="r2" aria-label="Next slide">›</label></div>
 </section>
 
 <section id="p2" class="scene s-stats fx-zoom dark" data-i="2">
-  <div class="glow" style="width:260px;height:260px;background:#667eea;top:-80px;right:-80px"></div>
   <div class="label rv">Project snapshot</div>
   <h2 class="rv d1">A Community Built to Last</h2>
   <div class="stats rv d2">
@@ -1250,29 +1252,24 @@ label:focus-visible {
   <div class="badges rv d3"><span class="badge">✓ JDA Approved</span><span class="badge">✓ RERA Registered</span></div>
   <label class="tap back" for="r1" aria-hidden="true"></label>
   <label class="tap fwd" for="r3" aria-hidden="true"></label>
-  <div class="navrow"><label class="navbtn" for="r1" aria-label="Previous slide">‹</label><span class="hint">Scroll to explore</span><label class="navbtn next" for="r3" aria-label="Next slide">›</label></div>
 </section>
 
 <section id="p3" class="scene s-villas fx-zoom" data-i="3">
-  <div class="glow" style="width:240px;height:240px;background:#8b95f0;top:-80px;right:-90px"></div>
   <span class="badge rv">Villas</span>
-  <h2 class="rv d1">3 BHK Duplex Villas</h2>
+  <h2 class="rv d1">Duplex Villas</h2>
   <div class="price rv d1">₹48.86 Lakhs<span>Basic price starts from</span></div>
-  <div class="plan-box rv d2"><img class="plan zoomable" src="https://pariflex1.github.io/ka-lead-form/images/unit.JPG" alt="Krishna Anandam villas unit plan (Villa A and Villa B)" loading="lazy"></div>
-  <ul class="specs rv d2">
-    <li><span>Bedrooms</span><b>3 BHK</b></li>
-    <li><span>Constructed Area</span><b>1,600 sq.ft.</b></li>
-    <li><span>Plot Size</span><b>21 × 46 ft.</b></li>
-    <li><span>Plot Area</span><b>966 sq.ft.</b></li>
-  </ul>
-  <p class="note rv d3">✓ Same world-class amenities as plot owners</p>
+  <div class="vtabs rv d2" role="tablist" aria-label="Villa type"><button type="button" class="vtab on" role="tab" data-v="0" aria-selected="true">Villa A · 3 BHK</button><button type="button" class="vtab" role="tab" data-v="1" aria-selected="false">Villa B · 2 BHK</button></div>
+  <div class="vcar rv d2"><div class="vtrack" id="vTrack" aria-label="Floor plans carousel"><div class="vslide"><img class="zoomable" src="https://raw.githubusercontent.com/pariflex1/ka-lead-form/refs/heads/main/images/floor-plan/ground-floor-villa-a.webp" alt="Villa A Ground Floor plan" loading="lazy" decoding="async" draggable="false"><span class="vcap">Villa A · Ground Floor</span></div><div class="vslide"><img class="zoomable" src="https://raw.githubusercontent.com/pariflex1/ka-lead-form/refs/heads/main/images/floor-plan/first-floor-villa-a.webp" alt="Villa A First Floor plan" loading="lazy" decoding="async" draggable="false"><span class="vcap">Villa A · First Floor</span></div><div class="vslide"><img class="zoomable" src="https://raw.githubusercontent.com/pariflex1/ka-lead-form/refs/heads/main/images/floor-plan/terrace-villa-a.webp" alt="Villa A Terrace plan" loading="lazy" decoding="async" draggable="false"><span class="vcap">Villa A · Terrace</span></div><div class="vslide"><img class="zoomable" src="https://raw.githubusercontent.com/pariflex1/ka-lead-form/refs/heads/main/images/floor-plan/ground-floor-villa-b.webp" alt="Villa B Ground Floor plan" loading="lazy" decoding="async" draggable="false"><span class="vcap">Villa B · Ground Floor</span></div><div class="vslide"><img class="zoomable" src="https://raw.githubusercontent.com/pariflex1/ka-lead-form/refs/heads/main/images/floor-plan/first-floor-villa-b.webp" alt="Villa B First Floor plan" loading="lazy" decoding="async" draggable="false"><span class="vcap">Villa B · First Floor</span></div><div class="vslide"><img class="zoomable" src="https://raw.githubusercontent.com/pariflex1/ka-lead-form/refs/heads/main/images/floor-plan/terrace-villa-b.webp" alt="Villa B Terrace plan" loading="lazy" decoding="async" draggable="false"><span class="vcap">Villa B · Terrace</span></div></div><span class="vdots" id="vDots"><button type="button" class="vdot on" data-i="0" aria-label="Show Villa A Ground Floor"></button><button type="button" class="vdot" data-i="1" aria-label="Show Villa A First Floor"></button><button type="button" class="vdot" data-i="2" aria-label="Show Villa A Terrace"></button><button type="button" class="vdot" data-i="3" aria-label="Show Villa B Ground Floor"></button><button type="button" class="vdot" data-i="4" aria-label="Show Villa B First Floor"></button><button type="button" class="vdot" data-i="5" aria-label="Show Villa B Terrace"></button></span></div>
+  <div class="vinfo rv d3" id="vInfo" aria-live="polite">
+    <div class="vstats"><div><span>Plot area</span><b id="vArea">966 sq.ft.</b></div><div><span>Plot size</span><b id="vSize">21 × 46 ft.</b></div><div><span>Constructed</span><b id="vBuilt">1,600 sq.ft.</b></div></div>
+    <p class="vrooms" id="vRooms">3 Bedrooms + Study · Drawing &amp; Dining · Kitchen · Front &amp; Rear Lawn</p>
+  </div>
+  <p class="note hide-short rv d3">✓ Same world-class amenities as plot owners</p>
   <label class="tap back" for="r2" aria-hidden="true"></label>
   <label class="tap fwd" for="r4" aria-hidden="true"></label>
-  <div class="navrow"><label class="navbtn" for="r2" aria-label="Previous slide">‹</label><span class="hint">Scroll to explore</span><label class="navbtn next" for="r4" aria-label="Next slide">›</label></div>
 </section>
 
 <section id="p4" class="scene s-plots fx-zoom" data-i="4">
-  <div class="glow" style="width:240px;height:240px;background:#b8c0f0;bottom:-80px;left:-90px"></div>
   <span class="badge rv">Plots</span>
   <h2 class="rv d1">Residential Plots</h2>
   <div class="price rv d1">₹23.18 Lakhs<span>Basic price starts from</span></div>
@@ -1286,11 +1283,9 @@ label:focus-visible {
   <p class="note rv d3">✓ Same world-class amenities as villa owners</p>
   <label class="tap back" for="r3" aria-hidden="true"></label>
   <label class="tap fwd" for="r5" aria-hidden="true"></label>
-  <div class="navrow"><label class="navbtn" for="r3" aria-label="Previous slide">‹</label><span class="hint">Scroll to explore</span><label class="navbtn next" for="r5" aria-label="Next slide">›</label></div>
 </section>
 
 <section id="p5" class="scene s-amen fx-zoom dark" data-i="5">
-  <div class="glow" style="width:250px;height:250px;background:#667eea;bottom:-70px;right:-80px"></div>
   <div class="label rv">Lifestyle</div>
   <h2 class="rv d1">Premium Amenities</h2>
   <p class="sub hide-short rv d1">Every villa owner and plot owner enjoys the same community facilities.</p>
@@ -1306,11 +1301,9 @@ label:focus-visible {
   </div>
   <label class="tap back" for="r4" aria-hidden="true"></label>
   <label class="tap fwd" for="r6" aria-hidden="true"></label>
-  <div class="navrow"><label class="navbtn" for="r4" aria-label="Previous slide">‹</label><span class="hint">Scroll to explore</span><label class="navbtn next" for="r6" aria-label="Next slide">›</label></div>
 </section>
 
 <section id="p6" class="scene s-features fx-zoom" data-i="6">
-  <div class="glow" style="width:240px;height:240px;background:#a5adf5;top:-80px;left:-90px"></div>
   <span class="badge rv">Villa Features</span>
   <h2 class="rv d1">Crafted for Comfort</h2>
   <p class="sub hide-short rv d1">Every corner crafted to provide comfort, elegance and functionality.</p>
@@ -1326,11 +1319,9 @@ label:focus-visible {
   </div>
   <label class="tap back" for="r5" aria-hidden="true"></label>
   <label class="tap fwd" for="r7" aria-hidden="true"></label>
-  <div class="navrow"><label class="navbtn" for="r5" aria-label="Previous slide">‹</label><span class="hint">Scroll to explore</span><label class="navbtn next" for="r7" aria-label="Next slide">›</label></div>
 </section>
 
 <section id="p7" class="scene s-loan fx-zoom" data-i="7">
-  <div class="glow" style="width:240px;height:240px;background:#c3c9f5;bottom:-80px;right:-90px"></div>
   <div class="label rv">Financing</div>
   <h2 class="rv d1">Home Loan Assistance</h2>
   <p class="sub rv d1">Easy financing options available through our partner banks.</p>
@@ -1349,11 +1340,9 @@ label:focus-visible {
   <p class="fine rv d3">Loan approval and terms are subject to the respective bank's policies.</p>
   <label class="tap back" for="r6" aria-hidden="true"></label>
   <label class="tap fwd" for="r8" aria-hidden="true"></label>
-  <div class="navrow"><label class="navbtn" for="r6" aria-label="Previous slide">‹</label><span class="hint">Scroll to explore</span><label class="navbtn next" for="r8" aria-label="Next slide">›</label></div>
 </section>
 
 <section id="p8" class="scene s-location fx-zoom dark" data-i="8">
-  <div class="glow" style="width:240px;height:240px;background:#4a5bd0;top:-80px;right:-90px"></div>
   <div class="label rv">Location advantage</div>
   <h2 class="rv d1">Prime Location</h2>
   <div class="addr rv d2">📍 Near Diamond Cement, Jhansi–Kanpur Road, Badagaon, Jhansi (UP)</div>
@@ -1368,27 +1357,23 @@ label:focus-visible {
   </ul>
   <label class="tap back" for="r7" aria-hidden="true"></label>
   <label class="tap fwd" for="r9" aria-hidden="true"></label>
-  <div class="navrow"><label class="navbtn" for="r7" aria-label="Previous slide">‹</label><span class="hint">Tap the map to explore</span><label class="navbtn next" for="r9" aria-label="Next slide">›</label></div>
 </section>
 
 <section id="p9" class="scene s-video fx-zoom dark" data-i="9">
-  <div class="glow" style="width:250px;height:250px;background:#667eea;top:-80px;left:-90px"></div>
   <div class="label rv">Walkthrough</div>
   <h2 class="rv d1">Project Walkthrough</h2>
   <p class="sub rv d1">Watch the video to explore Krishna Anandam and see what makes it special.</p>
   <div class="video-wrap rv d2">
-    <video controls playsinline preload="metadata" id="vid">
+    <video controls loop playsinline preload="metadata" id="vid">
       <source src="https://krishnaanandam.com/wp-content/uploads/2025/10/Krishna-anadam.webm" type="video/webm">
       Your browser does not support the video tag.
     </video>
   </div>
   <label class="tap back" for="r8" aria-hidden="true"></label>
   <label class="tap fwd" for="r10" aria-hidden="true"></label>
-  <div class="navrow"><label class="navbtn" for="r8" aria-label="Previous slide">‹</label><span class="hint">Play the video</span><label class="navbtn next" for="r10" aria-label="Next slide">›</label></div>
 </section>
 
 <section id="p10" class="scene s-layout-full fx-zoom dark" data-i="10">
-  <div class="glow" style="width:280px;height:280px;background:#667eea;bottom:-100px;right:-100px"></div>
   <div class="label rv">Full layout</div>
   <h2 class="rv d1">Complete Site Plan</h2>
   <div class="layout-full rv d2">
@@ -1396,12 +1381,9 @@ label:focus-visible {
   </div>
   <label class="tap back" for="r10" aria-hidden="true"></label>
   <label class="tap fwd" for="r11" aria-hidden="true"></label>
-  <div class="navrow"><label class="navbtn" for="r9" aria-label="Previous slide">‹</label><span class="hint">Pinch to zoom</span><label class="navbtn next" for="r11" aria-label="Next slide">›</label></div>
 </section>
 
 <section id="p11" class="scene s-contact fx-zoom" data-i="11">
-  <div class="glow" style="width:300px;height:300px;background:#667eea;top:-100px;left:-100px"></div>
-  <div class="glow" style="width:260px;height:260px;background:#a5adf5;bottom:-80px;right:-80px"></div>
   <div class="label rv">Krishna Anandam</div>
   <h2 class="rv d1">Don't Miss Your Chance!</h2>
   <p class="sub rv d1">Only 97 units available — selling fast. Join the select few who will call Krishna Anandam their home.</p>
@@ -1413,7 +1395,7 @@ label:focus-visible {
   <div class="socials rv d3">
     <a href="https://www.facebook.com/krishnaanandam.jhs" target="_blank" rel="noopener" aria-label="Facebook">
       <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="40" height="40" rx="8" fill="#1877F2"/>
+        <rect width="40" height="40" rx="8" fill="#0a0a0a"/>
         <path d="M27.5 20.0938C27.5 15.6406 23.9062 12 19.5 12C15.0469 12 11.5 15.6406 11.5 20.0938C11.5 24.0781 14.25 27.3906 17.9531 28.0469V22.4844H15.9219V20.0938H17.9531V18.3125C17.9531 16.3281 19.125 15.25 20.9062 15.25C21.7656 15.25 22.6719 15.4062 22.6719 15.4062V17.375H21.6719C20.6719 17.375 20.3594 18 20.3594 18.6562V20.0938H22.5781L22.2188 22.4844H20.3594V28.0469C24.0625 27.3906 27.5 24.0781 27.5 20.0938Z" fill="white"/>
       </svg>
     </a>
@@ -1423,9 +1405,9 @@ label:focus-visible {
         <path d="M20 14.8672C17.1562 14.8672 14.8672 17.1562 14.8672 20C14.8672 22.8438 17.1562 25.1328 20 25.1328C22.8438 25.1328 25.1328 22.8438 25.1328 20C25.1328 17.1562 22.8438 14.8672 20 14.8672ZM20 23.3359C18.1641 23.3359 16.6641 21.8359 16.6641 20C16.6641 18.1641 18.1641 16.6641 20 16.6641C21.8359 16.6641 23.3359 18.1641 23.3359 20C23.3359 21.8359 21.8359 23.3359 20 23.3359ZM26.5391 14.6562C26.5391 15.3203 26 15.8594 25.3359 15.8594C24.6719 15.8594 24.1328 15.3203 24.1328 14.6562C24.1328 13.9922 24.6719 13.4531 25.3359 13.4531C26 13.4531 26.5391 13.9922 26.5391 14.6562ZM29.9531 15.8594C29.8672 14.3438 29.5391 13.0078 28.4766 11.9453C27.4141 10.8828 26.0781 10.5547 24.5625 10.4688C22.9922 10.3672 17.0078 10.3672 15.4375 10.4688C13.9219 10.5547 12.5859 10.8828 11.5234 11.9453C10.4609 13.0078 10.1328 14.3438 10.0469 15.8594C9.94531 17.4297 9.94531 23.4141 10.0469 24.9844C10.1328 26.5 10.4609 27.8359 11.5234 28.8984C12.5859 29.9609 13.9219 30.2891 15.4375 30.375C17.0078 30.4766 22.9922 30.4766 24.5625 30.375C26.0781 30.2891 27.4141 29.9609 28.4766 28.8984C29.5391 27.8359 29.8672 26.5 29.9531 24.9844C30.0547 23.4141 30.0547 17.4297 29.9531 15.8594ZM27.9844 26.6562C27.6719 27.5234 27 28.1953 26.1328 28.5078C24.8906 28.8984 21.9453 28.7891 20 28.7891C18.0547 28.7891 15.1094 28.8984 13.8672 28.5078C13 28.1953 12.3281 27.5234 12.0156 26.6562C11.5234 25.4141 11.6328 22.4688 11.6328 20C11.6328 17.5312 11.5234 14.5859 12.0156 13.3438C12.3281 12.4766 13 11.8047 13.8672 11.4922C15.1094 11.1016 18.0547 11.2109 20 11.2109C21.9453 11.2109 24.8906 11.1016 26.1328 11.4922C27 11.8047 27.6719 12.4766 27.9844 13.3438C28.4766 14.5859 28.3672 17.5312 28.3672 20C28.3672 22.4688 28.4766 25.4141 27.9844 26.6562Z" fill="white"/>
         <defs>
           <linearGradient id="instagram-gradient" x1="4" y1="36" x2="36" y2="4" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#FD5"/>
-            <stop offset="0.5" stop-color="#FF543E"/>
-            <stop offset="1" stop-color="#C837AB"/>
+            <stop stop-color="#0a0a0a"/>
+            <stop offset="0.5" stop-color="#0a0a0a"/>
+            <stop offset="1" stop-color="#0a0a0a"/>
           </linearGradient>
         </defs>
       </svg>
@@ -1437,9 +1419,9 @@ label:focus-visible {
   </div>
   <p class="fine rv d4">© <span id="year"></span> Krishna Anandam. All rights reserved. RERA Registered.</p>
   <label class="tap back" for="r10" aria-hidden="true"></label>
-  <div class="navrow"><label class="navbtn" for="r10" aria-label="Previous slide">‹</label><label class="again" for="r0">↺ Start again</label><span class="navbtn ghost" aria-hidden="true"></span></div>
 </section>
 
+<nav class="dock" id="dock" aria-label="Slides"><div class="dk-strip" id="dkStrip"><button type="button" class="dk-item" data-go="0" aria-label="Go to slide 1: Home"><span class="dk-ic"><svg class="dk-ring" viewBox="0 0 50 50" aria-hidden="true"><circle class="trk" cx="25" cy="25" r="23"/><circle class="prg" cx="25" cy="25" r="23" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" style="opacity:0"/></svg><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span><span class="dk-name">Home</span></button><button type="button" class="dk-item" data-go="1" aria-label="Go to slide 2: Overview"><span class="dk-ic"><svg class="dk-ring" viewBox="0 0 50 50" aria-hidden="true"><circle class="trk" cx="25" cy="25" r="23"/><circle class="prg" cx="25" cy="25" r="23" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" style="opacity:0"/></svg><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.5v.01"/></svg></span><span class="dk-name">Overview</span></button><button type="button" class="dk-item" data-go="2" aria-label="Go to slide 3: Snapshot"><span class="dk-ic"><svg class="dk-ring" viewBox="0 0 50 50" aria-hidden="true"><circle class="trk" cx="25" cy="25" r="23"/><circle class="prg" cx="25" cy="25" r="23" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" style="opacity:0"/></svg><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-8"/><path d="M22 20H2"/></svg></span><span class="dk-name">Snapshot</span></button><button type="button" class="dk-item" data-go="3" aria-label="Go to slide 4: Villas"><span class="dk-ic"><svg class="dk-ring" viewBox="0 0 50 50" aria-hidden="true"><circle class="trk" cx="25" cy="25" r="23"/><circle class="prg" cx="25" cy="25" r="23" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" style="opacity:0"/></svg><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V9l7-5 7 5v12"/><path d="M9 21v-5h6v5"/><path d="M9 11h6"/></svg></span><span class="dk-name">Villas</span></button><button type="button" class="dk-item" data-go="4" aria-label="Go to slide 5: Plots"><span class="dk-ic"><svg class="dk-ring" viewBox="0 0 50 50" aria-hidden="true"><circle class="trk" cx="25" cy="25" r="23"/><circle class="prg" cx="25" cy="25" r="23" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" style="opacity:0"/></svg><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg></span><span class="dk-name">Plots</span></button><button type="button" class="dk-item" data-go="5" aria-label="Go to slide 6: Amenities"><span class="dk-ic"><svg class="dk-ring" viewBox="0 0 50 50" aria-hidden="true"><circle class="trk" cx="25" cy="25" r="23"/><circle class="prg" cx="25" cy="25" r="23" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" style="opacity:0"/></svg><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 17v4"/><path d="M17 19h4"/></svg></span><span class="dk-name">Amenities</span></button><button type="button" class="dk-item" data-go="6" aria-label="Go to slide 7: Features"><span class="dk-ic"><svg class="dk-ring" viewBox="0 0 50 50" aria-hidden="true"><circle class="trk" cx="25" cy="25" r="23"/><circle class="prg" cx="25" cy="25" r="23" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" style="opacity:0"/></svg><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg></span><span class="dk-name">Features</span></button><button type="button" class="dk-item" data-go="7" aria-label="Go to slide 8: Loan"><span class="dk-ic"><svg class="dk-ring" viewBox="0 0 50 50" aria-hidden="true"><circle class="trk" cx="25" cy="25" r="23"/><circle class="prg" cx="25" cy="25" r="23" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" style="opacity:0"/></svg><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12"/><path d="M6 9h12"/><path d="M9 4c5 0 6 5-1 5"/><path d="M8 9l8 11"/></svg></span><span class="dk-name">Loan</span></button><button type="button" class="dk-item" data-go="8" aria-label="Go to slide 9: Location"><span class="dk-ic"><svg class="dk-ring" viewBox="0 0 50 50" aria-hidden="true"><circle class="trk" cx="25" cy="25" r="23"/><circle class="prg" cx="25" cy="25" r="23" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" style="opacity:0"/></svg><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><span class="dk-name">Location</span></button><button type="button" class="dk-item" data-go="9" aria-label="Go to slide 10: Video"><span class="dk-ic"><svg class="dk-ring" viewBox="0 0 50 50" aria-hidden="true"><circle class="trk" cx="25" cy="25" r="23"/><circle class="prg" cx="25" cy="25" r="23" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" style="opacity:0"/></svg><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5z"/></svg></span><span class="dk-name">Video</span></button><button type="button" class="dk-item" data-go="10" aria-label="Go to slide 11: Site Plan"><span class="dk-ic"><svg class="dk-ring" viewBox="0 0 50 50" aria-hidden="true"><circle class="trk" cx="25" cy="25" r="23"/><circle class="prg" cx="25" cy="25" r="23" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" style="opacity:0"/></svg><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14"/><path d="M15 6v14"/></svg></span><span class="dk-name">Site Plan</span></button><button type="button" class="dk-item" data-go="11" aria-label="Go to slide 12: Contact"><span class="dk-ic"><svg class="dk-ring" viewBox="0 0 50 50" aria-hidden="true"><circle class="trk" cx="25" cy="25" r="23"/><circle class="prg" cx="25" cy="25" r="23" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" style="opacity:0"/></svg><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span><span class="dk-name">Contact</span></button></div></nav>
 <button class="vid-toggle" id="vidToggle" type="button" aria-label="Play video">
   <svg class="i-play-v" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
   <svg class="i-pause-v" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>
@@ -1482,6 +1464,7 @@ label:focus-visible {
                     deck.classList.remove('no-anim');
                     void deck.offsetWidth;
                     radios[n].checked=true;
+                    radios[n].dispatchEvent(new Event('change', {bubbles:true}));
                 });
         }
 
@@ -1493,6 +1476,7 @@ label:focus-visible {
                 deck.addEventListener('wheel', function (e) {
                         if (lbOpen()) return;
                         if (e.target && e.target.closest && e.target.closest('video,iframe')) return;
+                        if (e.target && e.target.closest && e.target.closest('.vtrack') && Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
                         var d=e.deltaY;
                         if (Math.abs(d) < 8) return;
                         if (e.cancelable) e.preventDefault();
@@ -1510,17 +1494,19 @@ label:focus-visible {
                     passive: false
                 });
 
-                /* swipe left or right */
-                var sx=null, sy=null;
+                /* swipe left/right or up/down changes slide */
+                var sx=null, sy=null, inTrack=false;
                 deck.addEventListener('touchstart', function (e) {
                         if (e.touches.length !==1) {
                             sx=null; return;
                         }
 
-                        if (e.target && e.target.closest && e.target.closest('video,iframe')) {
+                        var t=e.target;
+                        if (t && t.closest && t.closest('video,iframe,input,textarea,select,.dock,.vid-toggle')) {
                             sx=null; return;
                         }
 
+                        inTrack= !!(t && t.closest && t.closest('.vtrack'));
                         sx=e.touches[0].clientX; sy=e.touches[0].clientY;
                     }
 
@@ -1531,9 +1517,14 @@ label:focus-visible {
                 deck.addEventListener('touchend', function (e) {
                         if (sx===null) return;
                         var p=e.changedTouches[0], dx=p.clientX - sx, dy=p.clientY - sy; sx=null;
+                        var ax=Math.abs(dx), ay=Math.abs(dy);
 
-                        if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.3) {
+                        if (ax > 50 && ax > ay * 1.3 && !inTrack) {
                             if (e.cancelable) e.preventDefault(); go(cur() + (dx < 0 ? 1 : -1));
+                        }
+
+                        else if (ay > 60 && ay > ax * 1.3) {
+                            go(cur() + (dy < 0 ? 1 : -1));
                         }
                     }
 
@@ -1563,6 +1554,252 @@ label:focus-visible {
                         e.preventDefault();
                         go(parseInt(m[1], 10));
                     });
+            });
+
+
+        /* bottom dock: sync, jump, finger scroll scrubs slides */
+        safe(function () {
+                var dock=document.getElementById('dock'), strip=document.getElementById('dkStrip');
+                var items=Array.prototype.slice.call(strip.querySelectorAll('.dk-item'));
+                var darkSet={0:1, 2:1, 5:1, 8:1, 9:1, 10:1};
+                var first=true, lockUntil=0, idleT=null, fromScrub=false;
+                var prgs=items.map(function (it) {
+                        return it.querySelector('.prg');
+                    });
+                var DUR={3:10000, 8:7000, 9:8000, 10:7000}, DEF=6000;
+                var elapsed=0, lastT=0, held=false, started=false, halted=false;
+
+                function dur(i) {
+                    return DUR[i] || DEF;
+                }
+
+                function setRing(i, p) {
+                    prgs[i].style.strokeDashoffset=String(1 - p);
+                    prgs[i].style.opacity=p > 0.004 ? '1' : '0';
+                }
+
+                function resetRings() {
+                    prgs.forEach(function (_, i) {
+                            setRing(i, 0);
+                        });
+                }
+
+                function center(smooth) {
+                    var it=items[cur()];
+                    var target=it.offsetLeft + it.offsetWidth / 2 - strip.clientWidth / 2;
+                    lockUntil=Date.now() + (smooth ? 800 : 150);
+                    strip.scrollTo({left:Math.max(0, target), behavior:smooth ? 'smooth' : 'auto'});
+                }
+
+                function nearest() {
+                    var mid=strip.scrollLeft + strip.clientWidth / 2, best=0, bd=1e9;
+                    items.forEach(function (it, i) {
+                            var d=Math.abs(it.offsetLeft + it.offsetWidth / 2 - mid);
+                            if (d < bd) {
+                                bd=d; best=i;
+                            }
+                        });
+                    return best;
+                }
+
+                function sync() {
+                    var c=cur();
+                    items.forEach(function (it, i) {
+                            it.classList.toggle('active', i===c);
+                            it.classList.toggle('done', i < c);
+                            if (i===c) it.setAttribute('aria-current', 'step'); else it.removeAttribute('aria-current');
+                        });
+                    dock.classList.toggle('is-dark', !!darkSet[c]);
+                    elapsed=0; halted=false; resetRings();
+                    document.getElementById('vidToggle').classList.toggle('is-dark', !!darkSet[c]);
+                    if ( !fromScrub) center( !first);
+                    first=false;
+                }
+
+                radios.forEach(function (r) {
+                        r.addEventListener('change', sync);
+                    });
+
+                /* wheel over the dock scrolls the strip sideways, not the slides */
+                dock.addEventListener('wheel', function (e) {
+                        e.stopPropagation();
+                    }, {passive:true});
+                strip.addEventListener('wheel', function (e) {
+                        var d=Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+                        e.preventDefault();
+                        lockUntil=0;
+                        strip.scrollLeft+=d;
+                    }, {passive:false});
+
+                /* any user touch/drag unlocks scrubbing */
+                ['touchstart', 'pointerdown'].forEach(function (ev) {
+                        strip.addEventListener(ev, function () {
+                                lockUntil=0;
+                            }, {passive:true});
+                    });
+
+                /* scrolling the strip changes the slide to the centred icon */
+                strip.addEventListener('scroll', function () {
+                        if (Date.now() < lockUntil) return;
+                        var n=nearest();
+                        if (n!==cur()) {
+                            fromScrub=true; go(n); fromScrub=false;
+                        }
+                        clearTimeout(idleT);
+                        idleT=setTimeout(function () {
+                                center(true);
+                            }, 140);
+                    }, {passive:true});
+
+                /* mouse drag to scroll; click still jumps */
+                var down=false, moved=false, sx0=0, sl0=0;
+                strip.addEventListener('pointerdown', function (e) {
+                        if (e.pointerType!=='mouse') return;
+                        down=true; moved=false; sx0=e.clientX; sl0=strip.scrollLeft;
+                    });
+                window.addEventListener('pointermove', function (e) {
+                        if ( !down) return;
+                        var dx=e.clientX - sx0;
+                        if ( !moved && Math.abs(dx) > 5) {
+                            moved=true; strip.classList.add('dragging');
+                        }
+                        if (moved) strip.scrollLeft=sl0 - dx;
+                    });
+                window.addEventListener('pointerup', function () {
+                        if ( !down) return;
+                        down=false; strip.classList.remove('dragging');
+                        setTimeout(function () {
+                                moved=false;
+                            }, 0);
+                    });
+
+                /* click a slide icon to jump */
+                strip.addEventListener('click', function (e) {
+                        if (moved) return;
+                        var b=e.target.closest('.dk-item');
+                        if (b) go(parseInt(b.getAttribute('data-go'), 10));
+                    });
+
+                window.addEventListener('resize', function () {
+                        center(false);
+                    });
+                /* auto-advance: starts once the visitor leaves slide 1; slide 1 and the last slide never auto-move */
+                function tick(t) {
+                    var dt=lastT ? Math.min(100, t - lastT) : 0; lastT=t;
+                    var c=cur();
+                    if (c > 0) started=true;
+                    if (started && !halted && c > 0 && c < items.length - 1 && !held && !document.hidden && !lbOpen()) {
+                        elapsed+=dt;
+                        var p=Math.min(1, elapsed / dur(c));
+                        setRing(c, p);
+                        if (p >=1) go(c + 1);
+                    }
+                    requestAnimationFrame(tick);
+                }
+
+                /* touching the slide's own content (carousel, map, video, plans, links...) stops auto-advance on that slide until the visitor moves it */
+                deck.addEventListener('pointerdown', function (e) {
+                        var t=e.target;
+                        if ( !t || !t.closest || t.closest('.dock,.vid-toggle,.tap')) return;
+                        if ( !t.closest('.scene')) return;
+                        halted=true; elapsed=0; resetRings();
+                    }, {passive:true});
+
+                /* hold a finger / mouse button down to pause */
+                ['pointerdown', 'touchstart'].forEach(function (ev) {
+                        deck.addEventListener(ev, function () {
+                                held=true;
+                            }, {passive:true});
+                    });
+                ['pointerup', 'pointercancel', 'touchend', 'touchcancel'].forEach(function (ev) {
+                        window.addEventListener(ev, function () {
+                                held=false;
+                            }, {passive:true});
+                    });
+                requestAnimationFrame(tick);
+
+                sync();
+            });
+
+
+        /* villas carousel */
+        safe(function () {
+                var track=document.getElementById('vTrack'); if ( !track) return;
+                var tabs=Array.prototype.slice.call(document.querySelectorAll('.vtab'));
+                var dots=Array.prototype.slice.call(document.querySelectorAll('.vdot'));
+                var info=document.getElementById('vInfo');
+                var data=[
+                    {area:'966 sq.ft.', size:'21 × 46 ft.', built:'1,600 sq.ft.', rooms:'3 Bedrooms + Study · Drawing & Dining · Kitchen · Front & Rear Lawn'},
+                    {area:'966 sq.ft.', size:'21 × 46 ft.', built:'1,300 sq.ft.', rooms:'2 Bedrooms · Drawing & Dining · Kitchen · Front & Rear Lawn'}
+                ];
+                var curV=0, idx=0;
+
+                function show(v) {
+                    if (v===curV) return;
+                    curV=v;
+                    tabs.forEach(function (t, i) {
+                            t.classList.toggle('on', i===v); t.setAttribute('aria-selected', i===v ? 'true' : 'false');
+                        });
+                    var d=data[v];
+                    document.getElementById('vArea').textContent=d.area;
+                    document.getElementById('vSize').textContent=d.size;
+                    document.getElementById('vBuilt').textContent=d.built;
+                    document.getElementById('vRooms').textContent=d.rooms;
+                    info.classList.remove('swap'); void info.offsetWidth; info.classList.add('swap');
+                }
+
+                track.addEventListener('scroll', function () {
+                        var i=Math.round(track.scrollLeft / Math.max(1, track.clientWidth));
+                        if (i===idx) return;
+                        idx=i;
+                        dots.forEach(function (d, k) {
+                                d.classList.toggle('on', k===i);
+                            });
+                        show(i < 3 ? 0 : 1);
+                    }, {passive:true});
+
+                function scrollToIdx(i) {
+                    track.scrollTo({left:i * track.clientWidth, behavior:'smooth'});
+                }
+
+                tabs.forEach(function (t) {
+                        t.addEventListener('click', function () {
+                                scrollToIdx(parseInt(t.getAttribute('data-v'), 10) * 3);
+                            });
+                    });
+                dots.forEach(function (d) {
+                        d.addEventListener('click', function () {
+                                scrollToIdx(parseInt(d.getAttribute('data-i'), 10));
+                            });
+                    });
+
+                /* mouse drag */
+                var down=false, moved=false, x0=0, l0=0;
+                track.addEventListener('pointerdown', function (e) {
+                        if (e.pointerType!=='mouse') return;
+                        down=true; moved=false; x0=e.clientX; l0=track.scrollLeft;
+                    });
+                window.addEventListener('pointermove', function (e) {
+                        if ( !down) return;
+                        var dx=e.clientX - x0;
+                        if ( !moved && Math.abs(dx) > 5) {
+                            moved=true; track.classList.add('dragging');
+                        }
+                        if (moved) track.scrollLeft=l0 - dx;
+                    });
+                window.addEventListener('pointerup', function () {
+                        if ( !down) return;
+                        down=false;
+                        if (moved) {
+                            track.classList.remove('dragging');
+                            scrollToIdx(Math.round(track.scrollLeft / Math.max(1, track.clientWidth)));
+                        }
+                    });
+                track.addEventListener('click', function (e) {
+                        if (moved) {
+                            e.stopPropagation(); e.preventDefault(); moved=false;
+                        }
+                    }, true);
             });
 
         /* plan viewer */
@@ -1625,6 +1862,7 @@ label:focus-visible {
                 var evs=['pointerdown', 'touchstart', 'click', 'wheel', 'keydown'];
 
                 function onFirst(e) {
+                    if (e.target && e.target.closest && e.target.closest('#vidToggle')) return;
                     startVideo();
                     evs.forEach(function (ev) {
                             document.removeEventListener(ev, onFirst);
@@ -1649,7 +1887,8 @@ label:focus-visible {
                 toggle.addEventListener('click', function (e) {
                         e.stopPropagation();
                         if (vid.paused) {
-                            vid.play();
+                            var pr=vid.play();
+                            if (pr && pr.catch) pr.catch(function () {});
                         }
 
                         else {
